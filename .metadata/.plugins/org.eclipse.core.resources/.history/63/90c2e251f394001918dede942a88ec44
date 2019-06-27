@@ -1,0 +1,7 @@
+package cn.cnnic.domainstat.mapper;
+
+import org.apache.ibatis.annotations.Param;
+
+public interface EppContactMapper {
+	EppContactPO query(@Param("registrantId" String registrantId))
+}

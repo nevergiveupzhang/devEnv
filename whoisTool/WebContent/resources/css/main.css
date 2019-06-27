@@ -1,0 +1,345 @@
+/* 设置常用margin和padding值 */
+.mt50 {
+	margin-top: 50px;
+}
+
+.mt10 {
+	margin-top: 10px;
+}
+
+.mt20 {
+	margin-top: 20px;
+}
+.mt40 {
+	margin-top: 40px;
+}
+
+.mt5 {
+	margin-top: 5px;
+}
+
+.mb50{
+	margin-bottom:50px;
+}
+.ml10 {
+	margin-left: 10px;
+}
+.ml20 {
+	margin-left: 20px;
+}
+.ml90 {
+	margin-left: 90px;
+}
+.mr10{
+	margin-right:10px;
+}
+/* 设置常用字体大小 */
+.fs16 {
+	font-size: 16px;
+}
+
+.fs18 {
+	font-size: 18px;
+}
+/*使得body可以占满浏览器窗口*/
+html, body {
+	height: 100%;
+	width: 100%;
+	background: rgba(255, 255, 255, .3);
+	color: #555;
+}
+
+/*base*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code,
+	form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+	/* overflow: hidden; */
+}
+
+fieldset, img {
+	border: 0;
+}
+
+em, strong {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ul, li {
+	list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+	color: #555;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+.wid-per-25 th, .wid-per-25 td {
+	text-align: center; /* 去掉bootstrap默认的left效果 */
+	width: 25%;
+}
+
+.wid-per-33 th, .wid-per-33 td {
+	text-align: center; /* 去掉bootstrap默认的left效果 */
+	width: 33.33%;
+}
+/* 清除浮动带来的影响 */
+.clear:after {
+	content: '';
+	display: block;
+	height: 0;
+	overflow: hidden;
+	clear: both;
+}
+.fl {
+	float: left;
+}
+.fr{
+	float:right;
+}
+
+.clear {
+	clear: both;
+	font-size: 0px;
+	line-height: 0;
+	height: 0;
+}
+
+/* 文字靠右对齐 */
+.tar {
+	text-align: right;
+}
+/* 文字靠左对齐 */
+.tal {
+	text-align: left;
+}
+/*  单行元素的垂直居中 */
+.v-center-inline {
+	height: 34px;
+	line-height: 34px;
+	overflow: hidden;
+}
+
+.tip-warnning {
+	font-size: 18px;
+	color: #f00;
+	margin-top: 20px;
+}
+
+.tip-fail {
+	color: #f00;
+}
+
+/* 外框架 */
+.whois-container {
+	width: 100%;
+	height: 100%;
+}
+
+.search-wrapper {
+	background-color: #f2f2f2;
+	padding: 40px 0;
+}
+
+.multi-domain-search {
+	-moz-box-shadow: 3px 3px 10px #ececec;
+	-webkit-box-shadow: 3px 3px 10px #ececec;
+	box-shadow: 3px 3px 10px #ececec;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1230px;
+	padding: 30px 30px; overflow : hidden;
+	background: #fff;
+	overflow: hidden;
+}
+
+.multi-domain-box {
+	width: 990px;
+	float: left;
+	border: 1px solid #AFC0E6;
+	box-sizing: border-box;
+	min-height: 225px;
+	max-height: 300px;
+	position: relative;
+}
+
+.domain-root {
+	overflow: auto;
+	padding: 0 0 20px 40px;
+	width:50%;
+	height:100%;
+	float:left;
+	margin-top:20px;
+}
+
+label {
+	display: inline-block;
+	width: 130px;
+	height: 30px;
+	font-size: 13px;
+	padding-right: 5px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.domain-root input {
+	margin-right: 6px;
+	font-size: 100%;
+	margin: 0;
+	vertical-align: baseline;
+	*vertical-align: middle;
+}
+
+input[type="checkbox"] {
+	box-sizing: border-box;
+	padding: 0;
+	*height: 13px;
+	*width: 13px;
+}
+
+textarea {
+	padding: 12px 10px;
+	outline: 0;
+	border: 0;
+	border-right-width: 0px;
+	border-right-style: none;
+	border-right-color: currentcolor;
+	border-right: 1px solid #AFC0E6;
+	font-size: 13px;
+	resize: none;
+	overflow: auto;
+	vertical-align: top;
+	width:50%;
+	height:225px;
+	float:left;
+}
+.blue-font {
+    margin-left: 10px;
+    color: #108cee;
+    cursor: pointer;
+}
+.yellow-font {
+    color: #FF9900;
+}
+.domain-statistic {
+	position: absolute;
+	bottom: 5px;
+	right: 58%;
+	font-size: 10px;
+	color: #666666;
+}
+
+.search-btn[disabled] {
+	cursor: not-allowed;
+	background-color: #ccc;
+	border-color: #ccc;
+}
+
+.search-btn {
+	float: left;
+	font-size: 14px;
+	width: 180px;
+	height: 60px;
+	background-color: #FF9900;
+	color: #fff;
+	text-align: center;
+	line-height: 60px;
+	border: 1px solid #FF9900;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-top-color: rgb(255, 153, 0);
+	border-right-color: rgb(255, 153, 0);
+	border-bottom-color: rgb(255, 153, 0);
+	border-left-color: rgb(255, 153, 0);
+	border-radius: 0 3px 3px 0;
+	border-left: none;
+	border-left-color: currentcolor;
+	cursor: pointer;
+}
+
+.result-wrapper {
+	margin-top: 20px;
+}
+.result {
+	color: #333333;
+	font-size: 12px;
+	width: 100%;
+}
+
+.result-tip {
+	border-bottom: 1px solid #ececec;
+	width: 100%;
+	position: relative;
+	height: 40px;
+	margin-bottom: 23px;
+}
+
+.result-tip ul {
+	position: absolute;
+	left: 0;
+	bottom: -1px;
+	width: 100%;
+}
+
+.result-tip li {
+	float: left;
+	min-width: 166px;
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	font-size: 13px;
+	color: #666666;
+	border: 1px solid #ececec;
+	background: #f7f7f7;
+	cursor: pointer;
+	padding: 0 10px 0 10px;
+}
+
+.result-tip li.on {
+	background: #fff;
+	color: #ff6800;
+	border-bottom: 2px solid #fff;
+}
+
+
+
+.result-table-wrapper {
+	width: 100%;
+	background: #f7f7f7 none repeat scroll 0 0;
+	padding: 10px;
+}
+
+.result-table {
+	border:medium solid #dddddd;
+	border-width: 1px 0px 0px 1px;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	background: #fff;
+	color: #666;
+	position: relative;
+	font-size: 12px;
+}
+
+.result-table td {
+	border: medium solid #dddddd;
+	border-width: 0px 1px 1px 0px;
+	padding: 8px 10px;
+}
+
+#loader{
+	position:absolute;
+	left:50%;
+	z-index:10000;
+}

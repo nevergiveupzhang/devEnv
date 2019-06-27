@@ -1,0 +1,49 @@
+<div class="header">
+	<h1 class="page-title">数据上传</h1>
+	<ul class="breadcrumb">
+		<li><a href="./">Home</a></li>
+		<li class="active">数据上传</li>
+	</ul>
+</div>
+<div class="main-content">
+<ul class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab">数据上传</a></li>
+    </ul>
+	<div class="row">
+		<div class="col-sm-8">
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane active" id="home">
+					<#include "_form.html"/>
+					<div class="btn-toolbar list-toolbar ml50">
+						<div class="col-sm-2"></div>
+						<input id="uploadBtn" type="button" value="提交" class="btn btn-primary col-sm-2">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		//保存
+	    seajs.use('app/upload/index',function(index){
+	        $("#uploadBtn").click(function(){
+	            index.upload();
+	        });
+	    });
+		
+	  //datetimepicker日期选择控件
+	    $('#inputStartDate').datetimepicker({
+	        language:  'fr',
+	        weekStart: 1,
+	        todayBtn:  1,
+	        autoclose: 1,
+	        todayHighlight: 1,
+	        startView: 1,
+	        minView: 0,
+	        maxView: 1,
+	        forceParse: 0
+	    });
+	});
+</script>

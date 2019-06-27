@@ -1,0 +1,23 @@
+1561198756655	Rename package 'cn.cnnic.domainstats.DomainStats'
+1561198780143	Rename type 'App'
+1561199228003	Rename package 'cn.cnnic.domainstats'
+1561199794129	Delete element
+1561200544997	Move compilation unit
+1561200561938	Move compilation unit
+1561200572185	Move compilation unit
+1561200831799	Rename type 'DomainStatsService'
+1561200845213	Rename type 'DomainStatsSchedule'
+1561204303062	Rename type 'CDomainViewPO'
+1561204307970	Rename type 'EppContactViewPO'
+1561204312979	Rename type 'EppEntAllDomainViewPO'
+1561209547094	Rename resource 'NewFile.xml'
+1561210859092	Copy file
+1561211343501	Copy file
+1561211800854	Copy compilation unit
+1561212274231	Rename package 'cn.cnnic.report.utils'
+1561212280233	Delete element
+1561212282750	Delete element
+1561215835858	Copy compilation unit
+1561218291482	Copy compilation unit
+1561219334720	Rename local variable 'sp1'
+1561222564025	Rename local variable 'cDomainList'

@@ -1,0 +1,43 @@
+<div class="header">
+	<h1 class="page-title">历史记录</h1>
+	<ul class="breadcrumb">
+		<li><a href="./">Home</a></li>
+		<li class="active">历史记录</li>
+	</ul>
+</div>
+<div class="main-content">
+<ul class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab">历史记录</a></li>
+    </ul>
+	<div class="row">
+		<div class="col-sm-12">
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane active" id="home">
+						<div class="mt15 devops-history">
+							<table id='historyTable' class="fs16 wid-per-20">
+								<thead>
+									<tr>
+										<th>姓名</th>
+										<th>班次日期</th>
+										<th>修改时间</th>
+										<th>原班次</th>
+										<th>新班次</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		//保存
+	    seajs.use('app/history/index',function(index){
+	    	index.initHistory();
+	    });
+	});
+</script>

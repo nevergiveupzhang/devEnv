@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.cnnic.whoistool.dao.IDomainDao">
+	<resultMap type="cn.cnnic.whoistool.po.CNDomainPO" id="cnDomainMap">
+		<result property="serial" column="ASSOCIATE_ENT_SERIAL"
+			javaType="string" jdbcType="VARCHAR" />
+		<result property="registrantId" column="REGISTRANT_ID"
+			javaType="string" jdbcType="VARCHAR" />
+		<result property="sponsorRegId" column="SPONSOR_REGRID"
+			javaType="string" jdbcType="VARCHAR" />
+		<result property="regDate" column="REG_DT" javaType="DATE"
+			jdbcType="TIMESTAMP" />
+		<result property="expirationDate" column="EXPIRATION_DT"
+			javaType="DATE" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<resultMap type="cn.cnnic.whoistool.po.CDNDomainPO" id="cdnDomainMap">
+		<result property="serial" column="ASSOCIATE_SERIAL" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="registrantId" column="REGISTRANT" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="sponsorRegId" column="REGISTRAR_ID" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="regDate" column="CREATE_TIME" javaType="DATE"
+			jdbcType="TIMESTAMP" />
+		<result property="expirationDate" column="EXPIRE_DATE"
+			javaType="DATE" jdbcType="TIMESTAMP" />
+		<result property="nameServer1" column="NS1" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="nameServer2" column="NS2" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="nameServer3" column="NS3" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="nameServer4" column="NS4" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="nameServer5" column="NS5" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="nameServer6" column="NS6" javaType="string"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="queryCDN" resultMap="cdnDomainMap">
+		select
+		ASSOCIATE_SERIAL,REGISTRANT,REGISTRAR_ID,CREATE_TIME,EXPIRE_DATE,NS1,NS2,NS3,NS4,NS5,NS6
+		from C_DOMAIN_INF_TABLE where DOMAIN_NAME=#{0}
+	</select>
+	<select id="queryCN" resultMap="cnDomainMap">
+		select
+		ASSOCIATE_ENT_SERIAL,REGISTRANT_ID,SPONSOR_REGRID,REG_DT,EXPIRATION_DT
+		from EPP_ENT_ALL_DOMAIN_VIEW where DOMAIN_NAME=#{0}
+	</select>
+
+	<select id="queryCNDomainStatus" resultType="string">
+		select RS.name from
+		EPP_REGISTRYOBJ_STATUS_TABLE RS join EPP_DOMAIN_STATUS_TABLE S on
+		RS.REGISTRYOBJ_STATUS_ID=S.DOMAIN_STATUS_ID join
+		EPP_ENT_ALL_DOMAIN_VIEW D on D.ASSOCIATE_ENT_SERIAL
+		=S.ASSOCIATE_SERIAL where D.DOMAIN_NAME=#{0}
+	</select>
+	<select id="queryCDNDomainStatus" resultType="string">
+		select S.status from
+		DOMAIN_STATUS_RELATION_TABLE S join
+		C_DOMAIN_INF_TABLE D on D.ASSOCIATE_SERIAL
+		=S.ASSOCIATE_SERIAL where D.DOMAIN_NAME=#{0}
+	</select>
+</mapper>

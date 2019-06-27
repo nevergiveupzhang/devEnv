@@ -1,0 +1,205 @@
+/* 设置常用margin和padding值 */
+.mt50{
+	margin-top:50px;
+}
+.mt10{
+	margin-top:10px;
+}
+.mt5{
+	margin-top:5px;
+}
+.ml50{
+	margin-left:50px;
+}
+/* 设置常用字体大小 */
+.fs16{
+	font-size:16px;
+}
+.fs18{
+	font-size:18px;
+}
+
+.fr{
+	float:right;
+}
+
+.red{
+	color:#FF0000;
+}
+/*使得body可以占满浏览器窗口*/
+html, body {
+	height: 100%;
+	background: rgba(255,255,255,.3);
+	color:#555;
+}
+
+/*base*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code,
+	form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+fieldset, img {
+	border: 0;
+}
+
+em, strong {
+	font-style: normal;
+	font-weight: normal;
+}
+
+li {
+	list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+	color:#555;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+input[type=submit] {
+	background-color:#33bddb;
+	border-style: none;
+	width: 100px;
+	height: 44px;
+	cursor: pointer;
+	font-size:16px;
+}
+
+table{
+	margin:0 auto;
+	width:70%;
+	border-spacing: 0;
+	border-collapse: collapse;
+    border: none;
+    font-size:16px;
+}
+table td{
+	border: 1px solid #CCC;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+	padding:5px;
+}
+
+table th{
+	font-weight: 10px;
+	overflow: hidden;
+	padding:12px 0px;
+}
+
+th:after {
+    display: block;
+    content: ' ';
+    width:40%;
+    bottom: 0;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top:10px; 
+    height: 2px;
+    background: #1b1d1e;
+}
+
+th, td {
+	vertical-align: top;
+}
+
+/* 输入表单的封装 */
+.input {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	margin: 10px;
+	width: 150px;
+	height: 30px;
+	padding: 2px 6px;
+	line-height: 1.42857;
+	color: #555;
+	background-color: #FFF;
+	border: 2px solid #c7c7c7;
+	border-width: 0 0 2px;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+/* 外框架 */
+.header{
+	position:fixed;
+	left:15%;
+	width:70%;
+	background-color:#FFF;
+}
+.container {
+	margin: 0px auto;
+	width: 100%;
+	min-height: 500px;
+	text-align: center;
+	padding: 0px;
+	position: relative;
+	overflow: hidden;
+}
+.tip-warnning{
+	font-size:18px;
+	color:#f00;
+	margin-top:20px;
+}
+.tip-fail{
+	color:#f00;
+}
+.edit-icon{
+	margin-top:6px;
+	margin-left:10px;
+	cursor:pointer;
+}
+
+.wid-per-25 th,.wid-per-25 td{
+	text-align:center;/* 去掉bootstrap默认的left效果 */
+	width:25%;	
+}
+.wid-per-33 th,.wid-per-33 td{
+	text-align:center;/* 去掉bootstrap默认的left效果 */
+	width:33.33%;	
+}
+
+.footer {
+    position: relative;
+    background-color: #2d3237;
+    color:#FFF;
+    padding-top: 5px;
+    min-width: 1170px;
+    min-height: 50px;
+    z-index: 210;
+}
+/* 清除浮动带来的影响 */
+.clear:after{
+	content:'';
+	display:block;
+	height:0;
+	overflow:hidden;
+	clear:both;
+}
+/* 文字靠右对齐 */
+.tar{
+	text-align:right;
+}
+/* 文字靠左对齐 */
+.tal{
+	text-align:left;
+}
+/*  单行元素的垂直居中 */
+.v-center-inline{
+	height: 34px;
+	line-height: 34px;
+	overflow: hidden; 	
+}
+
+a:hover {
+    color: #3ca5f6;
+    text-decoration: none;
+}

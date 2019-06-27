@@ -1,0 +1,55 @@
+##############main-center top elk_request_url 100##############
+main-center	/download/cert/CNNICEVSSL.cer	5085
+main-center	/download/dqcrl/crl1.crl	5085
+main-center	/download/crl/CRL1.crl	5084
+main-center	/download/evrootcrl/crl1.crl	5084
+main-center	/	5083
+main-center	/download/cert/CNNICSSL.cer	5082
+main-center	/download/cert/SHA2SSL.cer	5082
+main-center	/download/dqcrl/crl2.crl	5070
+main-center	/download/rootsha2crl/CRL1.crl	5069
+main-center	/download/rootcrl/CRL1.crl	5062
+main-center	/download/cert/CNNICEVROOT.cer	5061
+main-center	/download/evcrl/crl1.crl	5061
+##############main-center top elk_client_ip 100##############
+main-center	218.241.115.155	60908
+##############main-center top elk_user_agent 100##############
+main-center	"curl/7.15.5 (x86_64-redhat-linux-gnu) libcurl/7.15.5 OpenSSL/0.9.8b zlib/1.2.3 libidn/0.6.5"	60908
+##############main-center by day##############
+main-center	2019-03-15	60908
+##############monitor top elk_request_url 100##############
+monitor	/download/evrootcrl/crl1.crl	5098
+monitor	/download/rootsha2crl/CRL1.crl	5085
+monitor	/download/evcrl/crl1.crl	5084
+monitor	/download/rootcrl/CRL1.crl	5082
+monitor	/download/crl/CRL1.crl	5062
+monitor	/download/dqcrl/crl1.crl	5062
+monitor	/download/sha2crl/crl1.crl	5061
+##############monitor top elk_client_ip 100##############
+monitor	218.241.115.188	35534
+##############monitor top elk_user_agent 100##############
+monitor	"curl/7.15.5 (x86_64-redhat-linux-gnu) libcurl/7.15.5 OpenSSL/0.9.8b zlib/1.2.3 libidn/0.6.5"	35534
+##############monitor by day##############
+monitor	2019-03-15	35534
+##############total by day##############
+total	2019-03-15	578388
+total	2019-03-16	0
+total	2019-03-17	0
+total	2019-03-18	0
+total	2019-03-19	0
+total	2019-03-20	0
+total	2019-03-21	0
+total	2019-03-22	0
+total	2019-03-23	0
+total	2019-03-24	0
+total	2019-03-25	0
+total	2019-03-26	0
+total	2019-03-27	0
+total	2019-03-28	0
+total	2019-03-29	0
+total	2019-03-30	0
+total	2019-03-31	0
+##########total#############
+main-center	60908
+monitor	35534
+total	581625

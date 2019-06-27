@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.cnnic.plan.mapper.PersonMapper">
+	<resultMap type="cn.cnnic.plan.model.PersonModel"
+		id="personMap">
+		<result property="id" column="pid" javaType="Integer"
+			jdbcType="INTEGER" />
+		<result property="name" column="name" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="sex" column="sex" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="email" column="email" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="cellphone" column="cellphone"
+			javaType="string" jdbcType="VARCHAR" />
+		<result property="lock" column="lock" javaType="Integer"
+			jdbcType="INTEGER" />
+		<result property="planStatus" column="scheduleStatus"
+			javaType="Integer" jdbcType="INTEGER" />
+	</resultMap>
+
+	<select id="queryPersons" resultMap="personMap">
+		select * from gc_schedule_person
+		<where>
+			<if test="userId!=null">
+				pid in
+				<foreach collection="userId" item="item" index="index"
+					open="(" close=")" separator=",">
+					'${item}'
+				</foreach>
+			</if>
+			<if test="userName!=null">
+				OR name in
+				<foreach collection="userName" item="item" index="index"
+					open="(" close=")" separator=",">
+					'${item}'
+				</foreach>
+			</if>
+		</where>
+	</select>
+</mapper>  

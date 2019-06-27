@@ -1,0 +1,8 @@
+cron.domainStat: 0 0 8 * * ?
+logging.file: domainstat.log
+spring: 
+  datasource: 
+    url: jdbc:oracle:thin:@127.0.0.1:1521:xxx
+    username: xxx
+    password: xxx
+    driver-class-name: oracle.jdbc.driver.OracleDriver

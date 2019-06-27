@@ -1,0 +1,10 @@
+package cn.cnnic.domainstat.po;
+
+public class EppEntAllDomainViewPO {
+	private String domainName;
+	private String associateSerial;
+	private String sponsorRegrid;
+	private String regDt;
+	private String registrantId;
+	
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.cnnic.whoistool.dao.IWhoisAuditDao">
+	
+	<insert id="insert" parameterType="cn.cnnic.whoistool.po.WhoisAuditPO">
+		insert into WHOIS_AUDIT_LOG(IP_ADDR,QUERY_DATE,DOMAIN_INFO) values(#{ipAddr},#{queryDate},#{domainInfo})
+	</insert>
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+   
+<mapper namespace="cn.cnnic.porterrecord.dao.IServDao">  
+	<resultMap type="cn.cnnic.porterrecord.po.ServicePO" id="serviceMap">
+        <result property="id" column="id" javaType="Integer" jdbcType="INTEGER"/>
+        <result property="ipAddr" column="ip_addr" javaType="string" jdbcType="VARCHAR"/>
+        <result property="serviceName" column="service_name" javaType="string" jdbcType="VARCHAR"/>
+	</resultMap>
+    <select id="getIdByNameAndIp" resultType="int">
+    	select id from service where service_name=#{0} and ip_addr=#{1}
+    </select>
+    <select id="getAll" resultMap="serviceMap">
+    	select * from service
+    </select>
+	<update id="update" parameterType="cn.cnnic.porterrecord.po.ServicePO">
+        UPDATE service SET service_name=#{serviceName},ip_addr=#{ipAddr} WHERE id=#{id} ;
+    </update>
+	<delete id="delete" parameterType="java.lang.Integer">
+        delete from service WHERE id=#{id} ;
+    </delete>
+    
+    <insert id="addService" parameterType="cn.cnnic.porterrecord.po.ServicePO">
+		<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+     	</selectKey>    
+        insert into service(service_name,ip_addr)values(#{serviceName},#{ipAddr});
+    </insert>
+</mapper>

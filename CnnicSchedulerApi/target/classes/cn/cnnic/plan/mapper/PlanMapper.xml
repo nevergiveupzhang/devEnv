@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.cnnic.plan.mapper.PlanMapper">
+	<resultMap type="cn.cnnic.plan.model.PlanModel" id="planMap">
+		<result property="id" column="id" javaType="Integer"
+			jdbcType="INTEGER" />
+		<result property="pid" column="pid" javaType="Integer"
+			jdbcType="INTEGER" />
+		<result property="name" column="name" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="day" column="day" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="events" column="events" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="createDate" column="createDate"
+			javaType="string" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="queryPlans" resultMap="planMap">
+		select * from gc_schedule_scheduler
+		<where>
+			<if test="personId!=null">pid=#{personId}</if>
+			<if test="personName!=null">AND name=#{personName}</if>
+			<if test="fromDay!=null">AND day &gt;= #{fromDay} </if>
+			<if test="toDay!=null">AND day &lt;=#{toDay}</if>
+			<if test="planType!=null">
+				AND events in
+				<foreach collection="planType" item="item" index="index"
+					open="(" close=")" separator=",">
+					'${item}'
+				</foreach>
+			</if>
+		</where>
+	</select>
+</mapper>  

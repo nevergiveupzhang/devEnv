@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.cnnic.report.mapper.ReportTopMapper">
+	<resultMap type="cn.cnnic.report.po.ReportTopPO" id="topMap">
+		<result property="id" column="ID" javaType="Integer"
+			jdbcType="INTEGER" />
+		<result property="serviceName" column="SERVICE_NAME" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="reportType" column="REPORT_TYPE" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="reportDate" column="REPORT_DATE" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="fieldName" column="FIELD_NAME" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="fieldValue" column="FIELD_VALUE" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="docCount" column="DOC_COUNT"
+			javaType="Integer" jdbcType="INTEGER" />
+	</resultMap>
+	<!-- <insert id="insert">
+		INSERT INTO REPORT_TOP_TBL(SERVICE_NAME,REPORT_TYPE,REPORT_DATE,FIELD_NAME,FIELD_VALUE,DOC_COUNT) VALUES('${serviceName}','${reportType}','${reportDate}','${fieldName}','${fieldValue}','${docCount}');
+	</insert> -->
+	
+	<insert id="insertForEach" parameterType="java.util.List" useGeneratedKeys="true">
+		INSERT INTO REPORT_TOP_TBL(SERVICE_NAME,REPORT_TYPE,REPORT_DATE,FIELD_NAME,FIELD_VALUE,DOC_COUNT) VALUES
+		<foreach collection="topToBeInsertedList" item="item" index="index" separator=",">
+			(
+				'#{item.serviceName}',
+				'#{item.reportType}',
+				'#{item.reportDate}',
+				'#{item.fieldName}',
+				'#{item.fieldValue}',
+				#{item.docCount}
+			)
+		</foreach>
+	</insert>
+	<select id="query" resultMap="topMap">
+		SELECT * FROM REPORT_TOP_TBL
+		<where>
+			<if test="serviceName!=null">SERVICE_NAME=#{serviceName}</if>
+			<if test="reportType!=null">AND REPORT_TYPE=#{reportType}</if>
+			<if test="reportDate!=null">AND REPORT_DATE=#{reportDate} </if>
+			<if test="fieldName!=null">AND FIELD_NAME=#{fieldName}</if>
+			<if test="fieldValue!=null">AND FIELD_VALUE=#{fieldValue}</if>
+		</where>
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM REPORT_TOP_TBL
+		<where>
+			<if test="serviceName!=null">SERVICE_NAME=#{serviceName}</if>
+			<if test="reportDate!=null">AND REPORT_DATE=#{reportDate} </if>
+		</where>
+	</delete>
+</mapper>

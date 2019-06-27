@@ -1,0 +1,13 @@
+package cn.cnnic.test.Test;
+
+public class Bean {
+	private int id;
+
+	public Bean(int id) {
+		// TODO Auto-generated constructor stub
+	}
+	public int getId() {
+		return id;
+	}
+	
+}

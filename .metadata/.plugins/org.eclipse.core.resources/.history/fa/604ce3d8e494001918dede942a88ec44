@@ -1,0 +1,9 @@
+package cn.cnnic.domainstat.mapper;
+
+import java.util.List;
+
+import cn.cnnic.domainstat.po.CDomainPO;
+
+public interface CDomainMapper {
+	List<CDomainPO> query(String startDate,String endDate,String domainName);
+}

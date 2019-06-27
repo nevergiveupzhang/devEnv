@@ -1,0 +1,67 @@
+1560650945252	Move 'jquery.shCircleLoader-min.js' to 'shCirecleLoader'
+1560657860562	Move compilation unit
+1560657877368	Rename type 'ReportAspect'
+1560674468470	Rename local variable 'serviceConfig'
+1560674485714	Rename local variable 'service'
+1560674867553	Rename type 'ReportService'
+1560675317686	Rename type 'ReportServiceImpl'
+1560675660317	Rename type 'ReportServiceTemplate'
+1560676170313	Delete element
+1560677349340	Rename field 'serviceName'
+1560677356627	Rename local variable 'serviceName'
+1560677537517	Rename local variable 'indexName'
+1560677548188	Rename field 'indexName'
+1560677659449	Rename type 'IndexModel'
+1560677679867	Rename type 'ReportType'
+1560677683823	Rename type 'ReportChannel'
+1560677768267	Rename field 'reportTypeList'
+1560678750054	Rename local variable 'key'
+1560679721942	Rename local variable 'reportTypeName'
+1560679728483	Rename local variable 'reportType'
+1560681356510	Move compilation unit
+1560681364058	Rename type 'ElasticsearchUtil'
+1560738023690	Rename local variable 'key'
+1560738042254	Rename local variable 'reportDay'
+1560738402770	Rename local variable 'field'
+1560739440320	Rename method 'exclude'
+1560739452582	Rename method 'include'
+1560739926252	Rename local variable 'reportFile'
+1560740492639	Rename resource 'showChart.jsp'
+1560744184664	Rename local variable 'poList'
+1560744204730	Rename local variable 'po'
+1560747213689	Rename type 'ReportChannelDailyVO'
+1560750504599	Move compilation unit
+1560750513740	Move compilation unit
+1560750532788	Rename type 'IndexVO'
+1560750539336	Rename type 'ReportChannelVO'
+1560750547364	Rename type 'IndexModel'
+1560750554672	Rename type 'ReportChannelModel'
+1560750704776	Rename field 'dayCounts'
+1560750748688	Rename local variable 'dayCounts'
+1560769596343	Delete elements
+1560770477047	Delete element
+1560770730519	Delete element
+1560770795510	Delete element
+1560770919424	Delete element
+1560771010462	Delete element
+1560771385657	Delete element
+1560771493300	Delete element
+1560771619405	Delete element
+1560771833314	Delete element
+1560771983916	Delete element
+1560772090521	Delete element
+1560773017391	Copy file
+1560773251895	Move compilation unit
+1560773502236	Move compilation unit
+1560773514124	Rename type 'ReportApplicationConfiguration'
+1560773524434	Move compilation unit
+1560862508358	Delete element
+1560915761578	Delete element
+1560915770598	Move compilation unit
+1560915777154	Rename type 'ReportApplicationConfigurationModel'
+1560916693434	Move compilation unit
+1560916710771	Move compilation unit
+1560979534249	Copy compilation unit
+1561040723961	Rename type 'ReportApplicationConfiguration'
+1561040736600	Move compilation unit
+1561212263460	Copy package

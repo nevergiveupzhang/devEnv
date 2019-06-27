@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/views/common/_contentHeader.html=UTF-8
+encoding//WebRoot/WEB-INF/views/common/_paginate.html=UTF-8
+encoding//WebRoot/WEB-INF/views/group/group.html=UTF-8
+encoding//WebRoot/WEB-INF/views/group/newGroup.html=UTF-8
+encoding//WebRoot/WEB-INF/views/person/person.html=UTF-8
+encoding//WebRoot/WEB-INF/views/planset/add.html=UTF-8
+encoding//WebRoot/WEB-INF/views/planset/plan.html=UTF-8
+encoding//WebRoot/WEB-INF/views/schedule/scheduler.html=UTF-8
+encoding//WebRoot/WEB-INF/views/stack.jsp=UTF-8
+encoding//WebRoot/css/custom.css=UTF-8
+encoding//src/cn/cnnic/config/ScheduleConfig.java=UTF-8
+encoding//src/cn/cnnic/controller/HomeServlet.java=UTF-8
+encoding//src/cn/cnnic/controller/IndexController.java=UTF-8
+encoding/<project>=UTF-8

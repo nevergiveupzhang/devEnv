@@ -1,0 +1,13 @@
+##############main-center top elk_request_url 100##############
+##############main-center top elk_client_ip 100##############
+##############main-center top elk_user_agent 100##############
+##############main-center by day##############
+##############monitor top elk_request_url 100##############
+##############monitor top elk_client_ip 100##############
+##############monitor top elk_user_agent 100##############
+##############monitor by day##############
+##############total by day##############
+##########total#############
+main-center	0
+monitor	0
+total	0

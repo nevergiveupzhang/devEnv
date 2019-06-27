@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dnsmon>
+	<!-- item节点必选的属性包括name、type和threshold，可选的属性包括schema和queryType; -->
+	<!-- type属性取值包括：网址DNS可用性、网址HTTP可用性、网址正确性、域名可用性、域名正确性; -->
+	<!--  其中网址DNS可用性和网址HTTP可用性包含schema属性，schema分为http和https，默认为http -->
+	<!--  其中网址正确性包含queryType属性， queryType取值为 1（isp递归），2（本地递归），3（权威查询），默认为1-->
+	<group name="权威云VIP域名监控列表">
+		<item name="gjzwfw.gov.cn" type="域名可用性" threshold="0.65"/>
+		<item name="gjzwfw.gov.cn" type="域名正确性" threshold="0.65"/>
+		<item name="www.gjzwfw.gov.cn" type="网址DNS可用性" threshold="0.65" schema="http"/>
+		<item name="www.gjzwfw.gov.cn" type="网址HTTP可用性" threshold="0.65" schema="http"/>
+		<item name="www.gjzwfw.gov.cn" type="网址正确性" threshold="0.65" queryType="3"/>
+	</group>
+</dnsmon>

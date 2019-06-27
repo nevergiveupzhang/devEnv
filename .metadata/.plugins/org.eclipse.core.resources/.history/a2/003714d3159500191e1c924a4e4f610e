@@ -1,0 +1,23 @@
+package cn.cnnic.test.Test;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	InputStream is=App.class.getClassLoader().getResourceAsStream("test.txt");
+    	FileUtil.init(App.class.getResource("/").getFile()+"test.txt");
+    	try {
+			FileUtil.writeFile("testtest");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	FileUtil.commit();
+    }
+}

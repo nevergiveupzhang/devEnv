@@ -1,0 +1,9 @@
+package cn.cnnic.test.Test;
+
+public class PrivateConstructorDemo {
+
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException {
+		Bean.class.newInstance();
+	}
+
+}

@@ -1,0 +1,6 @@
+package cn.cnnic.domainstat.po;
+
+public class EppEntAllDomainViewPO {
+	private String domainName;
+	
+}

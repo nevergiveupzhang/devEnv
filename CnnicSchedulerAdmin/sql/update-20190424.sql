@@ -1,0 +1,1 @@
+ALTER TABLE `gc_schedule_scheduler` ADD unique(`name`,`day`);

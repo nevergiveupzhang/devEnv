@@ -1,0 +1,5 @@
+package cn.cnnic.domainstat.po;
+
+public class EppContactViewPO {
+	
+}

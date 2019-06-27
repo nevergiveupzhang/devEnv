@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;jquery.shCircleLoader.css&apos; to &apos;shCirecleLoader&apos;&#x0A;- Original project: &apos;whoisTool&apos;&#x0A;- Destination element: &apos;shCirecleLoader&apos;&#x0A;- Original element: &apos;jquery.shCircleLoader.css&apos;" description="Copy file" element1="WebContent/resources/css/jquery.shCircleLoader.css" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1560650946902" target="/MonthReport/src/main/webapp/resources/lib/shCirecleLoader" units="0" version="1.0"/>
+</session>

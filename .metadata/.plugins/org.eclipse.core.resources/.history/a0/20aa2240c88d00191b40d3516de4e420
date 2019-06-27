@@ -1,0 +1,88 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<html>
+<head>
+<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="/resources/css/bootstrap-3.3.7.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="/resources/css/bootstrap-datetimepicker.css"
+	type="text/css" />
+<link rel="stylesheet" href="/resources/css/icon.css"
+	type="text/css" />
+<script type="text/javascript" src="/resources/js/bootstrap-3.3.7.min.js"></script>
+<script type="text/javascript"
+	src="/resources/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript"
+	src="/resources/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<style type="text/css">
+.top50 {
+	margin-top: 50px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row top50">
+			<div class="well col-md-6 col-md-offset-3">
+				<form class="form-inline">
+					<div class="form-group col-md-4">
+						<select id="serviceName" class="form-control">
+							<option>ccwhoisd</option>
+							<option>newgwhoisd</option>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<div class="input-group date form_date" data-date=""
+							data-date-format="yyyy-mm" data-link-format="yyyy-mm">
+							<input id="reportDate" class="form-control" size="16"
+								type="text"/> <span class="input-group-addon"><span
+								class="glyphicon glyphicon-calendar"></span></span>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<button id="startBtn" type="button"
+							class="btn btn-default col-md-4">开始</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div id="result" style="display: none"
+				class="well col-md-4 col-md-offset-3"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(
+				function() {
+					$('.form_date').datetimepicker({
+						format : 'yyyy-mm',
+						autoclose : true,
+						todayBtn : true,
+						startView : 'year',
+						minView : 'year',
+						maxView : 'decade',
+						language : 'zh-CN',
+					});
+					$("#startBtn").click(
+							function() {
+								var serviceName = $("#serviceName").val();
+								var reportDate = $("#reportDate").val();
+								$.get("/report", {
+									"serviceName" : serviceName,
+									"reportDate" : reportDate
+								}, function(data) {
+									if ($("#result").is(":hidden")) {
+										$("#result").show();
+									}
+									$("#result").append(
+											"<div class='row'><a class='col-sm-6' href='/fetch?reportDate='"
+													+ data + "'>" + data
+													+ "</a></div>");
+
+								});
+							});
+				});
+	</script>
+</body>
+</html>

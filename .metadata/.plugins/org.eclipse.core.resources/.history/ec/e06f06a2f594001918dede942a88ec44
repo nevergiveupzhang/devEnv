@@ -1,0 +1,12 @@
+package cn.cnnic.domainstat.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.cnnic.domainstat.po.CDomainPO;
+import cn.cnnic.domainstat.po.EppEntAllDomainPO;
+
+public interface EppEntDomainMapper {
+	List<EppEntAllDomainPO> query(@Param("startDate") String startDate,@Param("endDate") String endDate,@Param("domainName")String domainName);
+}

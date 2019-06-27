@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.cnnic.whoistool.dao.IContactDao">
+	<resultMap type="cn.cnnic.whoistool.po.ContactPO" id="contactMap">
+		<result property="name" column="NAME" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="org" column="ORG" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="email" column="EMAIL"
+			javaType="string" jdbcType="VARCHAR" />
+		<result property="createDate" column="CREATE_DT" javaType="DATE"
+			jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<select id="queryContact" resultMap="contactMap" parameterType="String">
+		select NAME,ORG,EMAIL,CREATE_DT from EPP_CONTACT_VIEW where CONTACT_ID=#{0}
+	</select>
+</mapper>

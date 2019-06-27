@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+   
+<mapper namespace="cn.cnnic.porterrecord.dao.IRecordDao">  
+	<resultMap type="cn.cnnic.porterrecord.vo.PorterRecordVO" id="porterRecordMap">
+		<result property="id" column="id" javaType="Integer" jdbcType="INTEGER"/>
+        <result property="serviceName" column="service_name" javaType="string" jdbcType="VARCHAR"/>
+        <result property="ipAddr" column="ip_addr" javaType="string" jdbcType="VARCHAR"/>
+        <result property="taskName" column="task_name" javaType="string" jdbcType="VARCHAR"/>
+        <result property="execDate" column="exec_date" javaType="DATE" jdbcType="TIMESTAMP"/>
+	</resultMap>
+	
+	<insert id="addRecord" parameterType="cn.cnnic.porterrecord.po.RecordPO" useGeneratedKeys="true" keyProperty="id">
+        insert into record(service_id,task_name,exec_date)values(#{serviceId},#{taskName},#{execDate});
+    </insert>
+    
+    <select id="getPorterRecordByDate" resultMap="porterRecordMap">  
+       select S.id,S.service_name,S.ip_addr,R.task_name,R.exec_date from service S left join (select * from record where to_days(exec_date) - to_days(#{0}) &gt;=0 and to_days(exec_date) - to_days(#{1})&lt;=0) R  on S.id=R.service_id ;
+    </select>
+    
+    <select id="getPorterRecordByServiceId" resultMap="porterRecordMap">  
+       select S.id,S.service_name,S.ip_addr,R.task_name,R.exec_date from service S inner join  record  R  on S.id=R.service_id where S.id=#{0} and to_days(R.exec_date) - to_days(#{1}) &gt;=0 and to_days(R.exec_date) - to_days(#{2})&lt;=0 order by R.exec_date;
+    </select>    
+</mapper>  

@@ -1,0 +1,14 @@
+
+report:
+   indexes:
+      - name: nicweblog
+        conditionField: elk_client_ip
+        channels:
+           - name: main-center
+             fields: elk_request_url.keyword,elk_client_ip.keyword,elk_user_agent
+             includes: 218.241.115.*
+           - name: monitor
+             fields: elk_request_url.keyword,elk_client_ip.keyword,elk_user_agent
+             includes: 218.241.115.188
+           - name: total
+   

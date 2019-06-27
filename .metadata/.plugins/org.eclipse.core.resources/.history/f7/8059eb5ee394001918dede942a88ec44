@@ -1,0 +1,10 @@
+package cn.cnnic.domainstat.po;
+
+public class CDomainViewPO {
+	private String domainName;
+	private String associateSerial;
+	private String registrarId;
+	private String createTime;
+	private String registrantId;
+	
+}

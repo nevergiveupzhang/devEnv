@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CleanDialogSettings">
+		<item value="650" key="DIALOG_WIDTH"/>
+		<item value="true" key="TOGGLE_SELECTED"/>
+		<item value="414" key="DIALOG_HEIGHT"/>
+		<item value="361" key="DIALOG_X_ORIGIN"/>
+		<item value="106" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/home/zhangt/workspace/JavaWorkspace/demoEnv/mybatisDemo"/>
+			<item value="/home/zhangt/workspace/JavaWorkspace/devEnv/dnsmon"/>
+			<item value="/home/zhangt/workspace/JavaWorkspace/devEnv/CnnicSchedulerApi"/>
+			<item value="/home/zhangt/workspace/JavaWorkspace/devEnv/CnnicScheduler"/>
+			<item value="/home/zhangt/workspace/JavaWorkspace/devEnv/CnnicSchedulerAdmin"/>
+			<item value="/home/zhangt/workspace/JavaWorkspace/devEnv/whoisTool"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+			<item value="/home/zhangt/workspace/JavaWorkspace/devEnv/MonthReport/src/main/webapp/resources/css/bootstrap.min.css"/>
+		</list>
+	</section>
+</section>

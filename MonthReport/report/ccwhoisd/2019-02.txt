@@ -1,0 +1,10 @@
+##############ccwhoisd top domain 100##############
+##############ccwhoisd top client 100##############
+##############ccwhoisd by day##############
+##############ccwhoisweb top domain 100##############
+##############ccwhoisweb by day##############
+##############monitor by day##############
+##########total#############
+ccwhoisd	0
+ccwhoisweb	0
+monitor	0

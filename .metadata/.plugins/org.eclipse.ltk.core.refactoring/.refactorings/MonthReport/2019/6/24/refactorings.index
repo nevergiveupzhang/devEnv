@@ -1,0 +1,55 @@
+1560405971217	Move 'index.jsp' to 'pages'
+1560406057623	Rename resource 'index.jsp'
+1560407753284	Rename resource 'index.html'
+1560408458098	Move 'css' to 'resources'
+1560408461568	Move 'js' to 'resources'
+1560414818269	Rename resource 'jquery-1.9.1.min.js'
+1560416270831	Delete element
+1560422280451	Rename resource 'bootstrap.min.css'
+1560422290715	Rename resource 'bootstrap.min.js'
+1560423495364	Delete element
+1560423502494	Delete element
+1560424684587	Delete element
+1560424691162	Delete element
+1560424762442	Rename resource 'bootstrap-datetimepicker-master'
+1560424770939	Rename resource 'bootstrap-3.3.7-dist'
+1560424779565	Delete elements
+1560424786105	Delete elements
+1560424871565	Move 'jquery-3.4.1.min.js' to 'lib'
+1560424877611	Move 'jquery.shCircleLoader-min.js' to 'lib'
+1560427282725	Delete elements
+1560427291566	Delete element
+1560427480551	Delete element
+1560429101005	Move 'ccwhoisd' to 'report'
+1560432333392	Rename local variable 'file'
+1560433190749	Rename local variable 'lastMonth'
+1560531689208	Rename resource 'PersonMapper.xml'
+1560533144207	Rename type 'ReportMapper'
+1560533155104	Rename field 'reportMapper'
+1560533289185	Rename resource 'ReportMapper.xml'
+1560577688575	Rename local variable 'serviceName'
+1560579718997	Rename method 'generateTopTopDomain100'
+1560580642517	Rename local variable 'searchSourceBuilder'
+1560580660564	Rename local variable 'searchSourceBuilder'
+1560589206988	Delete element
+1560589213012	Delete element
+1560590605010	Rename local variable 'ccwhoisdSearchSourceBuilder'
+1560595542027	Rename local variable 'byClientAggregation'
+1560598134482	Rename local variable 'name'
+1560599012292	Rename method 'fetchDataAndCreateFile'
+1560599377380	Rename method 'fetchDataAndWriteFile'
+1560602562022	Rename method 'isExist'
+1560611101788	Rename package 'cn.cnnic.plan.exception'
+1560611121061	Rename package 'cn.cnnic.plan.exception.handler'
+1560611135311	Rename package 'cn.cnnic.plan.exception.model'
+1560613396084	Delete element
+1560613400281	Delete element
+1560613419047	Delete element
+1560617970486	Rename package 'cn.cnnic.report.model'
+1560619059234	Copy file
+1560623201215	Rename field 'services'
+1560623221293	Rename method 'getServices'
+1560623225555	Rename method 'getIdexes'
+1560623237448	Rename method 'setServices'
+1560623252536	Rename local variable 'services'
+1560623263598	Rename type 'ServiceModel'

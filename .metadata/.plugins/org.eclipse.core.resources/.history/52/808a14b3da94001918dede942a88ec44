@@ -1,0 +1,20 @@
+package cn.cnnic.domainstat;
+
+import javax.sql.DataSource;
+
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class MybatisConfig {
+	@Bean
+	public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) {
+		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+		// 设置数据源
+		sqlSessionFactoryBean.setDataSource(dataSource);
+		// 设置别名包
+		sqlSessionFactoryBean.setTypeAliasesPackage("cn.cnnic.report.po");
+		return sqlSessionFactoryBean;
+	}
+}

@@ -1,0 +1,9 @@
+package cn.cnnic.domainstat.po;
+
+public class EppContactViewPO {
+	private String addrPc;
+	private String addrSp;
+	private String addrCity;
+	private String addrStreet;
+	
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.cnnic.report.mapper.ReportDailyMapper">
+	<resultMap type="cn.cnnic.report.po.ReportDailyPO" id="dailyMap">
+		<result property="id" column="ID" javaType="Integer"
+			jdbcType="INTEGER" />
+		<result property="serviceName" column="SERVICE_NAME" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="reportType" column="REPORT_TYPE" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="reportDate" column="REPORT_DATE" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="docCount" column="DOC_COUNT"
+			javaType="Integer" jdbcType="INTEGER" />
+	</resultMap>
+	<insert id="insert">
+		INSERT INTO REPORT_DAILY_TBL(SERVICE_NAME,REPORT_TYPE,REPORT_DATE,DOC_COUNT) VALUES(#{serviceName},#{reportType},#{reportDate},#{docCount});
+	</insert>
+	
+	<insert id="batchInsert" parameterType="java.util.List"
+		useGeneratedKeys="true">
+		INSERT INTO REPORT_DAILY_TBL(SERVICE_NAME,REPORT_TYPE,REPORT_DATE,DOC_COUNT) VALUES
+		<foreach collection="topToBeInsertedList" item="item"
+			separator=",">
+			(
+			#{item.serviceName},
+			#{item.reportType},
+			#{item.reportDate},
+			#{item.fieldName},
+			#{item.fieldValue},
+			#{item.docCount}
+			)
+		</foreach>
+	</insert>
+	
+	<select id="query" resultMap="dailyMap">
+		SELECT * FROM REPORT_DAILY_TBL
+		<where>
+			<if test="serviceName!=null">SERVICE_NAME=#{serviceName}</if>
+			<if test="reportType!=null">AND REPORT_TYPE=#{reportType}</if>
+			<if test="startDate!=null">AND REPORT_DATE &gt;= #{startDate} </if>
+			<if test="endDate!=null">AND REPORT_DATE &lt;#{endDate}</if>
+		</where>
+		<if test="orderFields!=null">order by ${orderFields}</if>
+	</select>
+	<delete id="delete">
+		DELETE FROM REPORT_DAILY_TBL
+		<where>
+			<if test="serviceName!=null">SERVICE_NAME=#{serviceName}</if>
+			<if test="startDate!=null">AND REPORT_DATE &gt;= #{startDate} </if>
+			<if test="endDate!=null">AND REPORT_DATE &lt;#{endDate}</if>
+		</where>
+	</delete>
+</mapper>

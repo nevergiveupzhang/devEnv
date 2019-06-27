@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;b&apos; in &apos;cn.cnnic.test.Test.PrivateConstructorDemo.main(...)&apos; to &apos;bean&apos;&#x0A;- Original project: &apos;Test&apos;&#x0A;- Original element: &apos;cn.cnnic.test.Test.PrivateConstructorDemo.main(String[]).b&apos;&#x0A;- Renamed element: &apos;b&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;b&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java&lt;cn.cnnic.test.Test{PrivateConstructorDemo.java[PrivateConstructorDemo~main~\[QString;@b!240!257!245!245!QBean;!0!false" name="bean" references="true" stamp="1561600830348" version="1.0"/>
+</session>
