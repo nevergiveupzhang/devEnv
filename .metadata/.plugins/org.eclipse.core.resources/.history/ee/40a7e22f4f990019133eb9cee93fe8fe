@@ -1,0 +1,9 @@
+package cn.cnnic.domainstat.po;
+
+public class EppEntAllDomainContactPO {
+	private String domainName;
+	private String sponsorRegrid;
+	private String addrPc;
+	private String addrSp;
+	private String addrStreet;
+}

@@ -14,13 +14,13 @@ import java.io.InputStreamReader;
  */
 public class App {
 	public static void main(String[] args) throws IOException {
-		InputStream is = App.class.getClassLoader().getResourceAsStream("test.txt");
-		InputStreamReader isr = new InputStreamReader(is);// 读取
-		// 创建字符流缓冲区
-		BufferedReader bufr = new BufferedReader(isr);
+//		InputStream is = App.class.getClassLoader().getResourceAsStream("test.txt");
+//		InputStreamReader isr = new InputStreamReader(is);// 读取
+//		// 创建字符流缓冲区
+//		BufferedReader bufr = new BufferedReader(isr);
 		
-//		File file=new File(App.class.getResource("/test.txt").getFile());
-//		BufferedReader bufr = new BufferedReader(new FileReader(file));
+		File file=new File(App.class.getResource("/").getFile()+"test.txt");
+		BufferedReader bufr = new BufferedReader(new FileReader(file));
 		
 		String line;
 		while ((line = bufr.readLine()) != null) {

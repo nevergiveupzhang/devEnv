@@ -9,8 +9,7 @@ import cn.cnnic.domainstat.service.DomainStatService;
 public class DomainStatSchedule {
 	@Autowired
 	private DomainStatService domainStatService;
-	
-	@Scheduled(cron="${cron.domainstat}")
+	@Scheduled(cron="${domain.stat.cron}")
 	private void domainStatsTask() throws Exception {
 		domainStatService.fetchData();
 	}

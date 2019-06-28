@@ -2,30 +2,32 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="print" key="selection"/>
+		<item value="\" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="true" key="wholeword"/>
 		<list key="findhistory">
+			<item value="\"/>
+			<item value="writeFile"/>
+			<item value="RESULT_ROOT_PATH"/>
+			<item value="A."/>
+			<item value="addrStreet"/>
+			<item value="addrSp"/>
+			<item value="addrPc"/>
+			<item value="registrarId"/>
+			<item value="domainName"/>
+			<item value="and"/>
 			<item value="print"/>
 			<item value="took"/>
 			<item value="batchInsert"/>
 			<item value="&apos;"/>
 			<item value="reportDate"/>
-			<item value="insertForEach"/>
-			<item value="topToBeInsertedList"/>
-			<item value="showDialog"/>
-			<item value="middle"/>
-			<item value="sp1"/>
-			<item value="domainName"/>
-			<item value="registrarId"/>
-			<item value="sp1=="/>
-			<item value="days"/>
-			<item value="indexName"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
+			<item value="C."/>
+			<item value="AND"/>
 			<item value="&quot;"/>
 			<item value="indexes"/>
 			<item value="fields"/>

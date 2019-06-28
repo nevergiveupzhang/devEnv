@@ -1,3 +1,23 @@
 1561279039075	Rename package 'cn.cnnic.report.aspect'
 1561621268471	Rename field 'service'
 1561635766434	Delete element
+1561690005244	Rename type 'CDomainPO'
+1561690017449	Rename type 'EppEntAllDomainPO'
+1561690106199	Delete element
+1561690128708	Rename resource 'CDomainMapper.xml'
+1561690138547	Rename resource 'EppEntAllDomainMapper.xml'
+1561690722679	Delete element
+1561690763193	Rename type 'CDomainMapper'
+1561690770910	Rename type 'EppEntDomainMapper'
+1561691117373	Delete element
+1561702249885	Rename resource 'CDomainContactMapper.xml'
+1561702310631	Copy file
+1561702334899	Rename resource 'EppEntAllDomainContactMapper.xml'
+1561702366721	Rename type 'EppEntDomainContactMapper'
+1561702407004	Rename type 'CDomainContactPO'
+1561702452940	Rename type 'EppEntAllDomainContactPO'
+1561710609741	Rename local variable 'contactPO'
+1561710650637	Rename field 'contactMap'
+1561710665808	Rename field 'provinceMap'
+1561723338880	Rename type 'ApplicationConfig'
+1561725228174	Delete element

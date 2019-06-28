@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cnnic.domainstat.mapper.EppEntDomainMapper">
+	<resultMap type="cn.cnnic.domainstat.po.CDomainPO" id="eppEntDomainMap">
+		<result property="domainName" column="DOMAIN_NAME" javaType="string" jdbcType="VARCHAR"/>
+		<result property="sponsorRegrid" column="sponsor_regrid" javaType="string" jdbcType="VARCHAR"/>
+		<result property="registrantId" column="REGISTRANT_ID" javaType="string" jdbcType="VARCHAR"/>
+	</resultMap>
+	<select id="query" resultMap="eppEntDomainMap">
+		select DOMAIN_NAME,SPONSOR_REDRID,REGISTRANT_ID from EPP_ENT_ALL_DOMAIN_VIEW
+		<where>
+			REGISTRAR_ID &lt;&gt; 'CNNIC'
+			<if test="null!=startDate"> and CREATE_TIME &gt;= to_date(#{startDate},'yyyy-mm-dd')</if>
+			<if test="null!=endDate"> and CREATE_TIME &lt;= to_date(#{endDate},'yyyy-mm-dd')</if>
+		</where> 
+	</select>
+	
+	<select id="queryCount" resultType="int">
+		select count(1) from EPP_ENT_ALL_DOMAIN_VIEW
+		<where>
+			REGISTRAR_ID &lt;&gt; 'CNNIC'
+			<if test="null!=startDate"> and CREATE_TIME &gt;= to_date(#{startDate},'yyyy-mm-dd')</if>
+			<if test="null!=endDate"> and CREATE_TIME &lt;= to_date(#{endDate},'yyyy-mm-dd')</if>
+		</where> 
+	</select>
+</mapper>

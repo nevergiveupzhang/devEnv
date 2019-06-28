@@ -1,0 +1,8 @@
+127.0.0.1 - - [28/Jun/2019:15:03:55 +0800] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [28/Jun/2019:15:04:10 +0800] "GET /aopDemo/login HTTP/1.1" 400 1208
+0:0:0:0:0:0:0:1 - - [28/Jun/2019:15:04:28 +0800] "GET /aopDemo/login?userName=1&password=1 HTTP/1.1" 200 7
+0:0:0:0:0:0:0:1 - - [28/Jun/2019:15:05:28 +0800] "GET /aopDemo/login?userName=1&password=1 HTTP/1.1" 200 7
+0:0:0:0:0:0:0:1 - - [28/Jun/2019:15:05:28 +0800] "GET /favicon.ico HTTP/1.1" 404 1085
+0:0:0:0:0:0:0:1 - - [28/Jun/2019:15:05:47 +0800] "GET /aopDemo/login?userName=1&password=1 HTTP/1.1" 200 7
+0:0:0:0:0:0:0:1 - - [28/Jun/2019:15:07:13 +0800] "GET /aopDemo/login?userName=1&password=1 HTTP/1.1" 200 7
+0:0:0:0:0:0:0:1 - - [28/Jun/2019:15:07:35 +0800] "GET /aopDemo/login?userName=1&password=1 HTTP/1.1" 200 7

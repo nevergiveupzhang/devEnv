@@ -1,4 +1,6 @@
-cron.domainstat: 0/5 * * * * ?
+domain.stat:
+  cron: 0/5 * * * * ?
+  path: /home/zhangt/dest
 logging.file: domainstat.log
 spring: 
   datasource: 

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.cnnic.report.config.model.IndexConfigModel;
-import cn.cnnic.report.config.model.ReportApplicationModel;
+import cn.cnnic.report.config.model.ReportApplicationConfigModel;
 import cn.cnnic.report.service.ReportService;
 import cn.cnnic.report.utils.DataUtil;
 import cn.cnnic.report.vo.ReportDailyVO;
@@ -29,7 +29,7 @@ public class ReportController {
 	@Autowired
 	private ReportService reportService;
 	@Autowired
-	private ReportApplicationModel config;
+	private ReportApplicationConfigModel config;
 	@RequestMapping("/")
 	public ModelAndView index() {
 		List<IndexConfigModel> model=config.getIndexes();

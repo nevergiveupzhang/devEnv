@@ -1,4 +1,6 @@
 INDEX VERSION 1.131
+/home/zhangt/workspace/JavaWorkspace/devEnv/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2590599242.index
+/springBootApplicationYmlDemo/src/main/resources
 /home/zhangt/workspace/JavaWorkspace/devEnv/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1457273488.index
 /logBackup/src
 /home/zhangt/workspace/JavaWorkspace/devEnv/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3647522653.index

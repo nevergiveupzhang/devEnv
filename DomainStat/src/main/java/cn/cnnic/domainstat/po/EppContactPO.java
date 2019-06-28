@@ -1,10 +1,16 @@
 package cn.cnnic.domainstat.po;
 
 public class EppContactPO {
+	private String id;
 	private String addrPc;
 	private String addrSp;
-	private String addrCity;
 	private String addrStreet;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getAddrPc() {
 		return addrPc;
 	}
@@ -16,12 +22,6 @@ public class EppContactPO {
 	}
 	public void setAddrSp(String addrSp) {
 		this.addrSp = addrSp;
-	}
-	public String getAddrCity() {
-		return addrCity;
-	}
-	public void setAddrCity(String addrCity) {
-		this.addrCity = addrCity;
 	}
 	public String getAddrStreet() {
 		return addrStreet;

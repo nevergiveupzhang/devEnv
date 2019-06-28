@@ -5,5 +5,5 @@ import org.apache.ibatis.annotations.Param;
 import cn.cnnic.domainstat.po.EppContactPO;
 
 public interface EppContactMapper {
-	EppContactPO query(@Param("registrantId") String registrantId);
+	EppContactPO query(@Param("contactId") String contactId);
 }

@@ -1,5 +1,7 @@
 package cn.cnnic.domainstat.aspect;
 
+import java.util.List;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -15,14 +17,10 @@ import org.springframework.stereotype.Component;
 public class LogAdvice {
 	private final static Logger LOGGER = LoggerFactory.getLogger(LogAdvice.class);
 	
-	ThreadLocal<Long> startTime = new ThreadLocal<>();
-	
 	@Pointcut("execution (* cn.cnnic.domainstat.service.*.*(..))")
 	public void servicePointcut() {}
-	
 	@Pointcut("execution (* cn.cnnic.domainstat.mapper.*.*(..))")
 	public void mapperPointcut() {}
-	
 	@Around("mapperPointcut()")
 	public Object calcMapperExecTime(ProceedingJoinPoint joinPoint) throws Throwable {
 		return printExecTime(joinPoint);
@@ -32,24 +30,30 @@ public class LogAdvice {
 		return printExecTime(joinPoint);
 	}
 	private Object printExecTime(ProceedingJoinPoint joinPoint) throws Throwable {
+		long startTime=System.currentTimeMillis();
 		StringBuilder timeBuilder = new StringBuilder();
-		startTime.set(System.currentTimeMillis());
 		Object result=joinPoint.proceed();
 		timeBuilder.append("print execution time=>");
 		timeBuilder.append("["
 				+ joinPoint.getSignature().getDeclaringTypeName() + ".");
 		timeBuilder.append(joinPoint.getSignature().getName()+"()");
-		timeBuilder.append(" took "+(System.currentTimeMillis() - startTime.get())+"ms]");
+		long endTime=System.currentTimeMillis();
+		timeBuilder.append(" took "+(endTime-startTime)+"ms");
+		if(result instanceof List){
+			timeBuilder.append(" and size of result list  is "+((List)result).size());
+		}else if(null!=result){
+			timeBuilder.append(" and result  is "+result);
+		}
+		timeBuilder.append("]");
 		LOGGER.info(timeBuilder.toString());
 		return result;
 	}
-
-	@Before("servicePointcut()")
-	public void printServiceParams(JoinPoint joinPoint) {
-		printParams(joinPoint);
-	}
 	@Before("mapperPointcut()")
 	public void printMapperParams(JoinPoint joinPoint) {
+		printParams(joinPoint);
+	}
+	@Before("servicePointcut()")
+	public void printServiceParams(JoinPoint joinPoint) {
 		printParams(joinPoint);
 	}
 	private void printParams(JoinPoint joinPoint) {

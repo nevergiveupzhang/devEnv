@@ -1,0 +1,10 @@
+package cn.cnnic.domainstat.po;
+
+public class CDomainContactPO {
+	private String domainName;
+	private String registrarId;
+	private String registrantId;
+	private String addrPc;
+	private String addrSp;
+	private String addrStreet;
+}

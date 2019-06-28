@@ -10,9 +10,6 @@ public class FileUtil {
 	
 	public static void createFile(String filePath) throws IOException{
 		File file = new File(filePath);
-		if(isExists(file)) {
-			return;
-		}
 		if(!file.getParentFile().exists()) {
 			file.getParentFile().mkdirs();
 		}

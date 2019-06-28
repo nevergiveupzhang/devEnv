@@ -1,0 +1,14 @@
+package cn.cnnic.domainstat.config;
+
+import java.util.Map;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Component
+@ConfigurationProperties(prefix="domainstat")
+public class ApplicationConfigModel {
+	private String cron;
+	private String path;
+	
+}

@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.aspectj.lang.annotation.Pointcut"/>
-<fullyQualifiedTypeName name="org.aspectj.lang.annotation.Around"/>
-<fullyQualifiedTypeName name="org.aspectj.lang.ProceedingJoinPoint"/>
-<fullyQualifiedTypeName name="org.elasticsearch.search.aggregations.bucket.histogram.DateHistogramAggregationBuilder"/>
 <fullyQualifiedTypeName name="cn.cnnic.report.service.ElasticsearchService"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
 <fullyQualifiedTypeName name="org.elasticsearch.client.RestClientBuilder"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.batch.Main"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
-<fullyQualifiedTypeName name="org.springframework.boot.context.properties.ConfigurationProperties"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.PropertySource"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.ImportResource"/>
 <fullyQualifiedTypeName name="org.apache.http.client.config.RequestConfig"/>
@@ -35,15 +29,10 @@
 <fullyQualifiedTypeName name="net.cnnic.borlan.utils.lookup.ChinesePostalCodeUtil"/>
 <fullyQualifiedTypeName name="cn.cnnic.domainstat.utils.CalendarUtil"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="cn.cnnic.domainstat.po.CDomainPO"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="cn.cnnic.domainstat.utils.SpMap"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="cn.cnnic.domainstat.utils.SpReMap"/>
-<fullyQualifiedTypeName name="cn.cnnic.domainstat.po.EppContactPO"/>
 <fullyQualifiedTypeName name="cn.cnnic.domainstat.service.DomainStatService"/>
 <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
 <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
@@ -60,4 +49,15 @@
 <fullyQualifiedTypeName name="cn.cnnic.report.po.ReportTopPO"/>
 <fullyQualifiedTypeName name="cn.cnnic.report.po.ReportTopPO.Builder"/>
 <fullyQualifiedTypeName name="cn.cnnic.report.po.ReportDailyPO.Builder"/>
+<fullyQualifiedTypeName name="cn.cnnic.domainstat.utils.StringUtil"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="org.springframework.boot.context.properties.ConfigurationProperties"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.example.demo.config.MapConfiguration"/>
+<fullyQualifiedTypeName name="cn.cnnic.domainstat.config.ApplicationConfigModel"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
+<fullyQualifiedTypeName name="cn.cnnic.domainstat.po.EppContactPO"/>
 </qualifiedTypeNameHistroy>

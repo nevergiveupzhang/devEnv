@@ -1,0 +1,39 @@
+package cn.cnnic.domainstat.po;
+
+public class EppEntAllDomainPO {
+	private String domainName;
+	private String sponsorRegrid;
+	private String addrPc;
+	private String addrSp;
+	private String addrStreet;
+	public String getDomainName() {
+		return domainName;
+	}
+	public void setDomainName(String domainName) {
+		this.domainName = domainName;
+	}
+	public String getSponsorRegrid() {
+		return sponsorRegrid;
+	}
+	public void setSponsorRegrid(String sponsorRegrid) {
+		this.sponsorRegrid = sponsorRegrid;
+	}
+	public String getAddrPc() {
+		return addrPc;
+	}
+	public void setAddrPc(String addrPc) {
+		this.addrPc = addrPc;
+	}
+	public String getAddrSp() {
+		return addrSp;
+	}
+	public void setAddrSp(String addrSp) {
+		this.addrSp = addrSp;
+	}
+	public String getAddrStreet() {
+		return addrStreet;
+	}
+	public void setAddrStreet(String addrStreet) {
+		this.addrStreet = addrStreet;
+	}
+}

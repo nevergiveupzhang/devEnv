@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import cn.cnnic.domainstat.mapper.CDomainMapper;
@@ -19,6 +22,7 @@ import cn.cnnic.domainstat.utils.EmailUtil;
 import cn.cnnic.domainstat.utils.FileUtil;
 import cn.cnnic.domainstat.utils.SpMap;
 import cn.cnnic.domainstat.utils.SpReMap;
+import cn.cnnic.domainstat.utils.StringUtil;
 import net.cnnic.borlan.utils.lookup.ChinesePostalCodeUtil;
 import net.cnnic.borlan.utils.lookup.PostalCodeUtil;
 
@@ -35,9 +39,11 @@ public class DomainStatService {
 	@Autowired
 	private SpReMap spReMap;
 
+	@Value("${domain.stat.path}")
+	private String RESULT_ROOT_PATH;
 	private PostalCodeUtil pcu;
-	private static final String RESULT_ROOT_PATH=DomainStatService.class.getResource("/").getFile()+"/result/";
-
+	private final static Logger LOGGER = LoggerFactory.getLogger(DomainStatService.class);
+	
 	public DomainStatService() {
 		pcu = new ChinesePostalCodeUtil();
 	}
@@ -45,17 +51,19 @@ public class DomainStatService {
 	public void fetchData() throws Exception {
 		fetchCdnCn();
 		fetchCdnZhongguo();
-		fetchCn();
+//		fetchCn();
 	}
 
-	private void fetchCn() throws Exception {
+	public void fetchCn() throws Exception {
 		fetchCn(null,"2009-12-31","before2010.txt");
 		for(int year=2010;year<=CalendarUtil.getCurrentYear();year++) {
 			fetchCn(year+"-01-01",year+"-12-31",year+".txt");
 		}
 	}
 
-	private void fetchCn(String startDate, String endDate,String resultFileName) throws Exception {
+	public void fetchCn(String startDate, String endDate,String resultFileName) throws Exception {
+		LOGGER.info("print method params=>["+DomainStatService.class.getCanonicalName()+".fetchCn("+startDate+","+endDate+","+resultFileName+")]");
+		long startTime=System.currentTimeMillis();
 		int count=entDomainMapper.queryCount( startDate, endDate);
 		List<EppEntAllDomainPO> entDomainList = entDomainMapper.query(startDate, endDate);
 		boolean isValid=false;
@@ -71,26 +79,30 @@ public class DomainStatService {
 		if(!isValid) {
 			EmailUtil.sendEmail(new String[] {"zhangtao@cnnic.cn"}, startDate+"至"+endDate+"数据调取异常！", "");
 		}
-		FileUtil.init(RESULT_ROOT_PATH+resultFileName);
+		FileUtil.init(StringUtil.includeSuffix(RESULT_ROOT_PATH,"/")+resultFileName);
 		for (EppEntAllDomainPO domainPO : entDomainList) {
 			String domainName = domainPO.getDomainName();
 			String registrarId = domainPO.getSponsorRegrid();
 			String registrantId = domainPO.getRegistrantId();
 			String province=buildProvince(registrantId);
-			FileUtil.writeFile(domainName + "\t" + registrarId + "\t" + province + "\t");
+			FileUtil.writeFile(domainName + "\t" + registrarId + "\t" + province + "\t\n");
 		}
 		FileUtil.commit();	
+		long endTime=System.currentTimeMillis();
+		LOGGER.info("print execution time=>["+DomainStatService.class.getCanonicalName()+".fetchCn("+startDate+","+endDate+","+resultFileName+") took]"+(endTime-startTime)+"ms");
 	}
 
-	private void fetchCdnZhongguo() throws Exception {
+	public void fetchCdnZhongguo() throws Exception {
 		writeCdn("cdn-zhongguo.txt","%.中国");
 	}
 
-	private void fetchCdnCn() throws Exception {
+	public void fetchCdnCn() throws Exception {
 		writeCdn("cdn-cn.txt","%.cn");
 	}
 	
 	private void writeCdn(String resultFileName, String likePattern) throws Exception {
+		LOGGER.info("print method params=>["+DomainStatService.class.getCanonicalName()+".writeCdn("+resultFileName+","+likePattern+")]");
+		long startTime=System.currentTimeMillis();
 		int count=cDomainMapper.queryCount(null, CalendarUtil.format(new Date(), "yyyy-MM-dd"), likePattern);
 		List<CDomainPO> cDomainList = cDomainMapper.query(null, CalendarUtil.format(new Date(), "yyyy-MM-dd"), likePattern);
 		
@@ -107,22 +119,27 @@ public class DomainStatService {
 		if(!isValid) {
 			EmailUtil.sendEmail(new String[] {"zhangtao@cnnic.cn"}, resultFileName.split(".")[0]+"数据调取异常！", "");
 		}
-		FileUtil.init(RESULT_ROOT_PATH+resultFileName);
+		FileUtil.init(StringUtil.includeSuffix(RESULT_ROOT_PATH,"/")+resultFileName);
 		for (CDomainPO domainPO : cDomainList) {
 			String domainName = domainPO.getDomainName();
 			String registrarId = domainPO.getRegistrarId();
 			String registrantId = domainPO.getRegistrantId();
 			String province=buildProvince(registrantId);
-			FileUtil.writeFile(domainName + "\t" + registrarId + "\t" + province + "\t");
+			FileUtil.writeFile(domainName + "\t" + registrarId + "\t" + province + "\t\n");
 		}
-		FileUtil.commit();		
+		FileUtil.commit();	
+		long endTime=System.currentTimeMillis();
+		LOGGER.info("print execution time=>["+DomainStatService.class.getCanonicalName()+".writeCdn("+resultFileName+","+likePattern+") took]"+(endTime-startTime)+"ms");
 	}
 
-	private String buildProvince(String registrantId) {
-		EppContactPO contactPO = contactMapper.query(registrantId);
-		String registrantPC = contactPO.getAddrPc();
-		String registrantSP = contactPO.getAddrSp();
-		String registrantStreet = contactPO.getAddrStreet();
+	public String buildProvince(String contactId) {
+		EppContactPO contact=contactMapper.query(contactId);
+		if(null==contact) {
+			return "unkown";
+		}
+		String registrantPC = contact.getAddrPc();
+		String registrantSP = contact.getAddrSp();
+		String registrantStreet = contact.getAddrStreet();
 		if (registrantPC == null || registrantPC.trim().equals("")) {
 			registrantPC = "999999";
 		}

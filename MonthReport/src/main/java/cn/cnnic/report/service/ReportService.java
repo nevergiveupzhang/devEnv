@@ -24,7 +24,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import cn.cnnic.report.config.model.IndexConfigModel;
-import cn.cnnic.report.config.model.ReportApplicationModel;
+import cn.cnnic.report.config.model.ReportApplicationConfigModel;
 import cn.cnnic.report.config.model.ReportChannelConfigModel;
 import cn.cnnic.report.mapper.ReportDailyMapper;
 import cn.cnnic.report.mapper.ReportTopMapper;
@@ -45,7 +45,7 @@ public class ReportService {
 			.getParent() + File.separator;
 
 	@Autowired
-	private ReportApplicationModel config;
+	private ReportApplicationConfigModel config;
 	@Autowired
 	private ReportDailyMapper dailyMapper;
 	@Autowired

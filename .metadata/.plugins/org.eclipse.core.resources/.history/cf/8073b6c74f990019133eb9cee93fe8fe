@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cnnic.domainstat.mapper.CDomainMapper">
+	<resultMap type="cn.cnnic.domainstat.po.CDomainPO" id="cDomainMap">
+		<result property="domainName" column="DOMAIN_NAME" javaType="string" jdbcType="VARCHAR"/>
+		<result property="registrarId" column="REGISTRAR_ID" javaType="string" jdbcType="VARCHAR"/>
+		<result property="addrPc" column="ADDR_PC" javaType="string" jdbcType="VARCHAR"/>
+		<result property="addrSp" column="ADDR_SP" javaType="string" jdbcType="VARCHAR"/>
+		<result property="addrStreet" column="ADDR_STREET" javaType="string" jdbcType="VARCHAR"/>
+	</resultMap>
+	<select id="query" resultMap="cDomainMap">
+		select D.DOMAIN_NAME,D.REGISTRAR_ID,C.ADDR_PC,C.ADDR_SP,C.ADDR_STREET from C_DOMAIN_VIEW D LEFT JOIN EPP_CONTACT_VIEW C
+		<where>
+			D.REGISTRANT_ID=C.CONTACT_ID
+			<if test="null!=startDate">CREATE_TIME &gt;= to_date(#{startDate},'yyyy-mm-dd')</if>
+			<if test="null!=endDate"> and CREATE_TIME &lt;= to_date(#{endDate},'yyyy-mm-dd')</if>
+			and REGISTRAR_ID &lt;&gt; 'CNNIC'
+			<if test="null!=domainName">and DOMAIN_NAME like #{domainName}</if>
+		</where> 
+	</select>
+	
+	<select id="queryCount" resultType="int">
+		select count(1) from C_DOMAIN_VIEW
+		<where>
+			<if test="null!=startDate">CREATE_TIME &gt;= to_date(#{startDate},'yyyy-mm-dd')</if>
+			<if test="null!=endDate"> and CREATE_TIME &lt;= to_date(#{endDate},'yyyy-mm-dd')</if>
+			and REGISTRAR_ID &lt;&gt; 'CNNIC'
+			<if test="null!=domainName">and DOMAIN_NAME like #{domainName}</if>
+		</where> 
+	</select>
+</mapper>
