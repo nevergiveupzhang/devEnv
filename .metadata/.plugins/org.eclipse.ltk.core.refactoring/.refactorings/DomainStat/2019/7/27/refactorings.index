@@ -1,2 +1,9 @@
 1562143151574	Rename field 'CLASS_PATH'
 1562143466527	Delete element
+1562152958583	Delete element
+1562152962889	Delete element
+1562153532469	Rename method 'iscustomFetch'
+1562153587078	Rename method 'isCustomFetch'
+1562154046781	Rename method 'writeCn'
+1562154253165	Rename method 'buildContactToProvinceMap'
+1562154270000	Rename method 'buildContactIdToProvinceMap'

@@ -65,16 +65,17 @@ public class DomainStatService {
 
 	public void fetchData() throws Exception {
 		init();
-		if (customFetch()) {
-			return;
+		if (isRangesConfigured()) {
+			customFetch();
+		}else {
+			fetchCdnCn();
+			fetchCdnZhongguo();
+			fetchCn();
+			compressAndUpload();
 		}
-		fetchCdnCn();
-		fetchCdnZhongguo();
-		fetchCn();
-		compressAndUpload();
 	}
 
-	private boolean customFetch() throws Exception {
+	private void customFetch() throws Exception {
 		List<CnDateRangeModel> ranges = config.getRanges();
 		if (null != ranges && ranges.size() != 0) {
 			for (CnDateRangeModel range : ranges) {
@@ -90,12 +91,14 @@ public class DomainStatService {
 				if (StringUtils.isBlank(filePrefix)) {
 					filePrefix = calFilePrefix(startDate, endDate);
 				}
-				writeCn(startDate, endDate, filePrefix);
+				checkAndWriteCn(startDate, endDate, filePrefix);
 			}
-			return true;
-		} else {
-			return false;
-		}
+		} 
+	}
+
+	private boolean isRangesConfigured(){
+		List<CnDateRangeModel> ranges = config.getRanges();
+		return null != ranges && ranges.size() != 0;
 	}
 
 	/*
@@ -154,16 +157,16 @@ public class DomainStatService {
 	}
 
 	private void fetchCn() throws Exception {
-		writeCn(CalendarUtil.ORIGINAL_DATE, "2009-12-31", "before2010");
+		checkAndWriteCn(CalendarUtil.ORIGINAL_DATE, "2009-12-31", "before2010");
 		int currentYear = CalendarUtil.getCurrentYear();
 		for (int year = 2010; year < currentYear; year++) {
-			writeCn(year + "-01-01", year + "-12-31", year + "");
+			checkAndWriteCn(year + "-01-01", year + "-12-31", year + "");
 		}
-		writeCn(currentYear + "-01-01", CalendarUtil.getThisMonthLastDay(new Date()), currentYear + "");
+		checkAndWriteCn(currentYear + "-01-01", CalendarUtil.getThisMonthLastDay(new Date()), currentYear + "");
 	}
 
-	/*Recursively fetch cn data and split it by year,half year,quater or month,util the count is below the threshold,then write files*/
-	private void writeCn(String startDate, String endDate, String filePrefix) throws Exception {
+	/*fetch cn data ,check if the data count is beyond the threshold and split it by year,half year,quater or month,util the count is below the threshold,then write files*/
+	private void checkAndWriteCn(String startDate, String endDate, String filePrefix) throws Exception {
 		if (StringUtils.isBlank(startDate) || StringUtils.isBlank(endDate)) {
 			LOGGER.error("ERR PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate + ","
 					+ filePrefix + ") startDate and endDate cannot be blank!]");
@@ -185,14 +188,14 @@ public class DomainStatService {
 					return;
 				}
 				String thisYearLastDay = CalendarUtil.getThisYearLastDay(startDate);
-				writeCn(startDate, thisYearLastDay, calFilePrefix(startDate, thisYearLastDay));
+				checkAndWriteCn(startDate, thisYearLastDay, calFilePrefix(startDate, thisYearLastDay));
 				startDate = CalendarUtil.getNextYearFirstDay(startDate);
 				for (int i = startYear + 1; i < endYear; i++) {
 					thisYearLastDay = CalendarUtil.getThisYearLastDay(startDate);
-					writeCn(startDate, thisYearLastDay, CalendarUtil.convertFormat(startDate, "yyyy"));
+					checkAndWriteCn(startDate, thisYearLastDay, CalendarUtil.convertFormat(startDate, "yyyy"));
 					startDate = CalendarUtil.getNextYearFirstDay(startDate);
 				}
-				writeCn(startDate, endDate, calFilePrefix(startDate, endDate));
+				checkAndWriteCn(startDate, endDate, calFilePrefix(startDate, endDate));
 			} else {
 				int startMonth = CalendarUtil.getMonth(startDate);
 				int endMonth = CalendarUtil.getMonth(endDate);
@@ -204,17 +207,17 @@ public class DomainStatService {
 				if (!CalendarUtil.isSameHalfYear(startDate, endDate)) {
 					String lastDayOfFirstHalfYear = CalendarUtil.getTheLastDayOfTheFirstHalfYear(startDate);
 					String firstDayOfSecondHalfYear = CalendarUtil.getTheFirstDayOfTheSecondHalfYear(startDate);
-					writeCn(startDate, lastDayOfFirstHalfYear, calFilePrefix(startDate, lastDayOfFirstHalfYear));
-					writeCn(firstDayOfSecondHalfYear, endDate, calFilePrefix(firstDayOfSecondHalfYear, endDate));
+					checkAndWriteCn(startDate, lastDayOfFirstHalfYear, calFilePrefix(startDate, lastDayOfFirstHalfYear));
+					checkAndWriteCn(firstDayOfSecondHalfYear, endDate, calFilePrefix(firstDayOfSecondHalfYear, endDate));
 				} else if (!CalendarUtil.isSameQurter(startDate, endDate)) {
 					String lastDayOfThisQuarter = CalendarUtil.getTheLastDayOfThisQuarter(startDate);
 					String firstDayOfTheNextQuarter = CalendarUtil.getTheFirstDayOfThisQuarter(endDate);
-					writeCn(startDate, lastDayOfThisQuarter, calFilePrefix(startDate, lastDayOfThisQuarter));
-					writeCn(firstDayOfTheNextQuarter, endDate, calFilePrefix(firstDayOfTheNextQuarter, endDate));
+					checkAndWriteCn(startDate, lastDayOfThisQuarter, calFilePrefix(startDate, lastDayOfThisQuarter));
+					checkAndWriteCn(firstDayOfTheNextQuarter, endDate, calFilePrefix(firstDayOfTheNextQuarter, endDate));
 
 				} else if (!CalendarUtil.isSameMonth(startDate, endDate)) {
 					for (int i = startMonth; i <= endMonth; i++) {
-						writeCn(startDate, CalendarUtil.getThisMonthLastDay(startDate),
+						checkAndWriteCn(startDate, CalendarUtil.getThisMonthLastDay(startDate),
 								CalendarUtil.convertFormat(startDate, "yyyyMM"));
 						startDate = CalendarUtil.getNextMonthFirstDay(startDate, CalendarUtil.DEFAULT_FORMAT);
 					}
@@ -263,7 +266,7 @@ public class DomainStatService {
 		List<EppContactPO> contactList = contactMapper.queryWithCn(startDate, endDate);
 		// step4: convert the contact list into a map between the contact id and the
 		// province,set the contact list to null for gc.
-		Map<String, String> contactToProvinceMap = buildContactToProvinceMap(contactList);
+		Map<String, String> contactToProvinceMap = buildMapOfContactIdToProvince(contactList);
 		contactList = null;
 		LOGGER.info("PRINT OBJECT SIZE => [" + LOGGER_DECLARING_TYPE + ".doWriteCn(" + startDate + "," + endDate + ","
 				+ filePrefix + ") the size of contactToProvinceMap is " + contactToProvinceMap.size() + "]");
@@ -335,7 +338,7 @@ public class DomainStatService {
 				likePattern);
 		// step4: convert the contact list into a map between the contact id and the
 		// province,set the contact list to null for gc.
-		Map<String, String> contactToProvinceMap = buildContactToProvinceMap(contactList);
+		Map<String, String> contactToProvinceMap = buildMapOfContactIdToProvince(contactList);
 		contactList = null;
 		// step5: read the source file,get the province from the map by the key contact
 		// id(the last word of the source file) and write into the result file
@@ -392,7 +395,7 @@ public class DomainStatService {
 	 * convert the contact list into a map between the contact id and the
 	 * province,set the contact list to null for gc.
 	 */
-	private Map<String, String> buildContactToProvinceMap(List<EppContactPO> contactList) {
+	private Map<String, String> buildMapOfContactIdToProvince(List<EppContactPO> contactList) {
 		Map<String, String> contactToProvinceMap = new HashMap<String, String>();
 		int size = contactList.size();
 		for (int i = 0; i < size; i++) {
