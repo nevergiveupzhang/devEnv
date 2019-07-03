@@ -1,0 +1,12 @@
+package cn.cnnic.domainstat;
+
+import cn.cnnic.domainstat.utils.FileUtil;
+
+public class Test {
+
+	public static void main(String[] args) {
+		FileUtil.createDirectory(RESULT_DIRECTORY);
+		System.out.println(System.getProperty("user.dir"));
+	}
+
+}

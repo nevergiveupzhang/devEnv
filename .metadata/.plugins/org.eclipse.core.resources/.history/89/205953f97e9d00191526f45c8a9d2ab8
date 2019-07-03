@@ -1,0 +1,7 @@
+package cn.cnnic.report.service;
+
+public class ServiceResponse {
+	private int code;
+	private String message;
+	
+}

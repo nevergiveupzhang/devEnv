@@ -1,0 +1,14 @@
+package cn.cnnic.domainstat;
+
+import cn.cnnic.domainstat.utils.FileUtil;
+
+public class Test {
+
+	public static void main(String[] args) {
+		Runtime run = Runtime.getRuntime();
+		run.exec(System.getProperty("user.dir")+"/test/test.sh");
+		FileUtil.deleteDirectory(System.getProperty("user.dir")+"/test");
+		FileUtil.createDirectory(System.getProperty("user.dir")+"/test");
+	}
+
+}

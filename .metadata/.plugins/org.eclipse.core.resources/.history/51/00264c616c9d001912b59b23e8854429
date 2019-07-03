@@ -1,0 +1,14 @@
+package cn.cnnic.domainstat;
+
+import java.io.IOException;
+
+import cn.cnnic.domainstat.utils.FileUtil;
+
+public class Test {
+
+	public static void main(String[] args) throws IOException {
+		Runtime run = Runtime.getRuntime();
+		run.exec(System.getProperty("user.dir")+"/test/test.sh");
+	}
+
+}
