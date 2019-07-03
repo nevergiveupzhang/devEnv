@@ -16,7 +16,7 @@ public class EmailUtil {
     static{
         properties = new Properties();
         try {
-            InputStream inputestream = new FileInputStream(EmailUtil.class.getResource("/mail.properties").getFile());
+            InputStream inputestream = new FileInputStream(EmailUtil.class.getResource("/../conf/mail.properties").getFile());
             properties.load( inputestream);
         } catch (IOException e) {}
     }

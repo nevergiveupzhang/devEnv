@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>运行管理部排班表</title>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="排班管理系统">
+<meta name="author" content="giscafer">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Cache" content="no-cache">
+<#include "common/include_head.html"/>
+</head>
+
+<body class="theme-blue">
+	<div class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="" href="/"><span class="navbar-brand"><span
+					class="fa fa-paper-plane"></span> 运行管理部排班表</span></a>
+			<a class="" href="#" id="exportMonthScheduler" style="display:none"><span class="navbar-brand"><span
+					class="fa fa-arrow-up"></span> 导出</span></a>
+			<form id="exportMonthSchedulerForm" method="post" action="" style="disabled:true">
+				<input type="hidden" name="year"/>
+				<input type="hidden" name="month"/>
+			</form>
+		</div>
+		<span id="todayDuty" class="navbar-brand fr mr50"></span>
+	</div>
+
+	<div class="content" id="scheduler_content" style="overflow-y: auto;">
+	</div>
+	<script type="text/javascript">
+		/*seajs模块化*/
+		(function() {
+			seajs.config({
+				base : "./",
+				paths : {
+					'lib' : 'js/lib',
+					'app' : 'js/modules/app',
+					'support' : 'js/modules/support'
+				},
+				map:[
+				    ['.js','.js?v=2019050602']
+				    ]
+			});
+			// 加载入口模块
+			seajs.use([ 'support/util', 'lib/eventproxy' ], function(util,
+					EventProxy) {
+				Tiger.ep = new EventProxy();
+				util.initWinHeight("scheduler_content");
+				loadUI('WEB-INF/views/schedule/schedulerWeek.html');
+				$("#exportMonthScheduler").click(function(){
+					var url=hostUrl+"schedule/exportMonthScheduler";
+					$("#exportMonthSchedulerForm").attr("action",url);
+					$("#exportMonthSchedulerForm input[name='year']").val(Tiger.currentYear);
+					$("#exportMonthSchedulerForm input[name='month']").val(Tiger.currentMonth);
+					$("#exportMonthSchedulerForm").submit();
+				});
+			});
+		})();
+	</script>
+</body>
+</html>

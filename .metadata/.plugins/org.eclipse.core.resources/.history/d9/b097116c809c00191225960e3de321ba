@@ -1,0 +1,17 @@
+{
+"code": 200,
+"success": "true",
+"data": [
+{
+"id": 1,
+"name": "刘昱琨",
+"sex": "1",
+"cellphone": "18910873508",
+"email": " liuyukun@cnnic.cn",
+"planStatus": 1,
+"lock": 1
+}
+]
+
+...
+}

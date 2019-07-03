@@ -1,0 +1,51 @@
+<div class="calendarWrapper">
+    <div id="pbgl_calendar" class="dib" style="overflow-y:auto;margin-top:20px;"></div>
+    <div class="paiban_xia_toolbar paiban_toolbar_container" id="paiban_toolbar_container" style="display:none;"></div>
+</div>
+<link href="js/lib/fullcalendar/fullcalendar-3.9.0.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/lib/fullcalendar/lunar.js"></script>
+<script type="text/javascript" src="js/lib/fullcalendar/moment.min.js"></script>
+<script type="text/javascript" src="js/lib/fullcalendar/fullcalendar-3.9.0.js"></script>
+<script type="text/javascript" src="js/lib/fullcalendar/zh-cn.js"></script>
+<script>
+$(document).ready(function($) {
+    if (Tiger.popUpLayer) {
+        Tiger.popUpLayer.close();
+    }
+    $("#paiban_toolbar_container").hide();
+    seajs.use('app/schedule/index',function(index){
+    	index.buildMonthSingleCalendar();//创建日历
+    });
+   
+    $("#scheduler_content").scroll(
+        function(e) {
+            if ($(this).scrollTop() > 194) {
+                $("#pbgl_nav_p").html("");
+                $("#pbgl_nav_div").html("");
+                $("#pbgl_nav_p").append(
+                    $(".fc-header-left span").html());
+                $("#pbgl_nav_div").append(
+                    $("tr[class='fc-first fc-last']")
+                    .html());
+                $("#pbgl_nav th").first().width("137px");
+                // 			 $("#pbgl_nav th").css({"margin":"0 auto","width":"1000px"});
+                $("#pbgl_nav").show();
+                debugger;
+            }
+            if ($(this).scrollTop() < 195) {
+                //$("#pbgl_nav").html("");
+                $("#pbgl_nav_p").html("");
+                $("#pbgl_nav_div").html("");
+                $("#pbgl_nav").hide();
+
+            }
+        });
+    //
+    window.onresize = function() {
+        $("#pbgl_nav").width(
+            $("tr[class='fc-first fc-last']").width());
+        //$("#pbgl_nav").width($(".workingModel").width() - 30);
+    }
+});
+
+</script>

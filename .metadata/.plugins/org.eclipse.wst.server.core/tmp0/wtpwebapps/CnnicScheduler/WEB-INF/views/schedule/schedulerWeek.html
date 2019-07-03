@@ -1,0 +1,68 @@
+<div class="calendarWrapper">
+    <div id="pbgl_calendar" class="dib" style="overflow-y:auto"></div>
+    <div class="paiban_xia_toolbar paiban_toolbar_container" id="paiban_toolbar_container" style="display:none;"></div>
+</div>
+<link href="js/lib/fullcalendar/fullcalendar-customize.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/lib/fullcalendar/fullcalendar-customize.js"></script>
+
+<script>
+$(document).ready(function($) {
+    // setGridHeightAuto("pbgl_calendar");
+    // setGridHeightAuto("calendarWrapper", -20);
+     //避免页面切换的时候没销毁窗口
+    if (Tiger.popUpLayer) {
+        Tiger.popUpLayer.close();
+    }
+    $("#paiban_toolbar_container").hide();
+    seajs.use('app/schedule/index',function(index){
+    	Tiger.ep.addListener("afterWeekTableRender", function() {
+		//需要延时执行
+			setTimeout(function() {
+				$("#pbgl_calendar .fc-border-separate").find('.fc-day-content >div').css('height', '');
+				//设定标题
+				index.initCalendarToobar({"view":"week"});
+			}, 1);
+		// $("#fore-core-mis").hideLoading();
+		});
+    	index.buildWeekCalendar();//创建日历
+    	$("#piaban_startEdit").click(function(){
+    		index.calendarEditFuc();
+    	});
+    	$("#piaban_stopEdit").click(function(){
+    		index.calendarStopEditFuc();
+    	});
+
+    });
+   
+    $("#scheduler_content").scroll(
+        function(e) {
+            if ($(this).scrollTop() > 194) {
+                $("#pbgl_nav_p").html("");
+                $("#pbgl_nav_div").html("");
+                $("#pbgl_nav_p").append(
+                    $(".fc-header-left span").html());
+                $("#pbgl_nav_div").append(
+                    $("tr[class='fc-first fc-last']")
+                    .html());
+                $("#pbgl_nav th").first().width("137px");
+                // 			 $("#pbgl_nav th").css({"margin":"0 auto","width":"1000px"});
+                $("#pbgl_nav").show();
+                //debugger;
+            }
+            if ($(this).scrollTop() < 195) {
+                //$("#pbgl_nav").html("");
+                $("#pbgl_nav_p").html("");
+                $("#pbgl_nav_div").html("");
+                $("#pbgl_nav").hide();
+
+            }
+        });
+    //
+    window.onresize = function() {
+        $("#pbgl_nav").width(
+            $("tr[class='fc-first fc-last']").width());
+        //$("#pbgl_nav").width($(".workingModel").width() - 30);
+    }
+});
+
+</script>

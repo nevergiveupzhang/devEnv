@@ -1,0 +1,4 @@
+jdbcUrl = jdbc:mysql://127.0.0.1/finalscheduler?characterEncoding=utf-8&useUnicode=true&zeroDateTimeBehavior=convertToNull
+user = root
+password = root
+devMode = true

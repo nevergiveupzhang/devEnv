@@ -32,6 +32,7 @@ import cn.cnnic.report.po.ReportDailyPO;
 import cn.cnnic.report.po.ReportTopPO;
 import cn.cnnic.report.utils.CalendarUtil;
 import cn.cnnic.report.utils.FileUtil;
+import cn.cnnic.report.utils.PunycodeUtil;
 import cn.cnnic.report.utils.StringUtil;
 import cn.cnnic.report.vo.ReportChannelDailyDataVO;
 import cn.cnnic.report.vo.ReportDailyVO;
@@ -179,7 +180,7 @@ public class ReportService {
 					for (Bucket bucket : terms.getBuckets()) {
 						String fieldValue = bucket.getKeyAsString();
 						long docCount = bucket.getDocCount();
-						FileUtil.writeFile(reportTypeName + "	" + fieldValue + "	" + docCount + "\n");
+						FileUtil.writeFile(reportTypeName + "	" + PunycodeUtil.evaluate(fieldValue) + "	" + docCount + "\n");
 						ReportTopPO reportTopPO = new ReportTopPO.Builder().serviceName(indexKeyword)
 								.reportType(reportTypeName).reportDate(reportDate)
 								.fieldName(StringUtil.excludeSuffix(fieldName, KEYWORD_SUFFIX)).fieldValue(fieldValue)

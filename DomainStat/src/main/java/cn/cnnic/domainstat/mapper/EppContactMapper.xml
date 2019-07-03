@@ -3,10 +3,44 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.cnnic.domainstat.mapper.EppContactMapper">
-	<select id="query" resultType="cn.cnnic.domainstat.po.EppContactPO">
-		select CONTACT_ID,ADDR_PC,ADDR_SP,ADDR_STREET from EPP_CONTACT_VIEW
+	<resultMap type="cn.cnnic.domainstat.po.EppContactPO"
+		id="contactMap">
+		<result property="id" column="CONTACT_ID" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="addrPc" column="ADDR_PC" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="addrSp" column="ADDR_SP" javaType="string"
+			jdbcType="VARCHAR" />
+		<result property="addrStreet" column="ADDR_STREET"
+			javaType="string" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="queryWithCdn" resultMap="contactMap">
+		SELECT CONTACT_ID,ADDR_PC,ADDR_SP,ADDR_STREET from EPP_CONTACT_VIEW C
+		WHERE EXISTS(
+		SELECT 1 FROM C_DOMAIN_VIEW D
 		<where>
-			<if test="contactId!=null">contact_id=#{contactId}</if>
-		</where> 
+			C.CONTACT_ID=D.REGISTRANT_ID
+			<if test="null!=endDate"> AND D.CREATE_TIME &lt;= to_date(#{endDate},'yyyy-mm-dd')
+			</if>
+			AND D.REGISTRAR_ID &lt;&gt; 'CNNIC'
+			<if test="null!=likePattern">AND D.DOMAIN_NAME like #{likePattern}</if>
+		</where>
+		)
+	</select>
+	
+	<select id="queryWithCn" resultMap="contactMap">
+		SELECT CONTACT_ID,ADDR_PC,ADDR_SP,ADDR_STREET from EPP_CONTACT_VIEW C
+		WHERE EXISTS(
+		SELECT 1 FROM EPP_ENT_ALL_DOMAIN_VIEW D
+		<where>
+			C.CONTACT_ID=D.REGISTRANT_ID
+			AND D.SPONSOR_REGRID &lt;&gt; 'CNNIC'
+			<if test="null!=startDate"> AND D.REG_DT &gt;= to_date(#{startDate},'yyyy-mm-dd')
+			</if>
+			<if test="null!=endDate"> AND D.REG_DT &lt;= to_date(#{endDate},'yyyy-mm-dd')
+			</if>
+		</where>
+		)
 	</select>
 </mapper>

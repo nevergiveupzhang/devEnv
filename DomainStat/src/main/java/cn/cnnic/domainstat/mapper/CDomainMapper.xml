@@ -8,6 +8,7 @@
 		<result property="registrarId" column="REGISTRAR_ID" javaType="string" jdbcType="VARCHAR"/>
 		<result property="registrantId" column="REGISTRANT_ID" javaType="string" jdbcType="VARCHAR"/>
 	</resultMap>
+	
 	<select id="query" resultMap="cDomainMap">
 		select DOMAIN_NAME,REGISTRAR_ID,REGISTRANT_ID from C_DOMAIN_VIEW
 		<where>

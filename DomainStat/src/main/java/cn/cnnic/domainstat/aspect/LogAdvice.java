@@ -33,10 +33,23 @@ public class LogAdvice {
 		long startTime=System.currentTimeMillis();
 		StringBuilder timeBuilder = new StringBuilder();
 		Object result=joinPoint.proceed();
-		timeBuilder.append("print execution time=>");
+		timeBuilder.append("PRINT EXECUTION TIME=>");
 		timeBuilder.append("["
 				+ joinPoint.getSignature().getDeclaringTypeName() + ".");
-		timeBuilder.append(joinPoint.getSignature().getName()+"()");
+		timeBuilder.append(joinPoint.getSignature().getName());
+		timeBuilder.append("(");
+		Object[] args = joinPoint.getArgs();
+		for (Object obj : args) {
+			if(null!=obj) {
+				timeBuilder.append(obj.toString()+",");
+			}else {
+				timeBuilder.append("null,");
+			}
+		}
+		if(args.length>0) {
+			timeBuilder.deleteCharAt(timeBuilder.length()-1);
+		}
+		timeBuilder.append(")");
 		long endTime=System.currentTimeMillis();
 		timeBuilder.append(" took "+(endTime-startTime)+"ms");
 		if(result instanceof List){
@@ -58,7 +71,7 @@ public class LogAdvice {
 	}
 	private void printParams(JoinPoint joinPoint) {
 		StringBuilder paramResult = new StringBuilder();
-		paramResult.append("print method params=>");
+		paramResult.append("PRINT METHOD PARAMS=>");
 		paramResult.append("["
 				+ joinPoint.getSignature().getDeclaringTypeName() + ".");
 		paramResult.append(joinPoint.getSignature().getName());

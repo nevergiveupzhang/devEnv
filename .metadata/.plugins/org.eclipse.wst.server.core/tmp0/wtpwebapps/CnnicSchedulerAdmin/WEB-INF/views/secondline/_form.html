@@ -1,0 +1,109 @@
+<form id="updateSecondlineForm" class="form-horizontal">
+    <br>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">带班组长*</label>
+        <div class="col-sm-4">
+            <select value="${(result.groupLeader)!}" id="inputGroupLeader" class=" form-control">
+                <option value="1">王健茹</option>
+                <option value="2">刘昱琨</option>
+                <option value="3">张明凯</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">网络*</label>
+        <div class="col-sm-4">
+            <select value="${(result.network)!}" id="inputNetwork" class=" form-control">
+                <option value="2">张衡</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">DBA*</label>
+        <div class="col-sm-4">
+            <select value="${(result.dba)!}" id="inputDba" class=" form-control">
+                <option value="1">王蒙</option>
+                <option value="2">熊薇</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">DNS*</label>
+        <div class="col-sm-4">
+            <select value="${(result.cn)!}" id="inputCn" class=" form-control">
+                <option value="1">谢杰灵</option>
+                <option value="2">唐洪峰</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">云解析*</label>
+        <div class="col-sm-4">
+            <select value="${(result.sdns)!}" id="inputSdns" class=" form-control">
+                <option value="1">张翠玲</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">EBERO*</label>
+        <div class="col-sm-4">
+            <select value="${(result.ebero)!}" id="inputEbero" class=" form-control">
+                <option value="1">冷峰</option>
+                <option value="2">杨卫平</option>
+            </select>
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="col-sm-2 control-label">sos2*</label>
+        <div class="col-sm-4">
+            <select value="${(result.sos2)!}" id="inputSos2" class=" form-control">
+                <option value="1">刘昱琨</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+		<label class="col-sm-2 control-label">开始时间*</label>
+		<div class="col-sm-4">
+			<div class="input-group date form_date"
+				data-date="" data-date-format="yyyy-mm-dd"
+				data-link-format="yyyy-mm-dd">
+				<input id="inputStartDate"
+					class="form-control" size="16" type="text"> <span
+					class="input-group-addon"><span
+					class="glyphicon glyphicon-calendar"></span></span>
+			</div>
+		</div>
+	</div>
+</form>
+<script>
+	$(document).ready(function() {
+		$('.form_date').datetimepicker({
+			language : 'zh-CN',
+			weekStart : 1,
+			todayBtn : 1,
+			autoclose : 1,
+			todayHighlight : 1,
+			forceParse : 0,
+			startView : 2,
+			minView : 2,
+			maxView : 4,
+		});
+		window.planValidator = $('#updateSecondlineForm').bootstrapValidator({
+			message : '无效的输入值',
+			feedbackIcons : {
+				valid : 'glyphicon glyphicon-ok',
+				invalid : 'glyphicon glyphicon-remove',
+				validating : 'glyphicon glyphicon-refresh'
+			},
+			fields : {
+				inputStartDate : {
+					validators : {
+						notEmpty : {
+							message : '开始时间不能为空'
+						}
+					}
+				}
+			}
+		});
+	});
+</script>

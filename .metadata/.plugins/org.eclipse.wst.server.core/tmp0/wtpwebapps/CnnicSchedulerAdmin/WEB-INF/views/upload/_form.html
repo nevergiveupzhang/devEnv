@@ -1,0 +1,168 @@
+<form id="uploadForm" class="form-horizontal">
+	<br>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="inputStartDate">开始日期*</label>
+		<div class="col-sm-6">
+			<div class="input-group date form_date" data-date=""
+				data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+				<input id="inputStartDate" class="form-control" size="16"
+					type="text"> <span class="input-group-addon"><span
+					class="glyphicon glyphicon-calendar"></span></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="inputEndDate">结束日期*</label>
+		<div class="col-sm-6">
+			<div class="input-group date form_date" data-date=""
+				data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+				<input id="inputEndDate" class="form-control" size="16" type="text">
+				<span class="input-group-addon"><span
+					class="glyphicon glyphicon-calendar"></span></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="xmlText">xml数据*</label>
+		<div class="col-sm-6">
+			<textarea rows="10" cols="50" id="xmlText" class=" form-control"></textarea>
+		</div>
+	</div>
+	<div class="form-group festival">
+		<label class="col-sm-2 control-label">包含节假日*</label>
+		<div class="col-sm-10 pt7">
+			<label> <input type="radio" name="containsFestival"
+				id="containsFestival" value="Y"> 是
+			</label> <label> <input type="radio" name="notContainsFestival"
+				id="notContainsFestival" value="N" checked> 否
+			</label>
+		</div>
+	</div>
+	
+	<div id="festivalStartCtrl" class="form-group" style="display:none;">
+		<label class="col-sm-2 control-label" for="festivalStartDate">从*</label>
+		<div class="col-sm-6">
+			<div class="input-group date form_date" data-date=""
+				data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+				<input id="festivalStartDate" class="form-control" size="16"
+					type="text"> <span class="input-group-addon"><span
+					class="glyphicon glyphicon-calendar"></span></span>
+			</div>
+		</div>
+	</div>
+
+	<div id="festivalEndCtrl" class="form-group"  style="display:none;">
+		<label class="col-sm-2 control-label" for="festivalEndDate">到*</label>
+		<div class="col-sm-6">
+			<div class="input-group date form_date" data-date=""
+				data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+				<input id="festivalEndDate" class="form-control" size="16" type="text">
+				<span class="input-group-addon"><span
+					class="glyphicon glyphicon-calendar"></span></span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group overtime">
+		<label class="col-sm-2 control-label">包含加班*</label>
+		<div class="col-sm-10 pt7">
+			<label> <input type="radio" name="containsOvertime"
+				id="containsOvertime" value="Y"> 是
+			</label> <label> <input type="radio" name="notContainsOvertime"
+				id="notContainsOvertime" value="N" checked> 否
+			</label>
+		</div>
+	</div>
+	
+	<div id="overtimeStartCtrl" class="form-group" style="display:none;">
+		<label class="col-sm-2 control-label" for="overtimeStartDate">从*</label>
+		<div class="col-sm-6">
+			<div class="input-group date form_date" data-date=""
+				data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+				<input id="overtimeStartDate" class="form-control" size="16"
+					type="text"> <span class="input-group-addon"><span
+					class="glyphicon glyphicon-calendar"></span></span>
+			</div>
+		</div>
+	</div>
+
+	<div id="overtimeEndCtrl" class="form-group"  style="display:none;">
+		<label class="col-sm-2 control-label" for="overtimeEndDate">到*</label>
+		<div class="col-sm-6">
+			<div class="input-group date form_date" data-date=""
+				data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+				<input id="overtimeEndDate" class="form-control" size="16" type="text">
+				<span class="input-group-addon"><span
+					class="glyphicon glyphicon-calendar"></span></span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group vocation">
+		<label class="col-sm-2 control-label">包含休假*</label>
+		<div class="col-sm-10 pt7">
+			<label> <input type="radio" name="containsVocation"
+				id="containsVocation" value="Y"> 是
+			</label> <label> <input type="radio" name="notContainsVocation"
+				id="notContainsVocation" value="N" checked> 否
+			</label>
+		</div>
+	</div>
+	<div id="vocationCtrl" class="form-group" style="display:none;">
+		<label class="col-sm-2 control-label" for="vocationText">休假*</label>
+		<div class="col-sm-6">
+			<textarea rows="10" cols="50" id="vocationText" class=" form-control" placeholder="格式为：姓名 20190101-20190105，一行一条休假记录"></textarea>
+		</div>
+	</div>
+</form>
+<script>
+	$(document).ready(function() {
+		$('.form_date').datetimepicker({
+			language : 'zh-CN',
+			weekStart : 1,
+			todayBtn : 1,
+			autoclose : 1,
+			todayHighlight : 1,
+			forceParse : 0,
+			startView : 2,
+			minView : 2,
+			maxView : 4,
+		});
+		$("#containsFestival").click(function(){
+			$("#festivalStartCtrl").show();
+			$("#festivalEndCtrl").show();
+			$("#containsFestival").attr("checked",true);
+			$("#notContainsFestival").attr("checked",false);
+		});
+		$("#notContainsFestival").click(function(){
+			$("#festivalStartCtrl").hide();
+			$("#festivalEndCtrl").hide();
+			$("#containsFestival").attr("checked",false);
+			$("#notContainsFestival").attr("checked",true);
+		});
+		$("#containsOvertime").click(function(){
+			$("#overtimeStartCtrl").show();
+			$("#overtimeEndCtrl").show();
+			$("#containsOvertime").attr("checked",true);
+			$("#notContainsOvertime").attr("checked",false);
+		});
+		$("#notContainsOvertime").click(function(){
+			$("#overtimeStartCtrl").hide();
+			$("#overtimeEndCtrl").hide();
+			$("#containsOvertime").attr("checked",false);
+			$("#notContainsOvertime").attr("checked",true);
+		});
+		$("#containsVocation").click(function(){
+			$("#vocationCtrl").show();
+			$("#containsVocation").attr("checked",true);
+			$("#notContainsVocation").attr("checked",false);
+		});
+		$("#notContainsVocation").click(function(){
+			$("#vocationCtrl").hide();
+			$("#containsVocation").attr("checked",false);
+			$("#notContainsVocation").attr("checked",true);
+		});
+	});
+</script>

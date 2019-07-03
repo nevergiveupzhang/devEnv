@@ -1,9 +1,11 @@
 package cn.cnnic.domainstat.mapper;
 
-import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 import cn.cnnic.domainstat.po.EppContactPO;
 
 public interface EppContactMapper {
-	EppContactPO query(@Param("contactId") String contactId);
+	List<EppContactPO> queryWithCdn(String endDate, String likePattern);
+
+	List<EppContactPO> queryWithCn(String startDate, String endDate);
 }

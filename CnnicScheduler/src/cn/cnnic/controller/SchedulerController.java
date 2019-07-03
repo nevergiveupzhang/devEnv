@@ -76,7 +76,7 @@ public class SchedulerController extends Controller {
 			whereString = whereString + " and events='" + events + "'";
 		}
 
-		whereString = whereString + " and pid in(" + buildNoneSchedulerPersonIDs() + ")";
+//		whereString = whereString + " and pid in(" + buildNoneSchedulerPersonIDs() + ")";
 
 		queryFilter.setWhereString(whereString);
 		queryFilter.setSelectFields("*");

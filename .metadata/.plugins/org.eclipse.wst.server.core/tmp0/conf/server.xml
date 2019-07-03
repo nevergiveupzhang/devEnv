@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="/home/zhangt/workspace/JavaWorkspace/devEnv/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/home/zhangt/workspace/JavaWorkspace/devEnv/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/aopDemo" path="/aopDemo" reloadable="true" source="org.eclipse.jst.j2ee.server:aopDemo"/></Host>
+      <Context docBase="/home/zhangt/workspace/JavaWorkspace/devEnv/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/CnnicScheduler" path="" reloadable="true" source="org.eclipse.jst.jee.server:CnnicScheduler"/><Context docBase="/home/zhangt/workspace/JavaWorkspace/devEnv/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/CnnicSchedulerAdmin" path="/admin" reloadable="true" source="org.eclipse.jst.jee.server:CnnicSchedulerAdmin"/></Host>
     </Engine>
   </Service>
 </Server>
