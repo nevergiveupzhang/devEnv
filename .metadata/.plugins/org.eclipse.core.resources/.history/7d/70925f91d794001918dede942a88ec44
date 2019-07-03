@@ -1,6 +1,0 @@
-package cn.cnnic.domainstats;
-@Configuration
-@EnableScheduling
-public class DomainStatsSchedule {
-
-}
