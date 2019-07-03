@@ -52,7 +52,7 @@ public class DomainStatService {
 	private String RESULT_DIRECTORY;
 	private int THRESHOLD;
 
-	private String CLASS_PATH = DomainStatService.class.getResource("/").getFile();
+	private String HOME_PATH = System.getProperty("user.dir")+"/";
 	private static final String LOGGER_DECLARING_TYPE = DomainStatService.class.getName();
 
 	private final static String SRC_FILE_SUFFIX = "-src.txt";
@@ -105,8 +105,10 @@ public class DomainStatService {
 		if (StringUtils.isNotBlank(config.getResult())) {
 			RESULT_DIRECTORY = StringUtil.includeSuffix(config.getResult(), "/");
 		} else {
-			RESULT_DIRECTORY = CLASS_PATH + "../result/";
+			RESULT_DIRECTORY = HOME_PATH + "result/";
 		}
+		FileUtil.deleteDirectory(RESULT_DIRECTORY);
+		FileUtil.createDirectory(RESULT_DIRECTORY);
 		LOGGER.info("RESULT ROOT PATH IS SET TO => " + RESULT_DIRECTORY);
 
 		String threshold = config.getThreshold();
@@ -132,8 +134,8 @@ public class DomainStatService {
 
 	private void compressAndUpload() throws IOException {
 		Runtime run = Runtime.getRuntime();
-		LOGGER.info("EXECUTING SCRIPT FILE => " + CLASS_PATH + "../bin/upload.sh " + RESULT_DIRECTORY);
-		run.exec(CLASS_PATH + "../bin/upload.sh");
+		LOGGER.info("EXECUTING SCRIPT FILE => " + HOME_PATH + "bin/upload.sh " + RESULT_DIRECTORY +" >> "+ HOME_PATH+"logs/domainstat.log");
+		run.exec(HOME_PATH + "bin/upload.sh");
 	}
 
 	private void fetchCdnCn() throws Exception {
@@ -247,7 +249,7 @@ public class DomainStatService {
 	private void doWriteCn(String startDate, String endDate, String filePrefix) throws IOException {
 		LOGGER.info("#################################BEGIN TO FETCH CN " + startDate + " TO " + endDate
 				+ " DATA#################################");
-		LOGGER.info("PRINT METHOD PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate + ","
+		LOGGER.info("PRINT METHOD PARAMS => [" + LOGGER_DECLARING_TYPE + ".doWriteCn(" + startDate + "," + endDate + ","
 				+ filePrefix + ")]");
 		long startTime = System.currentTimeMillis();
 		// step1: fetch the cn domain list from the database
@@ -263,14 +265,14 @@ public class DomainStatService {
 		// province,set the contact list to null for gc.
 		Map<String, String> contactToProvinceMap = buildContactToProvinceMap(contactList);
 		contactList = null;
-		LOGGER.info("PRINT OBJECT SIZE => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate + ","
+		LOGGER.info("PRINT OBJECT SIZE => [" + LOGGER_DECLARING_TYPE + ".doWriteCn(" + startDate + "," + endDate + ","
 				+ filePrefix + ") the size of contactToProvinceMap is " + contactToProvinceMap.size() + "]");
 		// step5: read the source file,get the province from the map by the key contact
 		// id(the last word of the source file) and write into the result file
 		writeIntoResultFileBySrcFileAndMap(filePrefix, contactToProvinceMap);
 
 		long endTime = System.currentTimeMillis();
-		LOGGER.info("PRINT EXECUTION TIME => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate + ","
+		LOGGER.info("PRINT EXECUTION TIME => [" + LOGGER_DECLARING_TYPE + ".doWriteCn(" + startDate + "," + endDate + ","
 				+ filePrefix + ") took " + (endTime - startTime) + "ms]");
 
 		LOGGER.info("#################################FINISHED TO FETCH CN " + startDate + " TO " + endDate
@@ -382,7 +384,7 @@ public class DomainStatService {
 			}
 		}
 		FileUtil.commit();
-		FileUtil.delete(RESULT_DIRECTORY + resultFileName + SRC_FILE_SUFFIX);
+		FileUtil.deleteFile(RESULT_DIRECTORY + resultFileName + SRC_FILE_SUFFIX);
 
 	}
 

@@ -2,12 +2,15 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="scheduler" key="selection"/>
+		<item value="RESULT_DIRECTORY" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="true" key="wholeword"/>
 		<list key="findhistory">
+			<item value="RESULT_DIRECTORY"/>
+			<item value="compressAndUpload"/>
+			<item value="CLASS_PATH"/>
 			<item value="scheduler"/>
 			<item value="\"/>
 			<item value="writeFile"/>
@@ -20,9 +23,6 @@
 			<item value="domainName"/>
 			<item value="and"/>
 			<item value="print"/>
-			<item value="took"/>
-			<item value="batchInsert"/>
-			<item value="&apos;"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

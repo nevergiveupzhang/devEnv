@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.cnnic.report.config.model.IndexConfigModel;
 import cn.cnnic.report.config.model.ReportApplicationConfigModel;
 import cn.cnnic.report.service.ReportService;
+import cn.cnnic.report.service.ServiceResponse;
 import cn.cnnic.report.utils.DataUtil;
 import cn.cnnic.report.vo.ReportDailyVO;
 
@@ -42,11 +43,11 @@ public class ReportController {
 	public Map<String,Object> generate(@RequestParam String indexName, @RequestParam String reportDate, HttpServletRequest request)
 			throws IOException {
 		long startTime=System.currentTimeMillis();
-		String resultData=reportService.generateReport(indexName, reportDate);
+		ServiceResponse serviceResponse=reportService.generateReport(indexName, reportDate);
 		Map<String,Object> resultMap=new LinkedHashMap<String,Object>();
 		resultMap.put("success", "true");
-		resultMap.put("code", 200);
-		resultMap.put("data", resultData);
+		resultMap.put("code", serviceResponse.getCode());
+		resultMap.put("data", serviceResponse.getData());
 		resultMap.put("took", System.currentTimeMillis()-startTime);
 		return resultMap;
 	}
@@ -81,9 +82,9 @@ public class ReportController {
 		Map<String,Object> resultMap=new LinkedHashMap<String,Object>();
 		resultMap.put("success", "true");
 		if(isExists) {
-			resultMap.put("code", 200);
+			resultMap.put("code", ServiceResponse.OK);
 		}else {
-			resultMap.put("code", 404);
+			resultMap.put("code", ServiceResponse.NOT_FOUND);
 		}
 		return resultMap;
 	}

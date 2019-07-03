@@ -64,7 +64,7 @@ public class ReportService {
 	/*
 	 * 
 	 */
-	public synchronized String generateReport(String indexKeyword, String reportDate) throws IOException {
+	public synchronized ServiceResponse generateReport(String indexKeyword, String reportDate) throws IOException {
 		this.indexKeyword = indexKeyword;
 		this.reportDate = reportDate;
 		// step1: return if the file exists,otherwise create it(including its parent
@@ -72,7 +72,7 @@ public class ReportService {
 		this.filePath = ROOT_PATH + REPORT_DIRECTORY + File.separator + indexKeyword + File.separator + reportDate
 				+ REPORT_FILENAME_SUFFIX;
 		if (FileUtil.isExists(filePath)) {
-			return indexKeyword + "(" + reportDate + ")";
+			return new ServiceResponse(ServiceResponse.EXISTS,indexKeyword + "(" + reportDate + ")");
 		} else {
 			FileUtil.createFile(filePath);
 		}
@@ -104,7 +104,7 @@ public class ReportService {
 		}
 		// step5:generate total counts for all channels
 		fetchTotalDataAndWriteFile();
-		return indexKeyword + "(" + reportDate + ")";
+		return new ServiceResponse(ServiceResponse.OK,indexKeyword + "(" + reportDate + ")");
 	}
 
 	/*

@@ -112,10 +112,11 @@ a{
 									"reportDate" : reportDate
 								}, function(result) {
 									$('#loader').shCircleLoader("destroy");
+									$("#startBtn").attr('disabled',false);
 									if ("false" == result.success) {
 										showMessage(result.err);
 										return;
-									}
+									} 
 									if ($("#result").is(":hidden")) {
 										$("#result").show();
 									}
@@ -140,7 +141,7 @@ a{
 											}else{
 												if(200==result.code){
 													showMessage("<span>删除成功！</span>");
-												}else if(404==result.code){
+												}else if(30004==result.code){
 													showMessage("<span>文件不存在！</span>");
 												}
 											}
@@ -151,12 +152,21 @@ a{
 										var data=$(this).attr("data");
 										window.open(url+"?q="+data);
 									});
-									$("#startBtn").attr('disabled',false);
-									showMessage({
-										title:"提示",
-										htmlContent:"took: "+result.took+"ms",
-										width:"200px"
-									});
+									if(30001==result.code){
+										showMessage({
+											title:"提示",
+											htmlContent:"<span>该月报告已生成过(可能非完整月)，未重新发起ES查询！</span><br/><span>可点击下方删除按钮，然后重新生成报告！</span>",
+											width:"200px"
+										});
+										return;
+									}else{
+										showMessage({
+											title:"提示",
+											htmlContent:"took: "+result.took+"ms",
+											width:"200px"
+										});
+									}
+									
 								});
 							});
 				});

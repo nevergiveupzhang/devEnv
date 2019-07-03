@@ -184,7 +184,9 @@ public class CalendarUtil {
 		return getIntervalDate(getNextMonthFirstDay(date, DEFAULT_FORMAT), -1);
 	}
 	public static String getThisMonthFirstDay(String date) {
-		return getYear(date)+"-"+getMonth(date)+"-01";
+		int year=getYear(date);
+		int month=getMonth(date);
+		return year+"-"+((month<10)?("0"+month):month)+"-01";
 	}
 	public static String getThisMonthLastDay(Date date) {
 		return getIntervalDate(getNextMonthFirstDay(format(date, DEFAULT_FORMAT), DEFAULT_FORMAT), -1);

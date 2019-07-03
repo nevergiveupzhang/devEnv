@@ -287,3 +287,348 @@ Unconditional classes:
 
 
 2019-07-03 11:29:40.644  INFO 15095 --- [Thread-36] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-07-03 18:59:26.269  INFO 19308 --- [restartedMain] cn.cnnic.report.MainApplication          : Starting MainApplication on zhangtao with PID 19308 (/home/zhangt/workspace/JavaWorkspace/devEnv/MonthReport/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/MonthReport)
+2019-07-03 18:59:26.286  INFO 19308 --- [restartedMain] cn.cnnic.report.MainApplication          : No active profile set, falling back to default profiles: default
+2019-07-03 18:59:26.387  INFO 19308 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-07-03 18:59:26.387  INFO 19308 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-07-03 18:59:28.077  INFO 19308 --- [restartedMain] o.s.c.a.ConfigurationClassEnhancer       : @Bean method ReportApplicationConfig.properties is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2019-07-03 18:59:30.284  INFO 19308 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-07-03 18:59:30.396  INFO 19308 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-07-03 18:59:30.396  INFO 19308 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
+2019-07-03 18:59:30.837  INFO 19308 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-07-03 18:59:30.873  INFO 19308 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-07-03 18:59:30.874  INFO 19308 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4486 ms
+2019-07-03 18:59:32.554  INFO 19308 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-03 18:59:32.825  INFO 19308 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-07-03 18:59:34.326  INFO 19308 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-03 18:59:34.485  INFO 19308 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-03 18:59:34.492  INFO 19308 --- [restartedMain] cn.cnnic.report.MainApplication          : Started MainApplication in 8.961 seconds (JVM running for 9.586)
+2019-07-03 18:59:45.261  INFO 19308 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-07-03 18:59:45.262  INFO 19308 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-07-03 18:59:45.315  INFO 19308 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 53 ms
+2019-07-03 18:59:56.432  INFO 19308 --- [http-nio-8080-exec-5] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 18:59:56.443  INFO 19308 --- [http-nio-8080-exec-5] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 12ms]
+2019-07-03 19:00:48.919  INFO 19308 --- [http-nio-8080-exec-5] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:00:48.919  INFO 19308 --- [http-nio-8080-exec-5] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:00:50.876  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:00:50.876  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:03:07.306  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:03:07.306  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:03:11.224  INFO 19308 --- [http-nio-8080-exec-3] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:03:11.225  INFO 19308 --- [http-nio-8080-exec-3] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:03:15.001  INFO 19308 --- [http-nio-8080-exec-1] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:03:15.001  INFO 19308 --- [http-nio-8080-exec-1] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:03:46.883  INFO 19308 --- [http-nio-8080-exec-5] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:03:46.884  INFO 19308 --- [http-nio-8080-exec-5] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:05:02.160  INFO 19308 --- [http-nio-8080-exec-8] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:05:02.160  INFO 19308 --- [http-nio-8080-exec-8] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:08:07.100  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:08:07.100  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:08:32.381  INFO 19308 --- [http-nio-8080-exec-10] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:08:32.381  INFO 19308 --- [http-nio-8080-exec-10] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:09:01.645  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:09:01.645  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:09:09.438  INFO 19308 --- [http-nio-8080-exec-1] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:09:09.438  INFO 19308 --- [http-nio-8080-exec-1] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:09:38.303  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:09:38.303  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:10:04.366  INFO 19308 --- [http-nio-8080-exec-3] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:10:04.367  INFO 19308 --- [http-nio-8080-exec-3] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:10:06.100  INFO 19308 --- [http-nio-8080-exec-2] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:10:06.100  INFO 19308 --- [http-nio-8080-exec-2] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:10:07.549  INFO 19308 --- [http-nio-8080-exec-4] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:10:07.550  INFO 19308 --- [http-nio-8080-exec-4] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:10:30.525  INFO 19308 --- [http-nio-8080-exec-1] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:10:30.526  INFO 19308 --- [http-nio-8080-exec-1] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:11:27.581  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:11:27.582  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:11:45.667  INFO 19308 --- [http-nio-8080-exec-3] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:11:45.668  INFO 19308 --- [http-nio-8080-exec-3] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:12:00.831  INFO 19308 --- [http-nio-8080-exec-2] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:12:00.831  INFO 19308 --- [http-nio-8080-exec-2] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:12:07.428  INFO 19308 --- [http-nio-8080-exec-4] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.deleteFile(nicweblog,2019-0)]
+2019-07-03 19:12:07.428  INFO 19308 --- [http-nio-8080-exec-4] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.deleteFile() took 0ms]
+2019-07-03 19:12:09.221  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:12:09.248  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.mapper.ReportDailyMapper.delete(nicweblog,2019-03-01,2019-04-0)]
+2019-07-03 19:12:09.402  INFO 19308 --- [http-nio-8080-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-07-03 19:12:10.099  INFO 19308 --- [http-nio-8080-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-07-03 19:12:10.355  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.mapper.ReportDailyMapper.delete() took 1107ms]
+2019-07-03 19:12:10.356  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.mapper.ReportTopMapper.delete(nicweblog,2019-0)]
+2019-07-03 19:12:10.584  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.mapper.ReportTopMapper.delete() took 228ms]
+2019-07-03 19:12:10.938  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "must_not" : [
+      {
+        "term" : {
+          "elk_client_ip" : {
+            "value" : "218.241.115.188",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "should" : [
+      {
+        "wildcard" : {
+          "elk_client_ip" : {
+            "wildcard" : "218.241.115.*",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},{"group_by_elk_request_url":{"terms":{"field":"elk_request_url.keyword","size":100,"min_doc_count":1,"shard_min_doc_count":0,"show_term_doc_count_error":false,"order":[{"_count":"desc"},{"_key":"asc"}]}})]
+2019-07-03 19:12:14.653  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 3856ms]
+2019-07-03 19:12:14.654  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "must_not" : [
+      {
+        "term" : {
+          "elk_client_ip" : {
+            "value" : "218.241.115.188",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "should" : [
+      {
+        "wildcard" : {
+          "elk_client_ip" : {
+            "wildcard" : "218.241.115.*",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},{"group_by_elk_client_ip":{"terms":{"field":"elk_client_ip.keyword","size":100,"min_doc_count":1,"shard_min_doc_count":0,"show_term_doc_count_error":false,"order":[{"_count":"desc"},{"_key":"asc"}]}})]
+2019-07-03 19:12:15.230  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 576ms]
+2019-07-03 19:12:15.232  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "must_not" : [
+      {
+        "term" : {
+          "elk_client_ip" : {
+            "value" : "218.241.115.188",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "should" : [
+      {
+        "wildcard" : {
+          "elk_client_ip" : {
+            "wildcard" : "218.241.115.*",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},{"group_by_elk_user_agent":{"terms":{"field":"elk_user_agent.keyword","size":100,"min_doc_count":1,"shard_min_doc_count":0,"show_term_doc_count_error":false,"order":[{"_count":"desc"},{"_key":"asc"}]}})]
+2019-07-03 19:12:15.744  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 512ms]
+2019-07-03 19:12:15.745  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.mapper.ReportTopMapper.batchInsert([ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/cert/CNNICEVSSL.cer, docCount=5085], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/dqcrl/crl1.crl, docCount=5085], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/crl/CRL1.crl, docCount=5084], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/evrootcrl/crl1.crl, docCount=5084], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/, docCount=5083], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/cert/CNNICSSL.cer, docCount=5082], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/cert/SHA2SSL.cer, docCount=5082], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/dqcrl/crl2.crl, docCount=5070], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/rootsha2crl/CRL1.crl, docCount=5069], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/rootcrl/CRL1.crl, docCount=5062], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/cert/CNNICEVROOT.cer, docCount=5061], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/evcrl/crl1.crl, docCount=5061], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_client_ip, fieldValue=218.241.115.155, docCount=60908], ReportTopPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03, fieldName=elk_user_agent, fieldValue="curl/7.15.5 (x86_64-redhat-linux-gnu) libcurl/7.15.5 OpenSSL/0.9.8b zlib/1.2.3 libidn/0.6.5", docCount=60908])]
+2019-07-03 19:12:15.910  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.mapper.ReportTopMapper.batchInsert() took 165ms]
+2019-07-03 19:12:16.092  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "must_not" : [
+      {
+        "term" : {
+          "elk_client_ip" : {
+            "value" : "218.241.115.188",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "should" : [
+      {
+        "wildcard" : {
+          "elk_client_ip" : {
+            "wildcard" : "218.241.115.*",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},{"group_by_daily":{"date_histogram":{"field":"@timestamp","format":"yyyy-MM-dd","interval":"1d","offset":0,"order":{"_key":"asc"},"keyed":false,"min_doc_count":0}})]
+2019-07-03 19:12:16.517  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 425ms]
+2019-07-03 19:12:16.519  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.mapper.ReportDailyMapper.batchInsert([ReportDailyPO [id=0, serviceName=nicweblog, reportType=main-center, reportDate=2019-03-15, docCount=60908])]
+2019-07-03 19:12:16.554  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.mapper.ReportDailyMapper.batchInsert() took 35ms]
+2019-07-03 19:12:16.554  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "should" : [
+      {
+        "term" : {
+          "elk_client_ip" : {
+            "value" : "218.241.115.188",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},{"group_by_elk_request_url":{"terms":{"field":"elk_request_url.keyword","size":100,"min_doc_count":1,"shard_min_doc_count":0,"show_term_doc_count_error":false,"order":[{"_count":"desc"},{"_key":"asc"}]}})]
+2019-07-03 19:12:16.602  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 48ms]
+2019-07-03 19:12:16.603  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "should" : [
+      {
+        "term" : {
+          "elk_client_ip" : {
+            "value" : "218.241.115.188",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},{"group_by_elk_client_ip":{"terms":{"field":"elk_client_ip.keyword","size":100,"min_doc_count":1,"shard_min_doc_count":0,"show_term_doc_count_error":false,"order":[{"_count":"desc"},{"_key":"asc"}]}})]
+2019-07-03 19:12:16.629  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 26ms]
+2019-07-03 19:12:16.630  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "should" : [
+      {
+        "term" : {
+          "elk_client_ip" : {
+            "value" : "218.241.115.188",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},{"group_by_elk_user_agent":{"terms":{"field":"elk_user_agent.keyword","size":100,"min_doc_count":1,"shard_min_doc_count":0,"show_term_doc_count_error":false,"order":[{"_count":"desc"},{"_key":"asc"}]}})]
+2019-07-03 19:12:16.660  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 30ms]
+2019-07-03 19:12:16.677  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.mapper.ReportTopMapper.batchInsert([ReportTopPO [id=0, serviceName=nicweblog, reportType=monitor, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/evrootcrl/crl1.crl, docCount=5098], ReportTopPO [id=0, serviceName=nicweblog, reportType=monitor, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/rootsha2crl/CRL1.crl, docCount=5085], ReportTopPO [id=0, serviceName=nicweblog, reportType=monitor, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/evcrl/crl1.crl, docCount=5084], ReportTopPO [id=0, serviceName=nicweblog, reportType=monitor, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/rootcrl/CRL1.crl, docCount=5082], ReportTopPO [id=0, serviceName=nicweblog, reportType=monitor, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/crl/CRL1.crl, docCount=5062], ReportTopPO [id=0, serviceName=nicweblog, reportType=monitor, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/dqcrl/crl1.crl, docCount=5062], ReportTopPO [id=0, serviceName=nicweblog, reportType=monitor, reportDate=2019-03, fieldName=elk_request_url, fieldValue=/download/sha2crl/crl1.crl, docCount=5061], ReportTopPO [id=0, serviceName=nicweblog, reportType=monitor, reportDate=2019-03, fieldName=elk_client_ip, fieldValue=218.241.115.188, docCount=35534], ReportTopPO [id=0, serviceName=nicweblog, reportType=monitor, reportDate=2019-03, fieldName=elk_user_agent, fieldValue="curl/7.15.5 (x86_64-redhat-linux-gnu) libcurl/7.15.5 OpenSSL/0.9.8b zlib/1.2.3 libidn/0.6.5", docCount=35534])]
+2019-07-03 19:12:16.720  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.mapper.ReportTopMapper.batchInsert() took 44ms]
+2019-07-03 19:12:16.721  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "should" : [
+      {
+        "term" : {
+          "elk_client_ip" : {
+            "value" : "218.241.115.188",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},{"group_by_daily":{"date_histogram":{"field":"@timestamp","format":"yyyy-MM-dd","interval":"1d","offset":0,"order":{"_key":"asc"},"keyed":false,"min_doc_count":0}})]
+2019-07-03 19:12:16.738  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 17ms]
+2019-07-03 19:12:16.746  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.mapper.ReportDailyMapper.batchInsert([ReportDailyPO [id=0, serviceName=nicweblog, reportType=monitor, reportDate=2019-03-15, docCount=35534])]
+2019-07-03 19:12:16.787  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.mapper.ReportDailyMapper.batchInsert() took 41ms]
+2019-07-03 19:12:16.787  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},{"group_by_daily":{"date_histogram":{"field":"@timestamp","format":"yyyy-MM-dd","interval":"1d","offset":0,"order":{"_key":"asc"},"keyed":false,"min_doc_count":0}})]
+2019-07-03 19:12:16.852  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 65ms]
+2019-07-03 19:12:16.864  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.mapper.ReportDailyMapper.batchInsert([ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-15, docCount=578388], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-16, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-17, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-18, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-19, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-20, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-21, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-22, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-23, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-24, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-25, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-26, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-27, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-28, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-29, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-30, docCount=0], ReportDailyPO [id=0, serviceName=nicweblog, reportType=total, reportDate=2019-03-31, docCount=0])]
+2019-07-03 19:12:16.920  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.mapper.ReportDailyMapper.batchInsert() took 56ms]
+2019-07-03 19:12:16.921  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "must_not" : [
+      {
+        "term" : {
+          "elk_client_ip" : {
+            "value" : "218.241.115.188",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "should" : [
+      {
+        "wildcard" : {
+          "elk_client_ip" : {
+            "wildcard" : "218.241.115.*",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},nul)]
+2019-07-03 19:12:16.954  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 33ms]
+2019-07-03 19:12:16.954  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "should" : [
+      {
+        "term" : {
+          "elk_client_ip" : {
+            "value" : "218.241.115.188",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},nul)]
+2019-07-03 19:12:16.967  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 13ms]
+2019-07-03 19:12:16.967  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ElasticsearchService.doSearch(logstash-nicweblog-2019.03.*,{
+  "bool" : {
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+},nul)]
+2019-07-03 19:12:17.001  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ElasticsearchService.doSearch() took 34ms]
+2019-07-03 19:12:17.002  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 7781ms]
+2019-07-03 19:12:22.025  INFO 19308 --- [http-nio-8080-exec-10] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:12:22.025  INFO 19308 --- [http-nio-8080-exec-10] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:12:37.830  INFO 19308 --- [http-nio-8080-exec-8] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:12:37.831  INFO 19308 --- [http-nio-8080-exec-8] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:12:42.764  INFO 19308 --- [http-nio-8080-exec-9] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:12:42.764  INFO 19308 --- [http-nio-8080-exec-9] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:13:27.708  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:13:27.709  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:14:12.481  INFO 19308 --- [http-nio-8080-exec-3] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:14:12.482  INFO 19308 --- [http-nio-8080-exec-3] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 1ms]
+2019-07-03 19:14:14.551  INFO 19308 --- [http-nio-8080-exec-4] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:14:14.551  INFO 19308 --- [http-nio-8080-exec-4] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:14:16.421  INFO 19308 --- [http-nio-8080-exec-9] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:14:16.421  INFO 19308 --- [http-nio-8080-exec-9] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:14:43.741  INFO 19308 --- [http-nio-8080-exec-2] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:14:43.741  INFO 19308 --- [http-nio-8080-exec-2] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:15:31.161  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.dailyCount(nicweblog,2019-0)]
+2019-07-03 19:15:31.184  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.mapper.ReportDailyMapper.query(nicweblog,main-center,2019-03-01,2019-04-01,REPORT_DAT)]
+2019-07-03 19:15:31.388  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.mapper.ReportDailyMapper.query() took 204ms]
+2019-07-03 19:15:31.389  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.mapper.ReportDailyMapper.query(nicweblog,monitor,2019-03-01,2019-04-01,REPORT_DAT)]
+2019-07-03 19:15:31.392  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.mapper.ReportDailyMapper.query() took 3ms]
+2019-07-03 19:15:31.392  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.mapper.ReportDailyMapper.query(nicweblog,total,2019-03-01,2019-04-01,REPORT_DAT)]
+2019-07-03 19:15:31.397  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.mapper.ReportDailyMapper.query() took 5ms]
+2019-07-03 19:15:31.398  INFO 19308 --- [http-nio-8080-exec-7] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.dailyCount() took 237ms]
+2019-07-03 19:15:36.725  INFO 19308 --- [http-nio-8080-exec-5] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:15:36.725  INFO 19308 --- [http-nio-8080-exec-5] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:15:38.752  INFO 19308 --- [http-nio-8080-exec-10] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:15:38.752  INFO 19308 --- [http-nio-8080-exec-10] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:15:41.899  INFO 19308 --- [http-nio-8080-exec-1] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:15:41.900  INFO 19308 --- [http-nio-8080-exec-1] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:16:00.888  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
+2019-07-03 19:16:00.888  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]

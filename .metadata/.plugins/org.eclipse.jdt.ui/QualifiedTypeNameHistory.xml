@@ -39,8 +39,6 @@
 <fullyQualifiedTypeName name="cn.cnnic.domainstat.utils.FileUtil"/>
 <fullyQualifiedTypeName name="cn.cnnic.domainstat.utils.EmailUtil"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
-<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
-<fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="cn.cnnic.domainstat.config.ApplicationConfigModel"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
 <fullyQualifiedTypeName name="cn.cnnic.domainstat.po.EppContactPO"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
 </qualifiedTypeNameHistroy>

@@ -8,8 +8,9 @@ public enum ExceptionStatus {
 	
 	UNPARSED_DATE(40003), 
 	
+	IO_EXCEPTION(40005), 
 	
-	IO_EXCEPTION(40005), ERR_PAGE(40004);
+	ERR_PAGE(40004);
 	
 	
 	private final int value;
