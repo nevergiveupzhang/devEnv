@@ -52,7 +52,7 @@ public class DomainStatService {
 	private String RESULT_DIRECTORY;
 	private int THRESHOLD;
 
-	private String HOME_PATH = System.getProperty("user.dir")+"/";
+	private String APPLICATION_HOME_PATH = System.getProperty("user.dir")+"/";
 	private static final String LOGGER_DECLARING_TYPE = DomainStatService.class.getName();
 
 	private final static String SRC_FILE_SUFFIX = "-src.txt";
@@ -68,6 +68,7 @@ public class DomainStatService {
 		if (isRangesConfigured()) {
 			customFetch();
 		}else {
+			FileUtil.deleteFileOfSuffix(RESULT_DIRECTORY,RESULT_FILE_SUFFIX);
 			fetchCdnCn();
 			fetchCdnZhongguo();
 			fetchCn();
@@ -108,11 +109,9 @@ public class DomainStatService {
 		if (StringUtils.isNotBlank(config.getResult())) {
 			RESULT_DIRECTORY = StringUtil.includeSuffix(config.getResult(), "/");
 		} else {
-			RESULT_DIRECTORY = HOME_PATH + "result/";
+			RESULT_DIRECTORY = APPLICATION_HOME_PATH + "result/";
 		}
-		FileUtil.deleteDirectory(RESULT_DIRECTORY);
-		FileUtil.createDirectory(RESULT_DIRECTORY);
-		LOGGER.info("RESULT ROOT PATH IS SET TO => " + RESULT_DIRECTORY);
+		LOGGER.info("RESULT DIRECTORY IS SET TO => " + RESULT_DIRECTORY);
 
 		String threshold = config.getThreshold();
 		if (StringUtils.isBlank(threshold)) {
@@ -137,8 +136,8 @@ public class DomainStatService {
 
 	private void compressAndUpload() throws IOException {
 		Runtime run = Runtime.getRuntime();
-		LOGGER.info("EXECUTING SCRIPT FILE => " + HOME_PATH + "bin/upload.sh " + RESULT_DIRECTORY +" >> "+ HOME_PATH+"logs/domainstat.log");
-		run.exec(HOME_PATH + "bin/upload.sh");
+		LOGGER.info("EXECUTING SCRIPT FILE => " + APPLICATION_HOME_PATH + "bin/upload.sh " + RESULT_DIRECTORY +" >> "+ APPLICATION_HOME_PATH+"logs/domainstat.log");
+		run.exec(APPLICATION_HOME_PATH + "bin/upload.sh " + RESULT_DIRECTORY +" >> "+ APPLICATION_HOME_PATH+"logs/domainstat.log");
 	}
 
 	private void fetchCdnCn() throws Exception {

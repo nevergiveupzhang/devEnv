@@ -181,4 +181,23 @@ public class FileUtil {
 	            return false;
 	        }
 	    }
+		public static void deleteFileOfSuffix(String dirName, String fileSuffix) {
+			File dir=new File(dirName);
+			if(!dir.exists()||dir.isFile()) {
+				return;
+			}
+			File []childFiles=dir.listFiles();
+			for(File file:childFiles) {
+				if(file.isFile()&&file.getName().endsWith(fileSuffix)) {
+					file.delete();
+				}
+				if(file.isDirectory()) {
+					deleteFileOfSuffix(file.getAbsolutePath(), fileSuffix);
+				}
+			}
+		}
+		
+		public static void main(String[] args) {
+			deleteFileOfSuffix("/home/zhangt/dest/test", ".txt");
+		}
 }
