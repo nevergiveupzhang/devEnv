@@ -7,3 +7,7 @@
 1562154046781	Rename method 'writeCn'
 1562154253165	Rename method 'buildContactToProvinceMap'
 1562154270000	Rename method 'buildContactIdToProvinceMap'
+1562154501187	Rename field 'HOME_PATH'
+1562308516834	Rename method 'writeCnDomainListIntoSrcFile'
+1562308541873	Rename method 'writeDomainIntoSrcFile'
+1562309283108	Rename method 'writeCdnDomainListIntoSrcFile'

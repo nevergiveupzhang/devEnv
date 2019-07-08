@@ -1,0 +1,11 @@
+package cn.cnnic.domainstat;
+
+import cn.cnnic.domainstat.utils.StringUtil;
+
+public class Test {
+
+	public static void main(String[] args) {
+		Runtime run = Runtime.getRuntime();
+	}
+
+}

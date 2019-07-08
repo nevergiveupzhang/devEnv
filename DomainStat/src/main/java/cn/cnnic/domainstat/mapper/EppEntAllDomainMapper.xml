@@ -12,7 +12,8 @@
 		<result property="registrantId" column="REGISTRANT_ID"
 			javaType="string" jdbcType="VARCHAR" />
 	</resultMap>
-	<select id="query" resultMap="eppEntDomainMap">
+	
+	<select id="query" fetchSize="1000000" resultMap="eppEntDomainMap">
 		select DOMAIN_NAME,SPONSOR_REGRID,REGISTRANT_ID from
 		EPP_ENT_ALL_DOMAIN_VIEW
 		<where>
@@ -22,6 +23,8 @@
 		</where>
 	</select>
 	
+	
+	
 	<select id="queryCount" resultType="int">
 		select count(1) from EPP_ENT_ALL_DOMAIN_VIEW
 		<where>
@@ -30,4 +33,5 @@
 			<if test="null!=endDate"> and REG_DT &lt;= to_date(#{endDate},'yyyy-mm-dd')</if>
 		</where>
 	</select>
+	
 </mapper>

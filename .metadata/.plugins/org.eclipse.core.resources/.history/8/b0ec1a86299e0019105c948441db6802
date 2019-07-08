@@ -1,0 +1,20 @@
+package cn.cnnic.domainstat;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import cn.cnnic.domainstat.utils.StringUtil;
+
+public class Test {
+
+	public static void main(String[] args) throws IOException {
+		 Runtime rt = Runtime.getRuntime();
+         Process proc = rt.exec("java -version");
+         int exitVal = proc.waitFor();
+         System.out.println("Process exitValue: " + exitVal);
+	}
+
+}

@@ -48,7 +48,11 @@ public class FileUtil {
 		commit();
 	}
 
-	public static void init(String filePath) {
+	public static void init(String filePath) throws IOException {
+		if(new File(filePath).exists()) {
+			new File(filePath).delete();
+		}
+		new File(filePath).createNewFile();
 		try {
 			bw = new BufferedWriter(new FileWriter(filePath,true));
 		} catch (IOException e) {

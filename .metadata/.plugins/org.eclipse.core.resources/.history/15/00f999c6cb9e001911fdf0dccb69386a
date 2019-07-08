@@ -1,0 +1,9 @@
+package cn.cnnic.test.Test;
+
+public class SqlDemo {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

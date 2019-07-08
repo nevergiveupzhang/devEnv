@@ -4,6 +4,7 @@
 /home/zhangt/workspace/JavaWorkspace/devEnv/MonthReport/src/main/java/cn/cnnic/report/service/ElasticsearchService.java
 /home/zhangt/workspace/JavaWorkspace/devEnv/MonthReport/src/main/java/cn/cnnic/report/utils/CalendarUtil.java
 /home/zhangt/workspace/JavaWorkspace/devEnv/MonthReport/src/main/java/cn/cnnic/report/config/model/ReportChannelConfigModel.java
+/home/zhangt/workspace/JavaWorkspace/devEnv/MonthReport/src/main/java/cn/cnnic/report/service/ServiceResponse.java
 /home/zhangt/workspace/JavaWorkspace/devEnv/MonthReport/src/main/java/cn/cnnic/report/utils/PunycodeUtil.java
 /home/zhangt/workspace/JavaWorkspace/devEnv/MonthReport/src/main/java/cn/cnnic/report/config/model/ReportApplicationConfigModel.java
 /home/zhangt/workspace/JavaWorkspace/devEnv/MonthReport/src/main/java/cn/cnnic/report/controller/ReportController.java

@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import cn.cnnic.domainstat.po.CDomainPO;
 
 public interface CDomainMapper {
-	List<CDomainPO> query(@Param("startDate") String startDate,@Param("endDate") String endDate,@Param("domainName")String domainName);
+	void query(@Param("startDate") String startDate,@Param("endDate") String endDate,@Param("domainName")String domainName);
 
 	int queryCount(@Param("startDate") String startDate,@Param("endDate") String endDate,@Param("domainName")String domainName);
 }

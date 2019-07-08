@@ -43,4 +43,37 @@
 		</where>
 		)
 	</select>
+	
+	
+		<select id="queryCountWithCn" resultType="int">
+		SELECT count(1) from EPP_CONTACT_VIEW C
+		WHERE EXISTS(
+		SELECT 1 FROM EPP_ENT_ALL_DOMAIN_VIEW D
+		<where>
+			C.CONTACT_ID=D.REGISTRANT_ID
+			AND D.SPONSOR_REGRID &lt;&gt; 'CNNIC'
+			<if test="null!=startDate"> AND D.REG_DT &gt;= to_date(#{startDate},'yyyy-mm-dd')
+			</if>
+			<if test="null!=endDate"> AND D.REG_DT &lt;= to_date(#{endDate},'yyyy-mm-dd')
+			</if>
+		</where>
+		)
+	</select>
+
+
+<!-- 	<select id="queryWithCn" resultMap="contactMap"> -->
+<!-- 		SELECT CONTACT_ID,ADDR_PC,ADDR_SP,ADDR_STREET from EPP_CONTACT_VIEW C -->
+<!-- 		WHERE EXISTS( -->
+<!-- 		SELECT 1 FROM EPP_ENT_ALL_DOMAIN_VIEW D -->
+<!-- 		<where> -->
+<!-- 			C.CONTACT_ID=D.REGISTRANT_ID -->
+<!-- 			AND D.SPONSOR_REGRID &lt;&gt; 'CNNIC' -->
+<!-- 			<if test="null!=startDate"> AND D.REG_DT &gt;= #{startDate} -->
+<!-- 			</if> -->
+<!-- 			<if test="null!=endDate"> AND D.REG_DT &lt;= #{endDate} -->
+<!-- 			</if> -->
+<!-- 		</where> -->
+<!-- 		) -->
+<!-- 	</select> -->
+	
 </mapper>

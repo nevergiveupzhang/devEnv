@@ -1,0 +1,15 @@
+package cn.cnnic.domainstat;
+
+import java.io.File;
+import java.io.IOException;
+
+import cn.cnnic.domainstat.utils.StringUtil;
+
+public class Test {
+
+	public static void main(String[] args) throws IOException {
+		Runtime run = Runtime.getRuntime();
+		Process proc =run.exec("./sql.bin user='xx' query='' log=/home/zhangt/dest/sql.log field=','",null,new File("/home/zhangt/dest"));
+	}
+
+}

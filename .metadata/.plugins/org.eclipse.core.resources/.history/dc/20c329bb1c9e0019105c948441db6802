@@ -1,0 +1,17 @@
+package cn.cnnic.domainstat;
+
+import cn.cnnic.domainstat.utils.StringUtil;
+
+public class Test {
+
+	public static void main(String[] args) {
+		String sql = "select DOMAIN_NAME,SPONSOR_REGRID,REGISTRANT_ID from EPP_ENT_ALL_DOMAIN_VIEW where SPONSOR_REGRID <> 'CNNIC'  and REG_DT >= to_date("
+				+ startDate + ",'yyyy-mm-dd') and REG_DT <= to_date(" + endDate + ",'yyyy-mm-dd')";
+		Runtime run = Runtime.getRuntime();
+		LOGGER.info("EXECUTING BIN FILE => " + APPLICATION_HOME_PATH + "bin/sql.bin user=\""+username+"/"+password+"@"+url.split("@")[1]+" query=\""+sql+"\" file="+ (StringUtil.includeSuffix(RESULT_DIRECTORY, "/") + filePrefix + SRC_FILE_SUFFIX) + " log="
+				+ APPLICATION_HOME_PATH + "logs/domainstat.log");
+		run.exec(APPLICATION_HOME_PATH + "bin/sql.bin user=\""+username+"/"+password+"@"+url.split("@")[1]+" query=\""+sql+"\" file="+ (StringUtil.includeSuffix(RESULT_DIRECTORY, "/") + filePrefix + SRC_FILE_SUFFIX) + " log="
+				+ APPLICATION_HOME_PATH + "logs/domainstat.log");
+	}
+
+}

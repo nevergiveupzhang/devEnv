@@ -17,6 +17,7 @@ cn/cnnic/report/po/ReportDailyPO$1.class
 cn/cnnic/report/mapper/ReportTopMapper.class
 cn/cnnic/report/exception/ErrPageException.class
 cn/cnnic/report/mapper/ReportDailyMapper.class
+cn/cnnic/report/service/ServiceResponse.class
 cn/cnnic/report/exception/model/ExceptionStatus.class
 cn/cnnic/report/service/ReportService.class
 cn/cnnic/report/po/ReportTopPO$Builder.class

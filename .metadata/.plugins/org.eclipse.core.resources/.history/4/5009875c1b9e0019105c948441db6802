@@ -1,0 +1,20 @@
+domain.stat:
+  #cron: 40 43 23 * * ? 
+  result: /home/zhangt/dest/result/
+  mode: 1
+  threshold: 4m
+  url: jdbc:mysql://127.0.0.1:3307/finalscheduler
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver
+  ranges:
+    - name:
+      start:
+      end:
+logging.file: domainstat.log
+spring: 
+  datasource: 
+    url: jdbc:mysql://127.0.0.1:3307/finalscheduler
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver

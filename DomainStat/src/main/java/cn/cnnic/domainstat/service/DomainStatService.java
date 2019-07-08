@@ -9,9 +9,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.ibatis.session.ResultContext;
+import org.apache.ibatis.session.ResultHandler;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import cn.cnnic.domainstat.config.ApplicationConfigModel;
@@ -23,6 +27,7 @@ import cn.cnnic.domainstat.po.CDomainPO;
 import cn.cnnic.domainstat.po.EppContactPO;
 import cn.cnnic.domainstat.po.EppEntAllDomainPO;
 import cn.cnnic.domainstat.utils.CalendarUtil;
+import cn.cnnic.domainstat.utils.EmailUtil;
 import cn.cnnic.domainstat.utils.FileUtil;
 import cn.cnnic.domainstat.utils.SpMap;
 import cn.cnnic.domainstat.utils.SpReMap;
@@ -32,8 +37,6 @@ import net.cnnic.borlan.utils.lookup.PostalCodeUtil;
 
 @Service
 public class DomainStatService {
-	@Autowired
-	private CDomainMapper cDomainMapper;
 	@Autowired
 	private EppContactMapper contactMapper;
 	@Autowired
@@ -48,32 +51,43 @@ public class DomainStatService {
 	private PostalCodeUtil pcu;
 	@Autowired
 	private ApplicationConfigModel config;
+	@Autowired
+	SqlSessionTemplate template;
 
 	private String RESULT_DIRECTORY;
 	private int THRESHOLD;
 
-	private String APPLICATION_HOME_PATH = System.getProperty("user.dir")+"/";
+	private String APPLICATION_HOME_PATH = System.getProperty("user.dir") + "/";
 	private static final String LOGGER_DECLARING_TYPE = DomainStatService.class.getName();
 
 	private final static String SRC_FILE_SUFFIX = "-src.txt";
 	private final static String RESULT_FILE_SUFFIX = ".txt";
-	private final static int MAX_THRESHOLD=10000000;
-	private final static int MIN_THRESHOLD=1500000;
-	private final static int DEFAULT_THRESHOLD=4000000;
+	private final static int MAX_THRESHOLD = 10000000;
+	private final static int MIN_THRESHOLD = 1500000;
+	private final static int DEFAULT_THRESHOLD = 4000000;
+
+	private final static int DIFF_VALUE = 1000;
+	private final static int RETRY_TIMES = 3;
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(DomainStatService.class);
+	@Value("${spring.datasource.url}")
+	private String url;
+	@Value("${spring.datasource.username}")
+	private String username;
+	@Value("${spring.datasource.password}")
+	private String password;
 
 	public void fetchData() throws Exception {
 		init();
 		if (isRangesConfigured()) {
 			customFetch();
-		}else {
-			FileUtil.deleteFileOfSuffix(RESULT_DIRECTORY,RESULT_FILE_SUFFIX);
-			fetchCdnCn();
-			fetchCdnZhongguo();
-			fetchCn();
-			compressAndUpload();
-		}
+			return;
+		} 
+		FileUtil.deleteFileOfSuffix(RESULT_DIRECTORY, RESULT_FILE_SUFFIX);
+		fetchCdnCn();
+		fetchCdnZhongguo();
+		fetchCn();
+		compressAndUpload();
 	}
 
 	private void customFetch() throws Exception {
@@ -94,10 +108,10 @@ public class DomainStatService {
 				}
 				checkAndWriteCn(startDate, endDate, filePrefix);
 			}
-		} 
+		}
 	}
 
-	private boolean isRangesConfigured(){
+	private boolean isRangesConfigured() {
 		List<CnDateRangeModel> ranges = config.getRanges();
 		return null != ranges && ranges.size() != 0;
 	}
@@ -136,8 +150,10 @@ public class DomainStatService {
 
 	private void compressAndUpload() throws IOException {
 		Runtime run = Runtime.getRuntime();
-		LOGGER.info("EXECUTING SCRIPT FILE => " + APPLICATION_HOME_PATH + "bin/upload.sh " + RESULT_DIRECTORY +" >> "+ APPLICATION_HOME_PATH+"logs/domainstat.log");
-		run.exec(APPLICATION_HOME_PATH + "bin/upload.sh " + RESULT_DIRECTORY +" >> "+ APPLICATION_HOME_PATH+"logs/domainstat.log");
+		LOGGER.info("EXECUTING SCRIPT FILE => " + APPLICATION_HOME_PATH + "bin/upload.sh " + RESULT_DIRECTORY + " >> "
+				+ APPLICATION_HOME_PATH + "logs/domainstat.log");
+		run.exec(APPLICATION_HOME_PATH + "bin/upload.sh " + RESULT_DIRECTORY + " >> " + APPLICATION_HOME_PATH
+				+ "logs/domainstat.log");
 	}
 
 	private void fetchCdnCn() throws Exception {
@@ -164,7 +180,11 @@ public class DomainStatService {
 		checkAndWriteCn(currentYear + "-01-01", CalendarUtil.getThisMonthLastDay(new Date()), currentYear + "");
 	}
 
-	/*fetch cn data ,check if the data count is beyond the threshold and split it by year,half year,quater or month,util the count is below the threshold,then write files*/
+	/*
+	 * fetch cn data ,check if the data count is beyond the threshold and split it
+	 * by year,half year,quater or month,util the count is below the threshold,then
+	 * write files
+	 */
 	private void checkAndWriteCn(String startDate, String endDate, String filePrefix) throws Exception {
 		if (StringUtils.isBlank(startDate) || StringUtils.isBlank(endDate)) {
 			LOGGER.error("ERR PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate + ","
@@ -178,67 +198,87 @@ public class DomainStatService {
 			return;
 		}
 		if (count > THRESHOLD) {
-			if (!CalendarUtil.isSameYear(startDate, endDate)) {
-				int startYear = CalendarUtil.getYear(startDate);
-				int endYear = CalendarUtil.getYear(endDate);
-				if (endYear < startYear) {
-					LOGGER.error("ERR PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate
-							+ "," + filePrefix + ") the year of endDate cannot be less than the year of startDate!]");
-					return;
-				}
-				String thisYearLastDay = CalendarUtil.getThisYearLastDay(startDate);
-				checkAndWriteCn(startDate, thisYearLastDay, calFilePrefix(startDate, thisYearLastDay));
-				startDate = CalendarUtil.getNextYearFirstDay(startDate);
-				for (int i = startYear + 1; i < endYear; i++) {
-					thisYearLastDay = CalendarUtil.getThisYearLastDay(startDate);
-					checkAndWriteCn(startDate, thisYearLastDay, CalendarUtil.convertFormat(startDate, "yyyy"));
-					startDate = CalendarUtil.getNextYearFirstDay(startDate);
-				}
-				checkAndWriteCn(startDate, endDate, calFilePrefix(startDate, endDate));
-			} else {
-				int startMonth = CalendarUtil.getMonth(startDate);
-				int endMonth = CalendarUtil.getMonth(endDate);
-				if (endMonth < startMonth) {
-					LOGGER.error("ERR PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate
-							+ "," + filePrefix + ") the month of endDate cannot be less than the year of startDate!]");
-					return;
-				}
-				if (!CalendarUtil.isSameHalfYear(startDate, endDate)) {
-					String lastDayOfFirstHalfYear = CalendarUtil.getTheLastDayOfTheFirstHalfYear(startDate);
-					String firstDayOfSecondHalfYear = CalendarUtil.getTheFirstDayOfTheSecondHalfYear(startDate);
-					checkAndWriteCn(startDate, lastDayOfFirstHalfYear, calFilePrefix(startDate, lastDayOfFirstHalfYear));
-					checkAndWriteCn(firstDayOfSecondHalfYear, endDate, calFilePrefix(firstDayOfSecondHalfYear, endDate));
-				} else if (!CalendarUtil.isSameQurter(startDate, endDate)) {
-					String lastDayOfThisQuarter = CalendarUtil.getTheLastDayOfThisQuarter(startDate);
-					String firstDayOfTheNextQuarter = CalendarUtil.getTheFirstDayOfThisQuarter(endDate);
-					checkAndWriteCn(startDate, lastDayOfThisQuarter, calFilePrefix(startDate, lastDayOfThisQuarter));
-					checkAndWriteCn(firstDayOfTheNextQuarter, endDate, calFilePrefix(firstDayOfTheNextQuarter, endDate));
+			split(startDate, endDate, filePrefix);
+			return;
 
-				} else if (!CalendarUtil.isSameMonth(startDate, endDate)) {
-					for (int i = startMonth; i <= endMonth; i++) {
-						checkAndWriteCn(startDate, CalendarUtil.getThisMonthLastDay(startDate),
-								CalendarUtil.convertFormat(startDate, "yyyyMM"));
-						startDate = CalendarUtil.getNextMonthFirstDay(startDate, CalendarUtil.DEFAULT_FORMAT);
-					}
-				} else {
-					LOGGER.error("ERR PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate
-							+ "," + filePrefix
-							+ ") still beyond the threshold,but the minimum unit is month,try to decrease the threshold!]");
-					return;
-				}
-			}
-		}else{
-			doWriteCn(startDate, endDate, filePrefix);
+		}
+		// step1: fetch the cn domain list from the database,write the cn domain into
+		// the source file
+		writeCnDomainIntoSrcFile(startDate, endDate, filePrefix);
+		int retry = RETRY_TIMES;
+		while (isNotCompleteCnData(count, filePrefix) && retry > 0) {
+			writeCnDomainIntoSrcFile(startDate, endDate, filePrefix);
+			retry--;
+		}
+		if (isNotCompleteCnData(count, filePrefix) && retry == 0) {
+			EmailUtil.sendEmail("zhangtao@cnnic.cn", "CN data "+filePrefix+" still got too big intervals after retrying "+RETRY_TIMES+" times!", "");
+			return;
+		}else {
+			doWriteCn(startDate, endDate, filePrefix);	
 		}
 	}
-	
+
+	private boolean isNotCompleteCnData(int count, String filePrefix) throws IOException {
+		return (Math.abs(count - FileUtil.calFileLines(RESULT_DIRECTORY + filePrefix + SRC_FILE_SUFFIX)) > DIFF_VALUE);
+	}
+
+	private void split(String startDate, String endDate, String filePrefix) throws Exception {
+		if (!CalendarUtil.isSameYear(startDate, endDate)) {
+			int startYear = CalendarUtil.getYear(startDate);
+			int endYear = CalendarUtil.getYear(endDate);
+			if (endYear < startYear) {
+				LOGGER.error("ERR PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate + ","
+						+ filePrefix + ") the year of endDate cannot be less than the year of startDate!]");
+				return;
+			}
+			String thisYearLastDay = CalendarUtil.getThisYearLastDay(startDate);
+			checkAndWriteCn(startDate, thisYearLastDay, calFilePrefix(startDate, thisYearLastDay));
+			startDate = CalendarUtil.getNextYearFirstDay(startDate);
+			for (int i = startYear + 1; i < endYear; i++) {
+				thisYearLastDay = CalendarUtil.getThisYearLastDay(startDate);
+				checkAndWriteCn(startDate, thisYearLastDay, CalendarUtil.convertFormat(startDate, "yyyy"));
+				startDate = CalendarUtil.getNextYearFirstDay(startDate);
+			}
+			checkAndWriteCn(startDate, endDate, calFilePrefix(startDate, endDate));
+		} else {
+			int startMonth = CalendarUtil.getMonth(startDate);
+			int endMonth = CalendarUtil.getMonth(endDate);
+			if (endMonth < startMonth) {
+				LOGGER.error("ERR PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate + ","
+						+ filePrefix + ") the month of endDate cannot be less than the year of startDate!]");
+				return;
+			}
+			if (!CalendarUtil.isSameHalfYear(startDate, endDate)) {
+				String lastDayOfFirstHalfYear = CalendarUtil.getTheLastDayOfTheFirstHalfYear(startDate);
+				String firstDayOfSecondHalfYear = CalendarUtil.getTheFirstDayOfTheSecondHalfYear(startDate);
+				checkAndWriteCn(startDate, lastDayOfFirstHalfYear, calFilePrefix(startDate, lastDayOfFirstHalfYear));
+				checkAndWriteCn(firstDayOfSecondHalfYear, endDate, calFilePrefix(firstDayOfSecondHalfYear, endDate));
+			} else if (!CalendarUtil.isSameQurter(startDate, endDate)) {
+				String lastDayOfThisQuarter = CalendarUtil.getTheLastDayOfThisQuarter(startDate);
+				String firstDayOfTheNextQuarter = CalendarUtil.getTheFirstDayOfThisQuarter(endDate);
+				checkAndWriteCn(startDate, lastDayOfThisQuarter, calFilePrefix(startDate, lastDayOfThisQuarter));
+				checkAndWriteCn(firstDayOfTheNextQuarter, endDate, calFilePrefix(firstDayOfTheNextQuarter, endDate));
+
+			} else if (!CalendarUtil.isSameMonth(startDate, endDate)) {
+				for (int i = startMonth; i <= endMonth; i++) {
+					checkAndWriteCn(startDate, CalendarUtil.getThisMonthLastDay(startDate),
+							CalendarUtil.convertFormat(startDate, "yyyyMM"));
+					startDate = CalendarUtil.getNextMonthFirstDay(startDate, CalendarUtil.DEFAULT_FORMAT);
+				}
+			} else {
+				LOGGER.error("ERR PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCn(" + startDate + "," + endDate + ","
+						+ filePrefix
+						+ ") still beyond the threshold,but the minimum unit is month,try to decrease the threshold!]");
+				return;
+			}
+		}
+	}
+
 	/*
-	 * step1: fetch the cn domain list from the database. step2: write the cn domain
-	 * list into the source file,set the cn domain list to null for gc. step3: fetch
-	 * the contact list from the database(only fetch specific data from the
-	 * startDate to endDate,not all contacts). step4: convert the contact list into
+	 * step1: fetch the contact list from the database(only fetch specific data from the
+	 * startDate to endDate,not all contacts). step2: convert the contact list into
 	 * a map between the contact id and the province,set the contact list to null
-	 * for gc. step5: read the source file,get the province from the map by the key
+	 * for gc. step3: read the source file,get the province from the map by the key
 	 * contact id(the last word of the source file) and write into the result file
 	 * 
 	 * @param startDate It is null before 2010,not null after 2010
@@ -248,37 +288,42 @@ public class DomainStatService {
 	 * 
 	 * @param filePrefix
 	 */
-	private void doWriteCn(String startDate, String endDate, String filePrefix) throws IOException {
+	private void doWriteCn(String startDate, String endDate, String filePrefix) throws Exception {
 		LOGGER.info("#################################BEGIN TO FETCH CN " + startDate + " TO " + endDate
 				+ " DATA#################################");
 		LOGGER.info("PRINT METHOD PARAMS => [" + LOGGER_DECLARING_TYPE + ".doWriteCn(" + startDate + "," + endDate + ","
 				+ filePrefix + ")]");
 		long startTime = System.currentTimeMillis();
-		// step1: fetch the cn domain list from the database
-		List<EppEntAllDomainPO> cnDomainList = eppEntAllDomainMapper.query(startDate, endDate);
-		// step2: write the cn domain list into the source file,set the cn domain list
-		// to null for gc.
-		writeCnDomainListIntoSrcFile(filePrefix, cnDomainList);
-		cnDomainList = null;
-		// step3: fetch the contact list from the database(only fetch specific data from
+		// step1: fetch the contact list from the database(only fetch specific data from
 		// the startDate to endDate,not all contacts)
+		int count= contactMapper.queryCountWithCn(startDate, endDate);
 		List<EppContactPO> contactList = contactMapper.queryWithCn(startDate, endDate);
-		// step4: convert the contact list into a map between the contact id and the
+		int retry=RETRY_TIMES;
+		while(Math.abs(count-contactList.size())>DIFF_VALUE&&retry>0) {
+			contactList = contactMapper.queryWithCn(startDate, endDate);
+			retry--;
+		}
+		if(Math.abs(count-contactList.size())>DIFF_VALUE&&retry==0) {
+			EmailUtil.sendEmail("zhangtao@cnnic.cn", "CN contact data "+filePrefix+" still got too big intervals after retrying "+RETRY_TIMES+" times!", "");
+			return;
+		}
+		
+		// step2: convert the contact list into a map between the contact id and the
 		// province,set the contact list to null for gc.
 		Map<String, String> contactToProvinceMap = buildMapOfContactIdToProvince(contactList);
 		contactList = null;
 		LOGGER.info("PRINT OBJECT SIZE => [" + LOGGER_DECLARING_TYPE + ".doWriteCn(" + startDate + "," + endDate + ","
 				+ filePrefix + ") the size of contactToProvinceMap is " + contactToProvinceMap.size() + "]");
-		// step5: read the source file,get the province from the map by the key contact
+		// step3: read the source file,get the province from the map by the key contact
 		// id(the last word of the source file) and write into the result file
 		writeIntoResultFileBySrcFileAndMap(filePrefix, contactToProvinceMap);
 
 		long endTime = System.currentTimeMillis();
-		LOGGER.info("PRINT EXECUTION TIME => [" + LOGGER_DECLARING_TYPE + ".doWriteCn(" + startDate + "," + endDate + ","
-				+ filePrefix + ") took " + (endTime - startTime) + "ms]");
+		LOGGER.info("PRINT EXECUTION TIME => [" + LOGGER_DECLARING_TYPE + ".doWriteCn(" + startDate + "," + endDate
+				+ "," + filePrefix + ") took " + (endTime - startTime) + "ms]");
 
 		LOGGER.info("#################################FINISHED TO FETCH CN " + startDate + " TO " + endDate
-				+ " DATA#################################");		
+				+ " DATA#################################");
 	}
 
 	private static String calFilePrefix(String startDate, String endDate) {
@@ -296,25 +341,45 @@ public class DomainStatService {
 	 * write the cn domain list into the source file, set the cn domain list to null
 	 * for gc.
 	 */
-	private void writeCnDomainListIntoSrcFile(String filePrefix, List<EppEntAllDomainPO> entDomainList)
-			throws IOException {
-		FileUtil.init(StringUtil.includeSuffix(RESULT_DIRECTORY, "/") + filePrefix + SRC_FILE_SUFFIX);
-		for (EppEntAllDomainPO domainPO : entDomainList) {
-			String domainName = domainPO.getDomainName();
-			String registrarId = domainPO.getSponsorRegrid();
-			String registrantId = domainPO.getRegistrantId();
-			FileUtil.writeFile(domainName + "," + registrarId + "," + registrantId + "\n");
-		}
+	private void writeCnDomainIntoSrcFile(String startDate, String endDate, String filePrefix) throws IOException {
+		LOGGER.info("PRINT METHOD PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCnDomainIntoSrcFile(" + startDate + ","
+				+ endDate + "," + filePrefix + ")]");
+		long startTime = System.currentTimeMillis();
+		FileUtil.init(RESULT_DIRECTORY + filePrefix + SRC_FILE_SUFFIX);
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("startDate", startDate);
+		params.put("endDate", endDate);
+		template.select("cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.query", params,
+				new ResultHandler<EppEntAllDomainPO>() {
+
+					@Override
+					public void handleResult(ResultContext<? extends EppEntAllDomainPO> resultContext) {
+						EppEntAllDomainPO domainPO = resultContext.getResultObject();
+						String domainName = domainPO.getDomainName();
+						String registrarId = domainPO.getSponsorRegrid();
+						String registrantId = domainPO.getRegistrantId();
+						try {
+							FileUtil.writeFile(domainName + "," + registrarId + "," + registrantId + "\n");
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+
+				});
 		FileUtil.commit();
+
+		long endTime = System.currentTimeMillis();
+		LOGGER.info("PRINT EXECUTION TIME => [" + LOGGER_DECLARING_TYPE + ".writeCnDomainIntoSrcFile(" + startDate + ","
+				+ endDate + "," + filePrefix + ") took " + (endTime - startTime) + "ms]");
 	}
 
 	/*
-	 * step1: fetch the cdn domain list from the database step2: write the cdn
-	 * domain list into the source file,set the cdn domain list to null for gc.
-	 * step3: fetch the contact list from the database(only fetch specific data by a
-	 * pattern of like,not all contacts) step4: convert the contact list into a map
+	 * step1: fetch the cdn domain list from the database and write the cdn
+	 * domain list into the source file.
+	 * step2: fetch the contact list from the database(only fetch specific data by a
+	 * pattern of like,not all contacts) step3: convert the contact list into a map
 	 * between the contact id and the province,set the contact list to null for gc.
-	 * step5: read the source file,get the province from the map by the key contact
+	 * step4: read the source file,get the province from the map by the key contact
 	 * id(the last word of the source file) and write into the result file
 	 */
 	private void writeCdn(String filePrefix, String likePattern) throws Exception {
@@ -324,22 +389,18 @@ public class DomainStatService {
 		LOGGER.info("PRINT METHOD PARAMS => [" + LOGGER_DECLARING_TYPE + ".writeCdn(" + filePrefix + "," + likePattern
 				+ ")]");
 		long startTime = System.currentTimeMillis();
-		// step1: fetch the cdn domain list from the database
-		List<CDomainPO> cDomainList = cDomainMapper.query(null, CalendarUtil.format(new Date(), "yyyy-MM-dd"),
-				likePattern);
-		// step2: write the cdn domain list into the source file,set the cdn domain list
-		// to null for gc.
-		writeCdnDomainListIntoSrcFile(filePrefix, cDomainList);
-		cDomainList = null;
-		// step3: fetch the contact list from the database(only fetch specific data by a
+		// step1: fetch the cdn domain from the database,write the cdn domain into the source file
+		writeCdnDomainIntoSrcFile(filePrefix, likePattern);
+
+		// step2: fetch the contact list from the database(only fetch specific data by a
 		// pattern of like,not all contacts)
 		List<EppContactPO> contactList = contactMapper.queryWithCdn(CalendarUtil.format(new Date(), "yyyy-MM-dd"),
 				likePattern);
-		// step4: convert the contact list into a map between the contact id and the
+		// step3: convert the contact list into a map between the contact id and the
 		// province,set the contact list to null for gc.
 		Map<String, String> contactToProvinceMap = buildMapOfContactIdToProvince(contactList);
 		contactList = null;
-		// step5: read the source file,get the province from the map by the key contact
+		// step4: read the source file,get the province from the map by the key contact
 		// id(the last word of the source file) and write into the result file
 		writeIntoResultFileBySrcFileAndMap(filePrefix, contactToProvinceMap);
 
@@ -351,29 +412,41 @@ public class DomainStatService {
 	}
 
 	/*
-	 * write the cdn domain list into the source file,set the cdn domain list to
-	 * null for gc.
+	 * fetch the cdn domain from the database,write the cdn domain into the source file
 	 */
-	private void writeCdnDomainListIntoSrcFile(String filePrefix, List<CDomainPO> cDomainList) throws IOException {
-		FileUtil.init(RESULT_DIRECTORY + filePrefix + SRC_FILE_SUFFIX, FileUtil.WRITE);
-		for (CDomainPO domainPO : cDomainList) {
-			String domainName = domainPO.getDomainName();
-			String registrarId = domainPO.getRegistrarId();
-			String registrantId = domainPO.getRegistrantId();
-			FileUtil.writeFile(domainName + "," + registrarId + "," + registrantId + "\n");
-		}
+	private void writeCdnDomainIntoSrcFile(String filePrefix, String likePattern) throws IOException {
+		FileUtil.init(RESULT_DIRECTORY + filePrefix + SRC_FILE_SUFFIX);
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("startDate", CalendarUtil.ORIGINAL_DATE);
+		params.put("endDate", CalendarUtil.format(new Date(), "yyyy-MM-dd"));
+		params.put("domainName", likePattern);
+		template.select("cn.cnnic.domainstat.mapper.CDomainMapper.query", params, new ResultHandler<CDomainPO>() {
+
+			@Override
+			public void handleResult(ResultContext<? extends CDomainPO> resultContext) {
+				CDomainPO domainPO = resultContext.getResultObject();
+				String domainName = domainPO.getDomainName();
+				String registrarId = domainPO.getRegistrarId();
+				String registrantId = domainPO.getRegistrantId();
+				try {
+					FileUtil.writeFile(domainName + "," + registrarId + "," + registrantId + "\n");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+		});
 		FileUtil.commit();
-		cDomainList = null;
 	}
 
 	/*
 	 * read the source file,get the province from the map by the key contact id(the
 	 * last word of the source file) and write into the result file
 	 */
-	private void writeIntoResultFileBySrcFileAndMap(String resultFileName, Map<String, String> contactToProvinceMap)
+	private void writeIntoResultFileBySrcFileAndMap(String resultFilePrefix, Map<String, String> contactToProvinceMap)
 			throws IOException {
-		FileUtil.init(RESULT_DIRECTORY + resultFileName + SRC_FILE_SUFFIX, FileUtil.READ);
-		FileUtil.init(RESULT_DIRECTORY + resultFileName + RESULT_FILE_SUFFIX, FileUtil.WRITE);
+		FileUtil.init(RESULT_DIRECTORY + resultFilePrefix + SRC_FILE_SUFFIX, FileUtil.READ);
+		FileUtil.init(RESULT_DIRECTORY + resultFilePrefix + RESULT_FILE_SUFFIX, FileUtil.WRITE);
 		String line = null;
 		while ((line = FileUtil.readLine()) != null) {
 			String[] arr = line.split(",");
@@ -386,7 +459,7 @@ public class DomainStatService {
 			}
 		}
 		FileUtil.commit();
-		FileUtil.deleteFile(RESULT_DIRECTORY + resultFileName + SRC_FILE_SUFFIX);
+		FileUtil.deleteFile(RESULT_DIRECTORY + resultFilePrefix + SRC_FILE_SUFFIX);
 
 	}
 

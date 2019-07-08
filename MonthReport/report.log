@@ -632,3 +632,6 @@ Unconditional classes:
 2019-07-03 19:15:41.900  INFO 19308 --- [http-nio-8080-exec-1] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
 2019-07-03 19:16:00.888  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print method params=>[cn.cnnic.report.service.ReportService.generateReport(nicweblog,2019-0)]
 2019-07-03 19:16:00.888  INFO 19308 --- [http-nio-8080-exec-6] cn.cnnic.report.aspect.LogAdvice         : print execution time=>[cn.cnnic.report.service.ReportService.generateReport() took 0ms]
+2019-07-03 19:50:52.147  INFO 19308 --- [Thread-9] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-07-03 19:50:52.147  INFO 19308 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-07-03 19:50:52.151  INFO 19308 --- [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

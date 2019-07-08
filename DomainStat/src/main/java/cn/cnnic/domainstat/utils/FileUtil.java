@@ -200,4 +200,12 @@ public class FileUtil {
 		public static void main(String[] args) {
 			deleteFileOfSuffix("/home/zhangt/dest/test", ".txt");
 		}
+		public static int calFileLines(String fileName) throws IOException {
+			init(fileName,READ);
+			int count=0;
+			while((br.readLine())!=null) {
+				count++;
+			}
+			return count;
+		}
 }

@@ -8,4 +8,6 @@ public interface EppContactMapper {
 	List<EppContactPO> queryWithCdn(String endDate, String likePattern);
 
 	List<EppContactPO> queryWithCn(String startDate, String endDate);
+
+	int queryCountWithCn(String startDate, String endDate);
 }

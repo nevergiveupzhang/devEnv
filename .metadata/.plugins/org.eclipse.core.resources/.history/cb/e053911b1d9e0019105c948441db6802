@@ -1,0 +1,21 @@
+package cn.cnnic.domainstat;
+
+import cn.cnnic.domainstat.utils.StringUtil;
+
+public class Test {
+
+	public static void main(String[] args) {
+		String url="jdbc:mysql://@127.0.0.1:3307/finalscheduler";
+		String username="test";
+		String password="password";
+		String APPLICATION_HOME_PATH = System.getProperty("user.dir") + "/";
+		String sql = "select DOMAIN_NAME,SPONSOR_REGRID,REGISTRANT_ID from EPP_ENT_ALL_DOMAIN_VIEW where SPONSOR_REGRID <> 'CNNIC'  and REG_DT >= to_date("
+				+ "2019-01-01" + ",'yyyy-mm-dd') and REG_DT <= to_date(" + "2019-03-01" + ",'yyyy-mm-dd')";
+		Runtime run = Runtime.getRuntime();
+		System.out.println(("EXECUTING BIN FILE => " + APPLICATION_HOME_PATH + "bin/sql.bin user=\""+username+"/"+password+"@"+url.split("@")[1]+" query=\""+sql+"\" file="+ (StringUtil.includeSuffix(RESULT_DIRECTORY, "/") + filePrefix + SRC_FILE_SUFFIX) + " log="
+				+ APPLICATION_HOME_PATH + "logs/domainstat.log");
+		run.exec(APPLICATION_HOME_PATH + "bin/sql.bin user=\""+username+"/"+password+"@"+url.split("@")[1]+" query=\""+sql+"\" file="+ (StringUtil.includeSuffix(RESULT_DIRECTORY, "/") + filePrefix + SRC_FILE_SUFFIX) + " log="
+				+ APPLICATION_HOME_PATH + "logs/domainstat.log");
+	}
+
+}

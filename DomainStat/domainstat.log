@@ -1,3 +1,842 @@
-2019-07-03 00:24:02.651  INFO 9119 --- [Thread-60] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@469c09a3: startup date [Tue Jul 02 23:53:55 CST 2019]; root of context hierarchy
-2019-07-03 00:24:02.666  INFO 9119 --- [Thread-60] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
-2019-07-03 00:24:02.669  INFO 9119 --- [Thread-60] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 18:41:48.294  INFO 8840 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 8840 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 18:41:48.304  INFO 8840 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 18:41:48.419  INFO 8840 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@597ffc21: startup date [Fri Jul 05 18:41:48 CST 2019]; root of context hierarchy
+2019-07-05 18:41:50.928  WARN 8840 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainApplication': Unsatisfied dependency expressed through field 'domainStatService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'domainStatService': Unsatisfied dependency expressed through field 'cDomainMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'CDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/CDomainMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactoryBean' defined in class path resource [cn/cnnic/domainstat/config/MybatisConfig.class]: Unsatisfied dependency expressed through method 'sqlSessionFactoryBean' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+2019-07-05 18:41:50.952  INFO 8840 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-07-05 18:41:50.975 ERROR 8840 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainApplication': Unsatisfied dependency expressed through field 'domainStatService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'domainStatService': Unsatisfied dependency expressed through field 'cDomainMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'CDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/CDomainMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactoryBean' defined in class path resource [cn/cnnic/domainstat/config/MybatisConfig.class]: Unsatisfied dependency expressed through method 'sqlSessionFactoryBean' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:586) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at cn.cnnic.domainstat.MainApplication.main(MainApplication.java:41) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'domainStatService': Unsatisfied dependency expressed through field 'cDomainMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'CDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/CDomainMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactoryBean' defined in class path resource [cn/cnnic/domainstat/config/MybatisConfig.class]: Unsatisfied dependency expressed through method 'sqlSessionFactoryBean' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:586) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 23 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'CDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/CDomainMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactoryBean' defined in class path resource [cn/cnnic/domainstat/config/MybatisConfig.class]: Unsatisfied dependency expressed through method 'sqlSessionFactoryBean' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1436) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1323) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 36 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactoryBean' defined in class path resource [cn/cnnic/domainstat/config/MybatisConfig.class]: Unsatisfied dependency expressed through method 'sqlSessionFactoryBean' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:474) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1421) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 47 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:590) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 60 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:582) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 73 common frames omitted
+Caused by: java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.util.Assert.state(Assert.java:94) ~[spring-core-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceProperties.determineDriverClassName(DataSourceProperties.java:224) ~[spring-boot-autoconfigure-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceProperties.initializeDataSourceBuilder(DataSourceProperties.java:176) ~[spring-boot-autoconfigure-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration.createDataSource(DataSourceConfiguration.java:43) ~[spring-boot-autoconfigure-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari.dataSource(DataSourceConfiguration.java:83) ~[spring-boot-autoconfigure-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 74 common frames omitted
+
+2019-07-05 18:43:01.286  INFO 8935 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 8935 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 18:43:01.289  INFO 8935 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 18:43:01.400  INFO 8935 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@68632532: startup date [Fri Jul 05 18:43:01 CST 2019]; root of context hierarchy
+2019-07-05 18:43:05.714  INFO 8935 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-05 18:43:05.751  INFO 8935 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 18:43:05.753  INFO 8935 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 18:43:05.760  INFO 8935 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 18:43:05.781  INFO 8935 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 5.603 seconds (JVM running for 6.845)
+2019-07-05 18:43:05.829  INFO 8935 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 18:43:05.857  INFO 8935 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 18:43:05.865  INFO 8935 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 4000000
+2019-07-05 18:43:05.866  INFO 8935 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.service.DomainStatService.fetchData() took 40ms]
+2019-07-05 18:43:05.877  INFO 8935 --- [Thread-8] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@68632532: startup date [Fri Jul 05 18:43:01 CST 2019]; root of context hierarchy
+2019-07-05 18:43:05.904  INFO 8935 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 18:43:05.906  INFO 8935 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 18:43:51.578  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 9076 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 18:43:51.582  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 18:43:51.709  INFO 9076 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@53bb82c8: startup date [Fri Jul 05 18:43:51 CST 2019]; root of context hierarchy
+2019-07-05 18:43:57.110  INFO 9076 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-05 18:43:57.160  INFO 9076 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 18:43:57.161  INFO 9076 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 18:43:57.171  INFO 9076 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 18:43:57.230  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 6.807 seconds (JVM running for 7.932)
+2019-07-05 18:43:57.266  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 18:46:02.625  INFO 9076 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 18:46:02.639  INFO 9076 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 4000000
+2019-07-05 18:46:43.656  INFO 9076 --- [Thread-6] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@53bb82c8: startup date [Fri Jul 05 18:43:51 CST 2019]; root of context hierarchy
+2019-07-05 18:46:43.660  INFO 9076 --- [Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 18:46:43.661  INFO 9076 --- [Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 18:46:43.946  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 9076 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 18:46:43.947  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 18:46:43.953  INFO 9076 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4404d7d6: startup date [Fri Jul 05 18:46:43 CST 2019]; root of context hierarchy
+2019-07-05 18:46:44.690 ERROR 9076 --- [restartedMain] o.m.spring.mapper.MapperFactoryBean      : Error while adding the mapper 'interface cn.cnnic.domainstat.mapper.EppEntAllDomainMapper' to configuration.
+
+org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:122) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:94) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.annotation.MapperAnnotationBuilder.loadXmlResource(MapperAnnotationBuilder.java:182) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.annotation.MapperAnnotationBuilder.parse(MapperAnnotationBuilder.java:129) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.binding.MapperRegistry.addMapper(MapperRegistry.java:72) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration.addMapper(Configuration.java:759) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:80) ~[mybatis-spring-2.0.1.jar:2.0.1]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44) [spring-tx-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1758) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1695) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at cn.cnnic.domainstat.MainApplication.main(MainApplication.java:41) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+Caused by: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.apache.ibatis.session.Configuration$StrictMap.put(Configuration.java:930) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration$StrictMap.put(Configuration.java:887) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration.addMappedStatement(Configuration.java:686) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.MapperBuilderAssistant.addMappedStatement(MapperBuilderAssistant.java:296) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLStatementBuilder.parseStatementNode(XMLStatementBuilder.java:110) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:137) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:130) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120) ~[mybatis-3.5.1.jar:3.5.1]
+	... 55 common frames omitted
+
+2019-07-05 18:46:44.693  WARN 9076 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainApplication': Unsatisfied dependency expressed through field 'domainStatService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'domainStatService': Unsatisfied dependency expressed through field 'eppEntAllDomainMapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eppEntAllDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+2019-07-05 18:46:44.699  INFO 9076 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-07-05 18:46:44.707 ERROR 9076 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainApplication': Unsatisfied dependency expressed through field 'domainStatService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'domainStatService': Unsatisfied dependency expressed through field 'eppEntAllDomainMapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eppEntAllDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:586) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at cn.cnnic.domainstat.MainApplication.main(MainApplication.java:41) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'domainStatService': Unsatisfied dependency expressed through field 'eppEntAllDomainMapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eppEntAllDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:586) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 23 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eppEntAllDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1699) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 36 common frames omitted
+Caused by: java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:83) ~[mybatis-spring-2.0.1.jar:2.0.1]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44) ~[spring-tx-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1758) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1695) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 46 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:122) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:94) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.annotation.MapperAnnotationBuilder.loadXmlResource(MapperAnnotationBuilder.java:182) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.annotation.MapperAnnotationBuilder.parse(MapperAnnotationBuilder.java:129) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.binding.MapperRegistry.addMapper(MapperRegistry.java:72) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration.addMapper(Configuration.java:759) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:80) ~[mybatis-spring-2.0.1.jar:2.0.1]
+	... 49 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.apache.ibatis.session.Configuration$StrictMap.put(Configuration.java:930) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration$StrictMap.put(Configuration.java:887) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration.addMappedStatement(Configuration.java:686) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.MapperBuilderAssistant.addMappedStatement(MapperBuilderAssistant.java:296) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLStatementBuilder.parseStatementNode(XMLStatementBuilder.java:110) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:137) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:130) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120) ~[mybatis-3.5.1.jar:3.5.1]
+	... 55 common frames omitted
+
+2019-07-05 18:46:49.238  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 9076 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 18:46:49.244  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 18:46:49.260  INFO 9076 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6d88340d: startup date [Fri Jul 05 18:46:49 CST 2019]; root of context hierarchy
+2019-07-05 18:46:50.288 ERROR 9076 --- [restartedMain] o.m.spring.mapper.MapperFactoryBean      : Error while adding the mapper 'interface cn.cnnic.domainstat.mapper.EppEntAllDomainMapper' to configuration.
+
+org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:122) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:94) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.annotation.MapperAnnotationBuilder.loadXmlResource(MapperAnnotationBuilder.java:182) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.annotation.MapperAnnotationBuilder.parse(MapperAnnotationBuilder.java:129) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.binding.MapperRegistry.addMapper(MapperRegistry.java:72) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration.addMapper(Configuration.java:759) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:80) ~[mybatis-spring-2.0.1.jar:2.0.1]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44) [spring-tx-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1758) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1695) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265) ~[spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at cn.cnnic.domainstat.MainApplication.main(MainApplication.java:41) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+Caused by: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.apache.ibatis.session.Configuration$StrictMap.put(Configuration.java:930) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration$StrictMap.put(Configuration.java:887) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration.addMappedStatement(Configuration.java:686) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.MapperBuilderAssistant.addMappedStatement(MapperBuilderAssistant.java:296) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLStatementBuilder.parseStatementNode(XMLStatementBuilder.java:110) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:137) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:130) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120) ~[mybatis-3.5.1.jar:3.5.1]
+	... 55 common frames omitted
+
+2019-07-05 18:46:50.290  WARN 9076 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainApplication': Unsatisfied dependency expressed through field 'domainStatService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'domainStatService': Unsatisfied dependency expressed through field 'eppEntAllDomainMapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eppEntAllDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+2019-07-05 18:46:50.293  INFO 9076 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-07-05 18:46:50.297 ERROR 9076 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainApplication': Unsatisfied dependency expressed through field 'domainStatService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'domainStatService': Unsatisfied dependency expressed through field 'eppEntAllDomainMapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eppEntAllDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:586) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265) [spring-boot-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+	at cn.cnnic.domainstat.MainApplication.main(MainApplication.java:41) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'domainStatService': Unsatisfied dependency expressed through field 'eppEntAllDomainMapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eppEntAllDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:586) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 23 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'eppEntAllDomainMapper' defined in file [/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes/cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1699) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 36 common frames omitted
+Caused by: java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:83) ~[mybatis-spring-2.0.1.jar:2.0.1]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44) ~[spring-tx-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1758) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1695) ~[spring-beans-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 46 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml'. Cause: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:122) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:94) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.annotation.MapperAnnotationBuilder.loadXmlResource(MapperAnnotationBuilder.java:182) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.annotation.MapperAnnotationBuilder.parse(MapperAnnotationBuilder.java:129) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.binding.MapperRegistry.addMapper(MapperRegistry.java:72) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration.addMapper(Configuration.java:759) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:80) ~[mybatis-spring-2.0.1.jar:2.0.1]
+	... 49 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount. please check cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml and cn/cnnic/domainstat/mapper/EppEntAllDomainMapper.xml
+	at org.apache.ibatis.session.Configuration$StrictMap.put(Configuration.java:930) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration$StrictMap.put(Configuration.java:887) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.Configuration.addMappedStatement(Configuration.java:686) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.MapperBuilderAssistant.addMappedStatement(MapperBuilderAssistant.java:296) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLStatementBuilder.parseStatementNode(XMLStatementBuilder.java:110) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:137) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:130) ~[mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120) ~[mybatis-3.5.1.jar:3.5.1]
+	... 55 common frames omitted
+
+2019-07-05 18:46:58.773  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 9076 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 18:46:58.774  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 18:46:58.778  INFO 9076 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@416b107: startup date [Fri Jul 05 18:46:58 CST 2019]; root of context hierarchy
+2019-07-05 18:46:59.858  INFO 9076 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-05 18:46:59.873  INFO 9076 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 18:46:59.874  INFO 9076 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 18:46:59.876  INFO 9076 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 18:46:59.882  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 1.16 seconds (JVM running for 190.584)
+2019-07-05 18:46:59.889  INFO 9076 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-07-05 18:46:59.890  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 18:47:04.672  INFO 9076 --- [Thread-9] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@416b107: startup date [Fri Jul 05 18:46:58 CST 2019]; root of context hierarchy
+2019-07-05 18:47:04.683  INFO 9076 --- [Thread-9] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 18:47:04.684  INFO 9076 --- [Thread-9] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 18:47:04.891  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 9076 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 18:47:04.892  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 18:47:04.896  INFO 9076 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@29b00b30: startup date [Fri Jul 05 18:47:04 CST 2019]; root of context hierarchy
+2019-07-05 18:47:06.043  INFO 9076 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-05 18:47:06.069  INFO 9076 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 18:47:06.070  INFO 9076 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 18:47:06.078  INFO 9076 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 18:47:06.083  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 1.236 seconds (JVM running for 196.785)
+2019-07-05 18:47:06.095  INFO 9076 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-07-05 18:47:06.097  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 18:56:32.463  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.service.DomainStatService.fetchData() took 755201ms]
+2019-07-05 18:56:36.216  INFO 9076 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 18:56:36.216  INFO 9076 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 4000000
+2019-07-05 18:56:36.216  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.service.DomainStatService.fetchData() took 576326ms]
+2019-07-05 18:56:40.303  INFO 9076 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 18:56:40.304  INFO 9076 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 4000000
+2019-07-05 18:56:40.304  INFO 9076 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.service.DomainStatService.fetchData() took 574208ms]
+2019-07-05 18:56:40.306  INFO 9076 --- [Thread-24] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@29b00b30: startup date [Fri Jul 05 18:47:04 CST 2019]; root of context hierarchy
+2019-07-05 18:56:40.309  INFO 9076 --- [Thread-24] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 18:56:40.310  INFO 9076 --- [Thread-24] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 19:09:50.581  INFO 10372 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 10372 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 19:09:50.593  INFO 10372 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 19:09:50.755  INFO 10372 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4683d0a6: startup date [Fri Jul 05 19:09:50 CST 2019]; root of context hierarchy
+2019-07-05 19:09:56.575  INFO 10372 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-05 19:09:56.616  INFO 10372 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 19:09:56.617  INFO 10372 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 19:09:56.624  INFO 10372 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 19:09:56.650  INFO 10372 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 8.391 seconds (JVM running for 11.831)
+2019-07-05 19:09:56.692  INFO 10372 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 19:09:56.730  INFO 10372 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 19:09:56.731  INFO 10372 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 4000000
+2019-07-05 19:09:56.733  INFO 10372 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.service.DomainStatService.fetchData() took 43ms]
+2019-07-05 19:09:56.774  INFO 10372 --- [Thread-8] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@4683d0a6: startup date [Fri Jul 05 19:09:50 CST 2019]; root of context hierarchy
+2019-07-05 19:09:56.788  INFO 10372 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 19:09:56.797  INFO 10372 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 19:10:50.841  INFO 10461 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 10461 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 19:10:50.844  INFO 10461 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 19:10:50.931  INFO 10461 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6e4b4754: startup date [Fri Jul 05 19:10:50 CST 2019]; root of context hierarchy
+2019-07-05 19:10:55.586  INFO 10461 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-05 19:10:55.619  INFO 10461 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 19:10:55.620  INFO 10461 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 19:10:55.627  INFO 10461 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 19:10:55.647  INFO 10461 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 5.859 seconds (JVM running for 7.059)
+2019-07-05 19:10:55.668  INFO 10461 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 19:10:55.684  INFO 10461 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 19:10:55.685  INFO 10461 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 10000000
+2019-07-05 19:10:55.697  INFO 10461 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31)]
+2019-07-05 19:10:55.760  INFO 10461 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-07-05 19:10:59.482  INFO 10461 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-07-05 19:11:05.393  INFO 10461 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31) took 9696ms and result  is 10030757]
+2019-07-05 19:11:05.398 ERROR 10461 --- [restartedMain] c.c.d.service.DomainStatService          : ERR PARAMS => [cn.cnnic.domainstat.service.DomainStatService.writeCn(2019-01-01,2019-01-31,test) still beyond the threshold,but the minimum unit is month,try to decrease the threshold!]
+2019-07-05 19:11:05.398  INFO 10461 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.service.DomainStatService.fetchData() took 9732ms]
+2019-07-05 19:11:05.403  INFO 10461 --- [Thread-8] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@6e4b4754: startup date [Fri Jul 05 19:10:50 CST 2019]; root of context hierarchy
+2019-07-05 19:11:05.415  INFO 10461 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 19:11:05.416  INFO 10461 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 19:11:05.424  INFO 10461 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-07-05 19:11:05.431  INFO 10461 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-07-05 19:11:17.488  INFO 10546 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 10546 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 19:11:17.491  INFO 10546 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 19:11:17.586  INFO 10546 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@433ee3ec: startup date [Fri Jul 05 19:11:17 CST 2019]; root of context hierarchy
+2019-07-05 19:11:21.924  INFO 10546 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-05 19:11:21.969  INFO 10546 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 19:11:21.971  INFO 10546 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 19:11:21.979  INFO 10546 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 19:11:22.005  INFO 10546 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 5.581 seconds (JVM running for 6.754)
+2019-07-05 19:11:38.098  INFO 10546 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 19:11:43.462  INFO 10546 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 19:11:43.477  INFO 10546 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 10000000
+2019-07-05 19:12:04.562  INFO 10546 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31)]
+2019-07-05 19:12:06.131  INFO 10546 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-07-05 19:12:16.025  INFO 10546 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-07-05 19:12:19.480  INFO 10546 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31) took 14918ms and result  is 10030757]
+2019-07-05 19:14:42.385 ERROR 10546 --- [restartedMain] c.c.d.service.DomainStatService          : ERR PARAMS => [cn.cnnic.domainstat.service.DomainStatService.writeCn(2019-01-01,2019-01-31,test) still beyond the threshold,but the minimum unit is month,try to decrease the threshold!]
+2019-07-05 19:14:42.386  INFO 10546 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.service.DomainStatService.fetchData() took 184290ms]
+2019-07-05 19:14:42.393  INFO 10546 --- [Thread-8] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@433ee3ec: startup date [Fri Jul 05 19:11:17 CST 2019]; root of context hierarchy
+2019-07-05 19:14:42.399  INFO 10546 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 19:14:42.400  INFO 10546 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 19:14:42.402  INFO 10546 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-07-05 19:14:42.415  INFO 10546 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-07-05 19:14:56.201  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 10734 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 19:14:56.204  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 19:14:56.309  INFO 10734 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3e7a6c23: startup date [Fri Jul 05 19:14:56 CST 2019]; root of context hierarchy
+2019-07-05 19:15:00.391  INFO 10734 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-05 19:15:00.428  INFO 10734 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 19:15:00.430  INFO 10734 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 19:15:00.437  INFO 10734 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 19:15:00.458  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 5.541 seconds (JVM running for 7.146)
+2019-07-05 19:15:00.474  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 19:15:03.574  INFO 10734 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 19:15:03.575  INFO 10734 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 10000000
+2019-07-05 19:15:10.693  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31)]
+2019-07-05 19:15:12.324  INFO 10734 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-07-05 19:15:23.213  INFO 10734 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-07-05 19:15:26.908  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31) took 16215ms and result  is 10030757]
+2019-07-05 19:15:43.801  INFO 10734 --- [Thread-6] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@3e7a6c23: startup date [Fri Jul 05 19:14:56 CST 2019]; root of context hierarchy
+2019-07-05 19:15:43.808  INFO 10734 --- [Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 19:15:43.811  INFO 10734 --- [Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 19:15:43.818  INFO 10734 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-07-05 19:15:43.828  INFO 10734 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-07-05 19:15:44.087  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 10734 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 19:15:44.088  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 19:15:44.096  INFO 10734 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@680b5ebb: startup date [Fri Jul 05 19:15:44 CST 2019]; root of context hierarchy
+2019-07-05 19:15:45.391  INFO 10734 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-07-05 19:15:45.432  INFO 10734 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 19:15:45.433  INFO 10734 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 19:15:45.446  INFO 10734 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 19:15:45.453  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 1.456 seconds (JVM running for 52.141)
+2019-07-05 19:15:45.457  INFO 10734 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-07-05 19:15:45.459  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 19:15:45.478  INFO 10734 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 19:15:45.480  INFO 10734 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 10000000
+2019-07-05 19:15:53.978 ERROR 10734 --- [restartedMain] c.c.d.service.DomainStatService          : ERR PARAMS => [cn.cnnic.domainstat.service.DomainStatService.writeCn(2019-01-01,2019-01-31,test) still beyond the threshold,but the minimum unit is month,try to decrease the threshold!]
+2019-07-05 19:15:53.985  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.service.DomainStatService.fetchData() took 53512ms]
+2019-07-05 19:15:58.059  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31)]
+2019-07-05 19:15:58.073  INFO 10734 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2019-07-05 19:15:58.179  INFO 10734 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2019-07-05 19:16:07.950  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31) took 9893ms and result  is 9969243]
+2019-07-05 19:16:23.618  INFO 10734 --- [restartedMain] c.c.d.service.DomainStatService          : #################################BEGIN TO FETCH CN 2019-01-01 TO 2019-01-31 DATA#################################
+2019-07-05 19:16:30.171  INFO 10734 --- [restartedMain] c.c.d.service.DomainStatService          : PRINT METHOD PARAMS => [cn.cnnic.domainstat.service.DomainStatService.doWriteCn(2019-01-01,2019-01-31,test)]
+2019-07-05 19:16:36.502  INFO 10734 --- [restartedMain] c.c.d.service.DomainStatService          : PRINT METHOD PARAMS => [cn.cnnic.domainstat.service.DomainStatService.writeCnDomainIntoSrcFile(2019-01-01,2019-01-31,test)]
+2019-07-05 19:18:31.941  INFO 10734 --- [restartedMain] c.c.d.service.DomainStatService          : PRINT EXECUTION TIME => [cn.cnnic.domainstat.service.DomainStatService.writeCnDomainIntoSrcFile(2019-01-01,2019-01-31,test) took 108645ms]
+2019-07-05 19:18:46.577  INFO 10734 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.mapper.EppContactMapper.queryWithCn(2019-01-01,2019-01-31)]
+2019-07-05 19:20:10.632  INFO 10734 --- [Thread-13] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@680b5ebb: startup date [Fri Jul 05 19:15:44 CST 2019]; root of context hierarchy
+2019-07-05 19:20:10.648  INFO 10734 --- [Thread-13] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 19:20:10.748  INFO 10734 --- [Thread-13] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 19:20:10.753  INFO 10734 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2019-07-05 19:20:10.901  INFO 10734 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2019-07-05 20:11:18.796  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 14135 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 20:11:18.831  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 20:11:19.083  INFO 14135 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4bf08f8f: startup date [Fri Jul 05 20:11:19 CST 2019]; root of context hierarchy
+2019-07-05 20:11:24.925  WARN 14135 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static java.lang.String cn.cnnic.domainstat.utils.EmailUtil.host
+2019-07-05 20:11:24.925  WARN 14135 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static java.lang.String cn.cnnic.domainstat.utils.EmailUtil.user
+2019-07-05 20:11:24.925  WARN 14135 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static java.lang.String cn.cnnic.domainstat.utils.EmailUtil.password
+2019-07-05 20:11:26.123  WARN 14135 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2019-07-05 20:11:26.174  INFO 14135 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 20:11:26.176  INFO 14135 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 20:11:26.189  INFO 14135 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 20:11:26.271  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 8.902 seconds (JVM running for 11.822)
+2019-07-05 20:11:26.343  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 20:11:26.373  INFO 14135 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 20:11:26.374  INFO 14135 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 10000000
+2019-07-05 20:11:34.021  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31)]
+2019-07-05 20:11:36.093  INFO 14135 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-07-05 20:11:48.205  INFO 14135 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-07-05 20:11:53.844  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT EXECUTION TIME=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31) took 19824ms and result  is 9969243]
+2019-07-05 20:12:07.154  INFO 14135 --- [restartedMain] c.c.d.service.DomainStatService          : PRINT METHOD PARAMS => [cn.cnnic.domainstat.service.DomainStatService.writeCnDomainIntoSrcFile(2019-01-01,2019-01-31,test)]
+2019-07-05 20:12:54.147  INFO 14135 --- [restartedMain] c.c.d.service.DomainStatService          : PRINT EXECUTION TIME => [cn.cnnic.domainstat.service.DomainStatService.writeCnDomainIntoSrcFile(2019-01-01,2019-01-31,test) took 45889ms]
+2019-07-05 20:13:20.422  INFO 14135 --- [restartedMain] c.c.d.service.DomainStatService          : #################################BEGIN TO FETCH CN 2019-01-01 TO 2019-01-31 DATA#################################
+2019-07-05 20:13:21.824  INFO 14135 --- [restartedMain] c.c.d.service.DomainStatService          : PRINT METHOD PARAMS => [cn.cnnic.domainstat.service.DomainStatService.doWriteCn(2019-01-01,2019-01-31,test)]
+2019-07-05 20:13:23.367  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.mapper.EppContactMapper.queryWithCn(2019-01-01,2019-01-31)]
+2019-07-05 20:20:00.468  INFO 14135 --- [Thread-1] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@4bf08f8f: startup date [Fri Jul 05 20:11:19 CST 2019]; root of context hierarchy
+2019-07-05 20:20:00.579  INFO 14135 --- [Thread-1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 20:20:00.588  INFO 14135 --- [Thread-1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 20:20:00.590  INFO 14135 --- [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-07-05 20:20:00.770  INFO 14135 --- [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-07-05 20:20:01.911  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 14135 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 20:20:01.917  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 20:20:01.930  INFO 14135 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6c01eb05: startup date [Fri Jul 05 20:20:01 CST 2019]; root of context hierarchy
+2019-07-05 20:20:04.545  WARN 14135 --- [restartedMain] com.zaxxer.hikari.pool.ProxyConnection   : HikariPool-1 - Connection com.mysql.jdbc.JDBC4Connection@6c07de1b marked as broken because of SQLSTATE(08S01), ErrorCode(0)
+
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 399,999 milliseconds ago.  The last packet sent successfully to the server was 399,994 milliseconds ago.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_181]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[na:1.8.0_181]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3562) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3462) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3905) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2530) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2683) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2495) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1903) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1242) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-2.7.9.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) [HikariCP-2.7.9.jar:na]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) [mybatis-3.5.1.jar:3.5.1]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) [mybatis-spring-2.0.1.jar:2.0.1]
+	at com.sun.proxy.$Proxy58.selectList(Unknown Source) [na:na]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230) [mybatis-spring-2.0.1.jar:2.0.1]
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58) [mybatis-3.5.1.jar:3.5.1]
+	at com.sun.proxy.$Proxy61.queryWithCn(Unknown Source) [na:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:197) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at cn.cnnic.domainstat.aspect.LogAdvice.printExecTime(LogAdvice.java:35) [classes/:na]
+	at cn.cnnic.domainstat.aspect.LogAdvice.calcMapperExecTime(LogAdvice.java:26) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at com.sun.proxy.$Proxy62.queryWithCn(Unknown Source) [na:na]
+	at cn.cnnic.domainstat.service.DomainStatService.doWriteCn(DomainStatService.java:302) [classes/:na]
+	at cn.cnnic.domainstat.service.DomainStatService.checkAndWriteCn(DomainStatService.java:219) [classes/:na]
+	at cn.cnnic.domainstat.service.DomainStatService.customFetch(DomainStatService.java:111) [classes/:na]
+	at cn.cnnic.domainstat.service.DomainStatService.fetchData(DomainStatService.java:85) [classes/:na]
+	at cn.cnnic.domainstat.service.DomainStatService$$FastClassBySpringCGLIB$$88eb88e2.invoke(<generated>) [classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) [spring-core-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:746) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at cn.cnnic.domainstat.aspect.LogAdvice.printExecTime(LogAdvice.java:35) [classes/:na]
+	at cn.cnnic.domainstat.aspect.LogAdvice.calcServiceExecTime(LogAdvice.java:30) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at cn.cnnic.domainstat.service.DomainStatService$$EnhancerBySpringCGLIB$$4c9a8585.fetchData(<generated>) [classes/:na]
+	at cn.cnnic.domainstat.MainApplication.main(MainApplication.java:44) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+Caused by: java.net.SocketException: Socket closed
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_181]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_181]
+	at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_181]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_181]
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:101) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:144) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:174) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3011) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3472) ~[mysql-connector-java-5.1.47.jar:5.1.47]
+	... 84 common frames omitted
+
+2019-07-05 20:20:05.793  WARN 14135 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static java.lang.String cn.cnnic.domainstat.utils.EmailUtil.host
+2019-07-05 20:20:05.799  WARN 14135 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static java.lang.String cn.cnnic.domainstat.utils.EmailUtil.user
+2019-07-05 20:20:05.799  WARN 14135 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static java.lang.String cn.cnnic.domainstat.utils.EmailUtil.password
+2019-07-05 20:20:06.430  WARN 14135 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2019-07-05 20:20:06.469  INFO 14135 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-07-05 20:20:06.472  INFO 14135 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-07-05 20:20:06.478  INFO 14135 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-07-05 20:20:06.520  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Started MainApplication in 5.087 seconds (JVM running for 532.104)
+2019-07-05 20:20:06.528  INFO 14135 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-07-05 20:20:06.534  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.service.DomainStatService.fetchData()]
+2019-07-05 20:20:06.564  INFO 14135 --- [restartedMain] c.c.d.service.DomainStatService          : RESULT DIRECTORY IS SET TO => /home/zhangt/dest/result/
+2019-07-05 20:20:06.577  INFO 14135 --- [restartedMain] c.c.d.service.DomainStatService          : THRESHOLD IS SET TO => 10000000
+2019-07-05 20:20:06.891  INFO 14135 --- [restartedMain] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-07-05 20:20:13.275  WARN 14135 --- [restartedMain] o.s.jdbc.support.SQLErrorCodesFactory    : Error while extracting database name - falling back to empty error codes
+
+org.springframework.jdbc.support.MetaDataAccessException: Could not get Connection for extracting meta-data; nested exception is org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: HikariDataSource HikariDataSource (HikariPool-1) has been closed.
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:328) ~[spring-jdbc-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:356) ~[spring-jdbc-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.jdbc.support.SQLErrorCodesFactory.getErrorCodes(SQLErrorCodesFactory.java:214) ~[spring-jdbc-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.setDataSource(SQLErrorCodeSQLExceptionTranslator.java:136) [spring-jdbc-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.<init>(SQLErrorCodeSQLExceptionTranslator.java:99) [spring-jdbc-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.mybatis.spring.MyBatisExceptionTranslator.initExceptionTranslator(MyBatisExceptionTranslator.java:87) [mybatis-spring-2.0.1.jar:2.0.1]
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:72) [mybatis-spring-2.0.1.jar:2.0.1]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446) [mybatis-spring-2.0.1.jar:2.0.1]
+	at com.sun.proxy.$Proxy58.selectList(Unknown Source) [na:na]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230) [mybatis-spring-2.0.1.jar:2.0.1]
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80) [mybatis-3.5.1.jar:3.5.1]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58) [mybatis-3.5.1.jar:3.5.1]
+	at com.sun.proxy.$Proxy61.queryWithCn(Unknown Source) [na:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:197) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at cn.cnnic.domainstat.aspect.LogAdvice.printExecTime(LogAdvice.java:35) [classes/:na]
+	at cn.cnnic.domainstat.aspect.LogAdvice.calcMapperExecTime(LogAdvice.java:26) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at com.sun.proxy.$Proxy62.queryWithCn(Unknown Source) [na:na]
+	at cn.cnnic.domainstat.service.DomainStatService.doWriteCn(DomainStatService.java:302) [classes/:na]
+	at cn.cnnic.domainstat.service.DomainStatService.checkAndWriteCn(DomainStatService.java:219) [classes/:na]
+	at cn.cnnic.domainstat.service.DomainStatService.customFetch(DomainStatService.java:111) [classes/:na]
+	at cn.cnnic.domainstat.service.DomainStatService.fetchData(DomainStatService.java:85) [classes/:na]
+	at cn.cnnic.domainstat.service.DomainStatService$$FastClassBySpringCGLIB$$88eb88e2.invoke(<generated>) [classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204) [spring-core-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:746) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at cn.cnnic.domainstat.aspect.LogAdvice.printExecTime(LogAdvice.java:35) [classes/:na]
+	at cn.cnnic.domainstat.aspect.LogAdvice.calcServiceExecTime(LogAdvice.java:30) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) [spring-aop-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at cn.cnnic.domainstat.service.DomainStatService$$EnhancerBySpringCGLIB$$4c9a8585.fetchData(<generated>) [classes/:na]
+	at cn.cnnic.domainstat.MainApplication.main(MainApplication.java:44) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.0.5.RELEASE.jar:2.0.5.RELEASE]
+Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: HikariDataSource HikariDataSource (HikariPool-1) has been closed.
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81) ~[spring-jdbc-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:319) ~[spring-jdbc-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 68 common frames omitted
+Caused by: java.sql.SQLException: HikariDataSource HikariDataSource (HikariPool-1) has been closed.
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:96) ~[HikariCP-2.7.9.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:151) ~[spring-jdbc-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:115) ~[spring-jdbc-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:78) ~[spring-jdbc-5.0.9.RELEASE.jar:5.0.9.RELEASE]
+	... 69 common frames omitted
+
+2019-07-05 20:20:42.866  INFO 14135 --- [Thread-7] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@6c01eb05: startup date [Fri Jul 05 20:20:01 CST 2019]; root of context hierarchy
+2019-07-05 20:20:42.891  INFO 14135 --- [Thread-7] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-07-05 20:20:42.891  INFO 14135 --- [Thread-7] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-07-05 20:20:43.448  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : Starting MainApplication on zhangtao with PID 14135 (/home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat/target/classes started by zhangt in /home/zhangt/workspace/JavaWorkspace/devEnv/DomainStat)
+2019-07-05 20:20:43.449  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.MainApplication      : No active profile set, falling back to default profiles: default
+2019-07-05 20:20:43.456  INFO 14135 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2daefd5e: startup date [Fri Jul 05 20:20:43 CST 2019]; root of context hierarchy
+2019-07-05 20:20:43.819  INFO 14135 --- [restartedMain] cn.cnnic.domainstat.aspect.LogAdvice     : PRINT METHOD PARAMS=>[cn.cnnic.domainstat.mapper.EppEntAllDomainMapper.queryCount(2019-01-01,2019-01-31)]

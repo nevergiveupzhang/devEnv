@@ -1,15 +1,15 @@
 domain.stat:
   #cron: 40 43 23 * * ? 
   result: /home/zhangt/dest/result/
-  threshold: 4m
+  threshold: 40m
   ranges:
-    - name:
-      start:
-      end:
+    - name: test
+      start: 2019-01-01
+      end: 2019-01-01
 logging.file: domainstat.log
 spring: 
   datasource: 
-    url: jdbc:mysql://127.0.0.1:3307/finalscheduler
+    url: jdbc:mysql://127.0.0.1:3307/test
     username: root
     password: 123
     driver-class-name: com.mysql.jdbc.Driver
